@@ -1,363 +1,363 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InnoDignity - Sovereign Bio-Intelligence Ecosystem</title>
-    <style>
-        :root {
-            --primary: #0f172a;
-            --tech-blue: #0284c7;
-            --accent: #38bdf8;
-            --bg: #f0f9ff;
-            --text: #1e293b;
-            --card-bg: #ffffff;
-            --danger-bg: #fff1f2;
-            --danger-border: #8f435e;
-            --solution-bg: #f0fdf4;
-            --solution-border: #16a34a;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-        .top-bar {
-            background: var(--primary);
-            padding: 0.75rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: white;
-        }
-        .top-bar select {
-            padding: 0.4rem;
-            border-radius: 6px;
-            background: #1e293b;
-            color: white;
-            border: 1px solid var(--accent);
-            font-size: 0.9rem;
-            cursor: pointer;
-        }
-        header {
-            background: linear-gradient(135deg, #0f172a, #0369a1);
-            color: white;
-            padding: 3rem 1rem;
-            text-align: center;
-        }
-        .hero-img {
-            width: 130px;
-            height: 130px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--accent);
-            margin-bottom: 1rem;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            letter-spacing: -0.025em;
-        }
-        header p {
-            color: #bae6fd;
-            margin-top: 0.5rem;
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-        .card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 10px 15px -3px rgba(2, 132, 199, 0.1);
-            border-top: 4px solid var(--tech-blue);
-        }
-        .card.problem {
-            background: var(--danger-bg);
-            border-top: 4px solid var(--danger-border);
-        }
-        .card.solution {
-            background: var(--solution-bg);
-            border-top: 4px solid var(--solution-border);
-        }
-        h2 {
-            color: var(--primary);
-            border-bottom: 2px solid var(--accent);
-            padding-bottom: 0.5rem;
-            margin-top: 0;
-        }
-        ul {
-            padding-left: 1.5rem;
-        }
-        li {
-            margin-bottom: 0.6rem;
-        }
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: #475569;
-            font-size: 0.9rem;
-            border-top: 1px solid #bae6fd;
-            margin-top: 3rem;
-            background: #e0f2fe;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InnoDignity | Nazeh Osman</title>
+
+  <style>
+    :root {
+      --primary-color: #00695c;
+      --secondary-color: #004d40;
+      --accent-color: #e0f2f1;
+      --text-color: #333;
+      --bg-color: #f0f7f4;
+      --radius: 25px;
+      --transition: 0.3s ease;
+    }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      margin: 0;
+      background-color: var(--bg-color);
+    }
+
+    .header {
+      text-align: center;
+      padding: 70px 20px;
+      background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+      color: #fff;
+      border-radius: 0 0 50px 50px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .contact-bar {
+      background: var(--accent-color);
+      padding: 12px;
+      text-align: center;
+      font-weight: bold;
+      color: var(--secondary-color);
+      border-bottom: 2px solid var(--primary-color);
+      font-size: 0.95em;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .zero-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+    }
+
+    .zero-card {
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+      border-bottom: 6px solid var(--primary-color);
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .zero-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .card-img {
+      width: 100%;
+      height: 180px;
+      overflow: hidden;
+      background: #ddd;
+    }
+
+    .card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-content {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .zero-number {
+      font-size: 3em;
+      font-weight: bold;
+      color: var(--primary-color);
+      display: block;
+    }
+
+    .zero-text {
+      font-size: 1.1em;
+      color: var(--secondary-color);
+    }
+
+    /* أعلام عائمة راقية وهادئة */
+    .flags-floating {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 999;
+    }
+
+    .flag-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid #fff;
+      background: #f5f5f5;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .flag-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .flag-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      background: #ffffff;
+    }
+
+    .flag-btn.active {
+      box-shadow: 0 0 0 2px var(--primary-color);
+    }
+
+    @media (max-width: 600px) {
+      .flags-floating {
+        bottom: 10px;
+        right: 10px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-    <div class="top-bar">
-        <strong id="brandName">InnoDignity | Nazih Osman</strong>
-        <select id="langSelector" onchange="changeLanguage(this.value)">
-            <option value="en">English</option>
-            <option value="ar" selected>العربية</option>
-            <option value="he">עברית</option>
-            <option value="de">Deutsch</option>
-            <option value="fr">Français</option>
-            <option value="es">Español</option>
-        </select>
+  <header class="header">
+    <h1 data-key="title">InnoDignity</h1>
+    <p data-key="subtitle">By Nazeh Osman</p>
+  </header>
+
+  <div class="contact-bar" data-key="contact">Contact us for sustainable innovation</div>
+
+  <section class="container">
+    <div class="zero-grid">
+
+      <div class="zero-card">
+        <div class="card-img">
+          <img src="https://images.pexels.com/photos/802221/pexels-photo-802221.jpeg" alt="Plastic Waste">
+        </div>
+        <div class="card-content">
+          <span class="zero-number" data-target="100">100</span>
+          <span class="zero-text" data-key="plastic">Plastic Waste</span>
+          <p class="zero-description" data-key-desc="plastic_desc">This section addresses the challenges and solutions related to plastic waste management and recycling.</p>
+          <button class="speak-btn" data-key-desc="plastic_desc" aria-label="Speak description">🔊</button>
+        </div>
+      </div>
+
+      <div class="zero-card">
+        <div class="card-img">
+          <img src="https://images.pexels.com/photos/929385/pexels-photo-929385.jpeg" alt="Pollution">
+        </div>
+        <div class="card-content">
+          <span class="zero-number" data-target="50">50</span>
+          <span class="zero-text" data-key="pollution">Pollution</span>
+          <p class="zero-description" data-key-desc="pollution_desc">Pollution affects air, water, and soil quality, posing risks to health and ecosystems.</p>
+          <button class="speak-btn" data-key-desc="pollution_desc" aria-label="Speak description">🔊</button>
+        </div>
+      </div>
+
+      <div class="zero-card">
+        <div class="card-img">
+          <img src="https://images.pexels.com/photos/3735761/pexels-photo-3735761.jpeg" alt="Odors">
+        </div>
+        <div class="card-content">
+          <span class="zero-number" data-target="30">30</span>
+          <span class="zero-text" data-key="odors">Odors</span>
+          <p class="zero-description" data-key-desc="odors_desc">Unpleasant odors can impact quality of life and indicate underlying environmental issues.</p>
+          <button class="speak-btn" data-key-desc="odors_desc" aria-label="Speak description">🔊</button>
+        </div>
+      </div>
+
+      <div class="zero-card">
+        <div class="card-img">
+          <img src="https://images.pexels.com/photos/4226769/pexels-photo-4226769.jpeg" alt="Infections">
+        </div>
+        <div class="card-content">
+          <span class="zero-number" data-target="20">20</span>
+          <span class="zero-text" data-key="infections">Infections</span>
+          <p class="zero-description" data-key-desc="infections_desc">Infections can spread due to poor sanitation and environmental contamination.</p>
+          <button class="speak-btn" data-key-desc="infections_desc" aria-label="Speak description">🔊</button>
+        </div>
+      </div>
+
+      <div class="zero-card">
+        <div class="card-img">
+          <img src="https://images.pexels.com/photos/6129681/pexels-photo-6129681.jpeg" alt="Pressure Sores">
+        </div>
+        <div class="card-content">
+          <span class="zero-number" data-target="10">10</span>
+          <span class="zero-text" data-key="sores">Pressure Sores</span>
+          <p class="zero-description" data-key-desc="sores_desc">Pressure sores are injuries to skin and underlying tissue caused by prolonged pressure.</p>
+          <button class="speak-btn" data-key-desc="sores_desc" aria-label="Speak description">🔊</button>
+        </div>
+      </div>
+
     </div>
+  </section>
 
-    <header>
-        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=300&q=80" alt="InnoDignity Bio-Intelligence" class="hero-img">
-        <h1 id="mainTitle">InnoDignity</h1>
-        <p id="mainSubtitle">نظام بيئي سيادي للذكاء البيولوجي - حفظ الكرامة الإنسانية</p>
-    </header>
+  <!-- أعلام عائمة راقية -->
+  <div class="flags-floating" id="flagsContainer">
+    <button class="flag-btn" data-lang="en" title="English">
+      <img src="https://flagcdn.com/w40/gb.png" alt="English">
+    </button>
+    <button class="flag-btn" data-lang="ar" title="العربية">
+      <img src="https://flagcdn.com/w40/sa.png" alt="Arabic">
+    </button>
+    <button class="flag-btn" data-lang="es" title="Español">
+      <img src="https://flagcdn.com/w40/es.png" alt="Spanish">
+    </button>
+    <button class="flag-btn" data-lang="fr" title="Français">
+      <img src="https://flagcdn.com/w40/fr.png" alt="French">
+    </button>
+    <button class="flag-btn" data-lang="zh" title="中文">
+      <img src="https://flagcdn.com/w40/cn.png" alt="Chinese">
+    </button>
+    <button class="flag-btn" data-lang="hi" title="हिन्दी">
+      <img src="https://flagcdn.com/w40/in.png" alt="Hindi">
+    </button>
+    <button class="flag-btn" data-lang="ru" title="Русский">
+      <img src="https://flagcdn.com/w40/ru.png" alt="Russian">
+    </button>
+    <button class="flag-btn" data-lang="pt" title="Português">
+      <img src="https://flagcdn.com/w40/pt.png" alt="Portuguese">
+    </button>
+    <button class="flag-btn" data-lang="de" title="Deutsch">
+      <img src="https://flagcdn.com/w40/de.png" alt="German">
+    </button>
+    <button class="flag-btn" data-lang="ja" title="日本語">
+      <img src="https://flagcdn.com/w40/jp.png" alt="Japanese">
+    </button>
+    <button class="flag-btn" data-lang="ko" title="한국어">
+      <img src="https://flagcdn.com/w40/kr.png" alt="Korean">
+    </button>
+    <button class="flag-btn" data-lang="tr" title="Türkçe">
+      <img src="https://flagcdn.com/w40/tr.png" alt="Turkish">
+    </button>
+    <button class="flag-btn" data-lang="ms" title="Bahasa Melayu (Brunei)">
+      <img src="https://flagcdn.com/w40/bn.png" alt="Malay Brunei">
+    </button>
+  </div>
 
-    <div class="container">
-        
-        <div class="card" style="text-align: center;">
-            <h2 id="welcomeH" style="border: none; color: var(--tech-blue); font-size: 1.8rem;">أهلاً بكم</h2>
-            <p id="welcomeP" style="font-size: 1.1rem; color: var(--text); max-width: 800px; margin: 0 auto;">
-                منظومة رعاية بيولوجية روبوتية متقدمة لكبار السن، ذوي الاحتياجات الخاصة، والأطفال الخدج، لضمان أعلى مستويات الاستقلالية والراحة.
-            </p>
-        </div>
+  <!-- صوت بسيط للعداد -->
+  <audio id="counterSound">
+    <source src="https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg" type="audio/ogg">
+  </audio>
 
-        <div class="card problem">
-            <h2 id="problemH" style="color: var(--danger-border);">المشكلة: المعاناة الإنسانية الصامتة</h2>
-            <p id="problemP">
-                تجرد الحلول التقليدية كبار السن والمرضى والأطفال الخدج من أبسط مقومات الكرامة الإنسانية، الاعتماد على المنتجات البتروكيماوية يسبب آلاماً وتقرحات جلدية وروائح مزعجة.
-            </p>
-        </div>
+  <script>
+    const translations = {
+      en: { title: "InnoDignity", subtitle: "By Nazeh Osman", contact: "Contact us for sustainable innovation", plastic: "Plastic Waste", pollution: "Pollution", odors: "Odors", infections: "Infections", sores: "Pressure Sores" },
+      ar: { title: "InnoDignity", subtitle: "بواسطة نزيه عثمان", contact: "تواصل معنا للابتكار المستدام", plastic: "نفايات بلاستيكية", pollution: "تلوث", odors: "روائح", infections: "التهابات", sores: "تقرحات الضغط" },
+      es: { title: "InnoDignity", subtitle: "Por Nazeh Osman", contact: "Contáctanos para innovación sostenible", plastic: "Residuos Plásticos", pollution: "Contaminación", odors: "Olores", infections: "Infecciones", sores: "Úlceras por presión" },
+      fr: { title: "InnoDignity", subtitle: "Par Nazeh Osman", contact: "Contactez-nous pour une innovation durable", plastic: "Déchets Plastiques", pollution: "Pollution", odors: "Odeurs", infections: "Infections", sores: "Escarres" },
+      zh: { title: "InnoDignity", subtitle: "纳泽·奥斯曼", contact: "联系我们以实现可持续创新", plastic: "塑料垃圾", pollution: "污染", odors: "气味", infections: "感染", sores: "压疮" },
+      hi: { title: "InnoDignity", subtitle: "नाज़ेह उस्मान", contact: "सतत नवाचार के लिए हमसे संपर्क करें", plastic: "प्लास्टिक कचरा", pollution: "प्रदूषण", odors: "गंध", infections: "संक्रमण", sores: "दबाव घाव" },
+      ru: { title: "InnoDignity", subtitle: "Назех Осман", contact: "Свяжитесь с нами для устойчивых инноваций", plastic: "Пластиковые отходы", pollution: "Загрязнение", odors: "Запахи", infections: "Инфекции", sores: "Пролежни" },
+      pt: { title: "InnoDignity", subtitle: "Por Nazeh Osman", contact: "Contate-nos para inovação sustentável", plastic: "Resíduos Plásticos", pollution: "Poluição", odors: "Odores", infections: "Infecções", sores: "Feridas de Pressão" },
+      de: { title: "InnoDignity", subtitle: "Von Nazeh Osman", contact: "Kontaktieren Sie uns für nachhaltige Innovation", plastic: "Plastikabfall", pollution: "Verschmutzung", odors: "Gerüche", infections: "Infektionen", sores: "Druckgeschwüre" },
+      ja: { title: "InnoDignity", subtitle: "ナゼー・オスマン", contact: "持続可能な革新のためにお問い合わせください", plastic: "プラスチック廃棄物", pollution: "汚染", odors: "臭い", infections: "感染症", sores: "褥瘡" },
+      ko: { title: "InnoDignity", subtitle: "나제 오스만", contact: "지속 가능한 혁신을 위해 문의하세요", plastic: "플라스틱 폐기물", pollution: "오염", odors: "냄새", infections: "감염", sores: "욕창" },
+      tr: { title: "InnoDignity", subtitle: "Nazeh Osman", contact: "Sürdürülebilir yenilik için bize ulaşın", plastic: "Plastik Atık", pollution: "Kirlilik", odors: "Kokular", infections: "Enfeksiyonlar", sores: "Basınç Yaraları" },
+      ms: { title: "InnoDignity", subtitle: "Oleh Nazeh Osman", contact: "Hubungi kami untuk inovasi lestari", plastic: "Sisa Plastik", pollution: "Pencemaran", odors: "Bau", infections: "Jangkitan", sores: "Luka Tekanan" }
+    };
 
-        <div class="card solution">
-            <h2 id="solutionH" style="color: var(--solution-border);">الحل السيادي والبديل النقي</h2>
-            <p id="solutionP">
-                يقدم InnoDignity حلاً جذرياً يضع حدّاً لهذه المعاناة عبر بيئة رعاية ذكية ومحترمة، تمنع النفايات البترولية والروائح والتقرحات نهائياً.
-            </p>
-        </div>
+    function applyLanguage(lang) {
+      if (!translations[lang]) lang = 'en';
+      document.querySelectorAll("[data-key]").forEach(el => {
+        const key = el.getAttribute("data-key");
+        el.textContent = translations[lang][key];
+      });
 
-        <div class="card">
-            <h2 id="pillarsH">الأركان التقنية والتكنولوجية</h2>
-            <ul>
-                <li><strong id="p1Title">أولاً:</strong> <span id="p1Desc">ملابس بيو-حكيمة ومتقدمة، مع مستشعرات دقيقة لمراقبة الصحة بشكل مستمر.</span></li>
-                <li><strong id="p2Title">ثانياً:</strong> <span id="p2Desc">سكرتير رقمي سيادي (SDS) يعمل محلياً لضمان الخصوصية التامة للبيانات وتقديم رعاية استباقية.</span></li>
-                <li><strong id="p3Title">ثالثاً:</strong> <span id="p3Desc">السرير السيادي والتقنيات الأوتوماتيكية لانتقال سلس وآمن بين وضعيات الاستلقاء، الجلوس، والوقوف.</span></li>
-            </ul>
-        </div>
+      if (lang === "ar") {
+        document.documentElement.dir = "rtl";
+        document.documentElement.lang = "ar";
+      } else {
+        document.documentElement.dir = "ltr";
+        document.documentElement.lang = lang;
+      }
 
-        <div class="card" style="background: var(--primary); color: white;">
-            <h2 id="doctrineH" style="color: var(--accent); border-color: var(--tech-blue);">دوكترينا خمسة الأصفار (The Five Zeros Doctrine)</h2>
-            <ul style="color: #f8fafc;">
-                <li><strong id="d1">صفر فضلات، صفر تلوث، صفر ضرر:</strong> <span id="d1Desc">Zero waste, zero pollution, zero harm.</span></li>
-                <li><strong id="d2">صفر روائح، صفر أخطاء كلينيكية، صفر إهمال:</strong> <span id="d2Desc">Zero odors, zero clinical errors, zero negligence.</span></li>
-                <li><strong id="d3">صفر هدر، صفر فقدان بيانات، صفر مساس بالكرامة:</strong> <span id="d3Desc">Zero waste, zero data loss, zero loss of dignity.</span></li>
-            </ul>
-        </div>
+      document.querySelectorAll(".flag-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
+      });
+    }
 
-    </div>
+    function detectBrowserLanguage() {
+      const browserLang = (navigator.language || navigator.userLanguage || 'en').slice(0, 2);
+      const supported = Object.keys(translations);
+      return supported.includes(browserLang) ? browserLang : 'en';
+    }
 
-    <footer>
-        <p id="footer">© 2026 InnoDignity - Founder & Lead Developer: Nazih Osman. All Rights Reserved.</p>
-    </footer>
+    function animateCounter(element, target, duration = 2000) {
+      let start = 0;
+      target = isNaN(target) ? 0 : target;
+      const sound = document.getElementById("counterSound");
+      if (target === 0) {
+        element.textContent = "0";
+        return;
+      }
+      let stepTime = Math.max(20, Math.floor(duration / target));
 
-    <script>
-        const translations = {
-            ar: {
-                brandName: "InnoDignity | Nazih Osman",
-                mainTitle: "InnoDignity",
-                mainSubtitle: "نظام بيئي سيادي للذكاء البيولوجي - حفظ الكرامة الإنسانية",
-                welcomeH: "أهلاً بكم",
-                welcomeP: "منظومة رعاية بيولوجية روبوتية متقدمة لكبار السن، ذوي الاحتياجات الخاصة، والأطفال الخدج، لضمان أعلى مستويات الاستقلالية والراحة.",
-                problemH: "المشكلة: المعاناة الإنسانية الصامتة",
-                problemP: "تجرد الحلول التقليدية كبار السن والمرضى والأطفال الخدج من أبسط مقومات الكرامة الإنسانية، الاعتماد على المنتجات البتروكيماوية يسبب آلاماً وتقرحات جلدية وروائح مزعجة.",
-                solutionH: "الحل السيادي والبديل النقي",
-                solutionP: "يقدم InnoDignity حلاً جذرياً يضع حدّاً لهذه المعاناة عبر بيئة رعاية ذكية ومحترمة، تمنع النفايات البترولية والروائح والتقرحات نهائياً.",
-                pillarsH: "الأركان التقنية والتكنولوجية",
-                p1Title: "أولاً:",
-                p1Desc: "ملابس بيو-حكيمة ومتقدمة، مع مستشعرات دقيقة لمراقبة الصحة بشكل مستمر.",
-                p2Title: "ثانياً:",
-                p2Desc: "سكرتير رقمي سيادي (SDS) يعمل محلياً لضمان الخصوصية التامة للبيانات وتقديم رعاية استباقية.",
-                p3Title: "ثالثاً:",
-                p3Desc: "السرير السيادي والتقنيات الأوتوماتيكية لانتقال سلس وآمن بين وضعيات الاستلقاء، الجلوس، والوقوف.",
-                doctrineH: "دوكترينا خمسة الأصفار",
-                d1: "صفر فضلات، صفر تلوث، صفر ضرر:",
-                d1Desc: "Zero waste, zero pollution, zero harm.",
-                d2: "صفر روائح، صفر أخطاء كلينيكية، صفر إهمال:",
-                d2Desc: "Zero odors, zero clinical errors, zero negligence.",
-                d3: "صفر هدر، صفر فقدان بيانات، صفر مساس بالكرامة:",
-                d3Desc: "Zero waste, zero data loss, zero loss of dignity.",
-                footer: "© 2026 InnoDignity - مؤسس ومפתח رئيسي: Nazih Osman. كل الحقوق محفوظة."
-            },
-            he: {
-                brandName: "InnoDignity | נזיה עثمان",
-                mainTitle: "InnoDignity",
-                mainSubtitle: "מערכת אקולוגית ריבונית לבינה ביולוגית - שימור הכבוד האנושי",
-                welcomeH: "ברוכים הבאים",
-                welcomeP: "מערכת טיפול ביולוגית-רובוטית מתקדמת עבור קשישים, אנשים עם מוגבלויות ותינוקות פגים.",
-                problemH: "הבעיה: הסבל האנושי השקט",
-                problemP: "הפתרונות המסורתיים מפשיטים מקשישים ומחולים את זכויות היסוד של הכבוד האנושי.",
-                solutionH: "הפתרון הריבוני והחלופה הטהורה",
-                solutionP: "InnoDignity מציגה פתרון מתקדם ששם קץ לסבל זה באמצעות סביבת טיפול חכמה.",
-                pillarsH: "עמודי התווך הטכנולוגיים",
-                p1Title: "1.",
-                p1Desc: "בגדים ביו-חכמים ומתקדמים הכוללים תחתונים רפואיים ייעודיים לניטור בריאות רציף.",
-                p2Title: "2.",
-                p2Desc: "מזכיר דיגיטלי ריבוני (SDS) הפועל מקומית להבטחת פרטיות נתונים מוחלטת.",
-                p3Title: "3.",
-                p3Desc: "מיטה ריבונית וטכנולוגיות אוטונומיות למעבר חלק בין שכיבה, ישיבה ועמידה.",
-                doctrineH: "דוקטרינת חמשת האפסים",
-                d1: "אפס פסולת, אפס זיהום ואפס נזק.",
-                d2: "אפס ריחות, אפס שגיאות קليניות ואפס הזנחה.",
-                d3: "אפס הדרה, אפס אובדן נתונים ואפס פגיעה בכבוד.",
-                footer: "© 2026 InnoDignity - מייסד ומפתח ראשי: Nazih Osman. כל הזכויות שמורות."
-            },
-            en: {
-                brandName: "InnoDignity | Nazih Osman",
-                mainTitle: "InnoDignity",
-                mainSubtitle: "Sovereign Bio-Intelligence Ecosystem - Preserving Human Dignity",
-                welcomeH: "Welcome",
-                welcomeP: "Advanced robotic bio-care ecosystem for seniors, individuals with disabilities, and premature infants.",
-                problemH: "The Problem: Silent Human Suffering",
-                problemP: "Traditional solutions strip vulnerable individuals of basic dignity, relying on petrochemicals and plastics.",
-                solutionH: "The Sovereign Solution & Pure Alternative",
-                solutionP: "InnoDignity introduces a sovereign, eco-friendly ecosystem that brings an end to this suffering.",
-                pillarsH: "Technological Pillars",
-                p1Title: "1.",
-                p1Desc: "Advanced bio-garments with precision biosensors for continuous health monitoring.",
-                p2Title: "2.",
-                p2Desc: "Sovereign Digital Secretary (SDS) running locally to ensure absolute data privacy.",
-                p3Title: "3.",
-                p3Desc: "Sovereign Bed & autonomy technologies for smooth transition from lying, sitting to standing.",
-                doctrineH: "The Five Zeros Doctrine",
-                d1: "Null Waste, Null Pollution, Null Harm.",
-                d2: "Null Odor, Null Clinical Errors, Null Negligence.",
-                d3: "Null Exclusion, Null Data Loss, Null Indignity.",
-                footer: "© 2026 InnoDignity - Founder & Lead Developer: Nazih Osman. All Rights Reserved."
-            },
-            de: {
-                brandName: "InnoDignity | Nazih Osman",
-                mainTitle: "InnoDignity",
-                mainSubtitle: "Souveränes Bio-Intelligenz-Ökosystem - Bewahrung der Menschenwürde",
-                welcomeH: "Herzlich willkommen",
-                welcomeP: "Fortschrittliches robotisches Bio-Pflegeökosystem für Senioren und Menschen mit Behinderungen.",
-                problemH: "Das Problem: Stilles menschliches Leiden",
-                problemP: "Herkömmliche Lösungen berauben Bedürftige ihrer Würde.",
-                solutionH: "Die souveräne Lösung",
-                solutionP: "InnoDignity bietet ein umweltfreundliches Ökosystem, das dieses Leiden beendet.",
-                pillarsH: "Technologische Säulen",
-                p1Title: "1.",
-                p1Desc: "Intelligente Bio-Kleidung mit Präzisions-Biosensoren.",
-                p2Title: "2.",
-                p2Desc: "Souveräner Digitaler Sekretär (SDS) für absolute Datensicherheit.",
-                p3Title: "3.",
-                p3Desc: "Souveränes Bett & Autonomie-Technologien.",
-                doctrineH: "Die Fünf-Nullen-Doktrin",
-                d1: "Null Abfall, Null Umweltverschmutzung, Null Schaden.",
-                d2: "Null Geruch, Null klinische Fehler, Null Vernachlässigung.",
-                d3: "Null Ausschluss, Null Datenverlust, Null Würdelosigkeit.",
-                footer: "© 2026 InnoDignity - Gründer & Entwickler: Nazih Osman. Alle Rechte vorbehalten."
-            },
-            fr: {
-                brandName: "InnoDignity | Nazih Osman",
-                mainTitle: "InnoDignity",
-                mainSubtitle: "Écosystème de bio-intelligence souverain - Préserver la dignité humaine",
-                welcomeH: "Bienvenue",
-                welcomeP: "Écosystème de bio-soins robotiques avancés.",
-                problemH: "Le problème : La souffrance humaine silencieuse",
-                problemP: "Les solutions traditionnelles privent les personnes vulnérables de leur dignité.",
-                solutionH: "La solution souveraine",
-                solutionP: "InnoDignity introduit un écosystème souverain et écologique.",
-                pillarsH: "Piliers technologiques",
-                p1Title: "1.",
-                p1Desc: "Vêtements bio-intelligents avancés avec capteurs.",
-                p2Title: "2.",
-                p2Desc: "Secrétaire numérique souverain (SDS) garantissant la confidentialité.",
-                p3Title: "3.",
-                p3Desc: "Lit souverain et technologies d'autonomie.",
-                doctrineH: "La doctrine des cinq zéros",
-                d1: "Zéro déchet, zéro pollution, zéro dommage.",
-                d2: "Zéro odeur, zéro erreur clinique, zéro négligence.",
-                d3: "Zéro exclusion, zéro perte de données, zéro indignité.",
-                footer: "© 2026 InnoDignity - Fondateur et développeur principal : Nazih Osman. Tous droits réservés."
-            },
-            es: {
-                brandName: "InnoDignity | Nazih Osman",
-                mainTitle: "InnoDignity",
-                mainSubtitle: "Ecosistema de Bio-Inteligencia Soberana - Preservando la Dignidad Humana",
-                welcomeH: "Bienvenidos",
-                welcomeP: "Ecosistema de biocuidado robótico avanzado.",
-                problemH: "El Problema: El Sufrimiento Humano Silencioso",
-                problemP: "Las soluciones tradicionales despojan a las personas vulnerables de su dignidad.",
-                solutionH: "La Solución Soberana",
-                solutionP: "InnoDignity introduce un ecosistema soberano y ecológico.",
-                pillarsH: "Pilares Tecnológicos",
-                p1Title: "1.",
-                p1Desc: "Bio-prendas inteligentes avanzadas con biosensores.",
-                p2Title: "2.",
-                p2Desc: "Secretario Digital Soberano (SDS) local.",
-                p3Title: "3.",
-                p3Desc: "Cama Soberana y Tecnologías de Autonomía.",
-                doctrineH: "La Doctrina de los Cinco Ceros",
-                d1: "Cero residuos, cero contaminación, cero daño.",
-                d2: "Cero olores, cero errores clínicos, cero negligencia.",
-                d3: "Cero exclusión, cero pérdida de datos, cero indignidad.",
-                footer: "© 2026 InnoDignity - Fundador y Desarrollador Principal: Nazih Osman. Todos los derechos reservados."
-            }
-        };
-
-        function changeLanguage(lang) {
-            const t = translations[lang];
-            if (!t) return;
-            
-            document.documentElement.lang = lang;
-            document.documentElement.dir = (lang === 'ar' || lang === 'he') ? 'rtl' : 'ltr';
-
-            document.getElementById('brandName').innerText = t.brandName;
-            document.getElementById('mainTitle').innerText = t.mainTitle;
-            document.getElementById('mainSubtitle').innerText = t.mainSubtitle;
-            document.getElementById('welcomeH').innerText = t.welcomeH;
-            document.getElementById('welcomeP').innerText = t.welcomeP;
-            document.getElementById('problemH').innerText = t.problemH;
-            document.getElementById('problemP').innerText = t.problemP;
-            document.getElementById('solutionH').innerText = t.solutionH;
-            document.getElementById('solutionP').innerText = t.solutionP;
-            document.getElementById('pillarsH').innerText = t.pillarsH;
-            document.getElementById('p1Title').innerText = t.p1Title;
-            document.getElementById('p1Desc').innerText = t.p1Desc;
-            document.getElementById('p2Title').innerText = t.p2Title;
-            document.getElementById('p2Desc').innerText = t.p2Desc;
-            document.getElementById('p3Title').innerText = t.p3Title;
-            document.getElementById('p3Desc').innerText = t.p3Desc;
-            document.getElementById('doctrineH').innerText = t.doctrineH;
-            document.getElementById('d1').innerText = t.d1;
-            document.getElementById('d1Desc').innerText = t.d1Desc;
-            document.getElementById('d2').innerText = t.d2;
-            document.getElementById('d2Desc').innerText = t.d2Desc;
-            document.getElementById('d3').innerText = t.d3;
-            document.getElementById('d3Desc').innerText = t.d3Desc;
-            document.getElementById('footer').innerText = t.footer;
+      let timer = setInterval(() => {
+        start++;
+        element.textContent = start;
+        if (start >= target) {
+          clearInterval(timer);
+          if (sound) {
+            sound.currentTime = 0;
+            sound.volume = 0.25;
+            sound.play().catch(() => {});
+          }
         }
-    </script>
+      }, stepTime);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const initialLang = detectBrowserLanguage();
+      applyLanguage(initialLang);
+
+      document.querySelectorAll(".flag-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const lang = btn.getAttribute("data-lang");
+          applyLanguage(lang);
+        });
+      });
+
+      document.querySelectorAll(".zero-number").forEach(num => {
+        const target = parseInt(num.getAttribute("data-target")) || 0;
+        animateCounter(num, target);
+      });
+    });
+  </script>
+
 </body>
 </html>
