@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" id="htmlRoot">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +7,10 @@
     <style>
         :root {
             --primary: #0f172a;
-            --accent: #3b82f6;
-            --bg: #f8fafc;
-            --text: #334155;
+            --tech-blue: #0284c7;
+            --accent: #38bdf8;
+            --bg: #f0f9ff;
+            --text: #1e293b;
             --card-bg: #ffffff;
         }
         body {
@@ -18,37 +19,43 @@
             color: var(--text);
             margin: 0;
             padding: 0;
-            line-height: 1.6;
+            line-height: 1.8;
         }
         .top-bar {
-            background: #1e293b;
-            padding: 0.5rem 1rem;
-            text-align: right;
-        }
-        .top-bar select {
-            padding: 0.4rem;
-            border-radius: 4px;
-            background: #334155;
+            background: var(--primary);
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             color: white;
-            border: none;
-            font-size: 0.9rem;
-            cursor: pointer;
+            font-weight: bold;
         }
         header {
-            background-color: var(--primary);
+            background: linear-gradient(135deg, #0f172a, #0369a1);
             color: white;
-            padding: 2.5rem 1rem;
+            padding: 3rem 1rem;
             text-align: center;
+        }
+        .hero-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent);
+            margin-bottom: 1rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         }
         header h1 {
             margin: 0;
             font-size: 2.5rem;
-            letter-spacing: -0.025em;
         }
         header p {
-            color: #94a3b8;
+            color: #bae6fd;
             margin-top: 0.5rem;
             font-size: 1.2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .container {
             max-width: 1000px;
@@ -57,10 +64,11 @@
         }
         .card {
             background: var(--card-bg);
-            border-radius: 8px;
+            border-radius: 12px;
             padding: 2rem;
             margin-bottom: 1.5rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 15px -3px rgba(2, 132, 199, 0.1);
+            border-top: 4px solid var(--tech-blue);
         }
         h2 {
             color: var(--primary);
@@ -69,215 +77,63 @@
             margin-top: 0;
         }
         ul {
-            padding-left: 1.5rem;
+            padding-right: 1.5rem;
         }
         li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
         }
         footer {
             text-align: center;
             padding: 2rem;
-            color: #64748b;
+            color: #475569;
             font-size: 0.9rem;
-            border-top: 1px solid #e2e8f0;
+            border-top: 1px solid #bae6fd;
             margin-top: 3rem;
+            background: #e0f2fe;
         }
     </style>
 </head>
 <body>
 
     <div class="top-bar">
-        <select id="langSelector" onchange="changeLanguage(this.value)">
-            <option value="en">English</option>
-            <option value="ar">العربية</option>
-            <option value="he">עברית</option>
-            <option value="de">Deutsch</option>
-            <option value="fr">Français</option>
-            <option value="es">Español</option>
-        </select>
+        <span>InnoDignity Ecosystem</span>
+        <span>Founder & Lead Developer: Nazih Osman</span>
     </div>
 
     <header>
-        <h1 id="t-title">InnoDignity</h1>
-        <p id="t-subtitle">Restoring Human Dignity Through Sovereign Bio-Intelligence</p>
+        <img src="1000118451.png" alt="InnoDignity" class="hero-img">
+        <h1>InnoDignity</h1>
+        <p>منظومة الذكاء الحيوي السيادي لحفظ الكرامة الإنسانية واستقلالية الإنسان</p>
     </header>
 
     <div class="container">
         <div class="card">
-            <h2 id="t-about-h">About the Project</h2>
-            <p id="t-about-p">InnoDignity is a vertically integrated deep-tech ecosystem designed to restore personal autonomy, self-confidence, and dignity for the elderly, disabled, and neonatal care. Founded and led by Nazeh Osman from Tamra, Israel, the initiative bridges precision engineering with offline Sovereign AI.</p>
+            <h2>أهلاً وسهلاً - أنت بأيدي أمينة</h2>
+            <p>"Have a wonderful time, feel relaxed, you are in safe hands." الموقع مخصص لحفظ الكرامة الإنسانية واستقلالية كبار السن، ذوي الإعاقة، الأطفال الخدج، السائقين، المتجولين، والرعاية النسائية، من خلال منظومة ذكاء حيوي سيادي متكاملة.</p>
         </div>
 
         <div class="card">
-            <h2 id="t-pillars-h">Core Technological Pillars</h2>
+            <h2>الركائز التكنولوجية الأساسية (Core Pillars)</h2>
             <ul>
-                <li><strong id="t-p1-title">Smart Bio-Garments:</strong> <span id="t-p1-desc">Dry-electrode medical textiles and advanced bio-sensing fabrics, including specialized medical underwear (תחתונים), for continuous health monitoring.</span></li>
-                <li><strong id="t-p2-title">Sovereign Digital Secretary (SDS):</strong> <span id="t-p2-desc">On-device, localized multilingual AI companion ensuring complete data privacy without cloud dependencies.</span></li>
-                <li><strong id="t-p3-title">Sovereign Bed & Autonomy Technologies:</strong> <span id="t-p3-desc">Mechatronic dynamics allowing seamless transition from sleeping to sitting and standing positions, combined with automated care protocols.</span></li>
+                <li><strong>الملابس الحيوية الذكية:</strong> منسوجات طبية وأقمشة استشعار حيوي متقدمة للمراقبة الصحية المستمرة، وتتضمن الملابس الداخلية الطبية المتخصصة (תחתונים).</li>
+                <li><strong>السكرتير الرقمي السيادي (SDS):</strong> رفيق ذكاء اصطناعي محلي ومتعدد اللغات يعمل على الجهاز لضمان الخصوصية التامة دون الاعتماد على السحابة.</li>
+                <li><strong>السرير السيادي وتقنيات الاستقلالية:</strong> ديناميكيات ميكاترونيكية تتيح الانتقال الآمن من وضعية النوم إلى الجلوس والوقوف بكل استقلالية.</li>
             </ul>
         </div>
 
         <div class="card">
-            <h2 id="t-doctrine-h">The Nine Zeros / Five Zeros Doctrine</h2>
-            <p id="t-doctrine-p">Our design philosophy revolves around absolute sustainability, safety, and operational perfection:</p>
+            <h2>مبدأ الأصفار الخمسة (The Five Zeros Doctrine)</h2>
             <ul>
-                <li id="t-d1">Zero waste, zero pollution, and zero harm.</li>
-                <li id="t-d2">Zero odor, zero clinical error, and zero neglect.</li>
-                <li id="t-d3">Zero exclusion, zero data-loss, and zero indignity.</li>
+                <li>صفر نفايات، صفر تلوث، وصفر أضرار بيئية.</li>
+                <li>صفر روائح، صفر أخطاء سريرية، وصفر إهمال.</li>
+                <li>صفر استبعاد، صفر فقدان للبيانات، وصفر مساس بالكرامة الإنسانية.</li>
             </ul>
         </div>
     </div>
 
     <footer>
-        <p id="t-footer">&copy; 2026 InnoDignity - Owner: Nazeh Osman. All Rights Reserved.</p>
+        <p>&copy; 2026 InnoDignity - Founder & Lead Developer: Nazih Osman. All Rights Reserved.</p>
     </footer>
 
-    <script>
-        const translations = {
-            en: {
-                title: "InnoDignity",
-                subtitle: "Restoring Human Dignity Through Sovereign Bio-Intelligence",
-                aboutH: "About the Project",
-                aboutP: "InnoDignity is a vertically integrated deep-tech ecosystem designed to restore personal autonomy, self-confidence, and dignity for the elderly, disabled, and neonatal care. Founded and led by Nazeh Osman from Tamra, Israel, the initiative bridges precision engineering with offline Sovereign AI.",
-                pillarsH: "Core Technological Pillars",
-                p1Title: "Smart Bio-Garments:",
-                p1Desc: "Dry-electrode medical textiles and advanced bio-sensing fabrics, including specialized medical underwear (תחתונים), for continuous health monitoring.",
-                p2Title: "Sovereign Digital Secretary (SDS):",
-                p2Desc: "On-device, localized multilingual AI companion ensuring complete data privacy without cloud dependencies.",
-                p3Title: "Sovereign Bed & Autonomy Technologies:",
-                p3Desc: "Mechatronic dynamics allowing seamless transition from sleeping to sitting and standing positions, combined with automated care protocols.",
-                doctrineH: "The Nine Zeros / Five Zeros Doctrine",
-                doctrineP: "Our design philosophy revolves around absolute sustainability, safety, and operational perfection:",
-                d1: "Zero waste, zero pollution, and zero harm.",
-                d2: "Zero odor, zero clinical error, and zero neglect.",
-                d3: "Zero exclusion, zero data-loss, and zero indignity.",
-                footer: "© 2026 InnoDignity - Owner: Nazeh Osman. All Rights Reserved."
-            },
-            ar: {
-                title: "InnoDignity (إينو ديغنيتي)",
-                subtitle: "استعادة الكرامة الإنسانية من خلال الذكاء الحيوي السيادي",
-                aboutH: "عن المشروع",
-                aboutP: "InnoDignity هو نظام عميق التقنية متكامل رأسياً مصمم لاستعادة الاستقلالية الشخصية والثقة بالنفس والكرامة لكبار السن، ذوي الإعاقة، ورعاية الأطفال الخدج. أسسه ويقوده نزيه عثمان من طمرة، إسرائيل، يربط المشروع الهندسة الدقيقة بالذكاء السيادي المحلي.",
-                pillarsH: "الركائز التكنولوجية الأساسية",
-                p1Title: "الملابس الحيوية الذكية:",
-                p1Desc: "منسوجات طبية ذات إقطاب جافة وأقمشة استشعار حيوي متقدمة، بما في ذلك الملابس الداخلية الطبية المتخصصة (תחתונים)، للمراقبة الصحية المستمرة.",
-                p2Title: "السكرتير الرقمي السيادي (SDS):",
-                p2Desc: "رفيق ذكاء اصطناعي محلي ومتعدد اللغات يعمل على الجهاز مباشرة لضمان الخصوصية التكاملية للبيانات بدون الاعتماد على السحابة.",
-                p3Title: "السرير السيادي وتقنيات الاستقلالية:",
-                p3Desc: "ديناميكيات ميكاترونيكية تتيح الانتقال السلس من وضعية النوم إلى الجلوس والوقوف، مدعومة ببروتوكولات رعاية آلية.",
-                doctrineH: "مبدأ الأصفار التسعة / الأصفار الخمسة",
-                doctrineP: "فلسفة التصميم لدينا تتمحور حول الاستدامة المطلقة، السلامة، والكمال التشغيلي:",
-                d1: "صفر نفايات، صفر تلوث، وصفر أضرار.",
-                d2: "صفر روائح، صفر أخطاء سريرية، وصفر إهمال.",
-                d3: "صفر استبعاد، صفر فقدان للبيانات، وصفر مساس بالكرامة.",
-                footer: "© 2026 InnoDignity - المالك: نزيه عثمان. جميع الحقوق محفوظة."
-            },
-            he: {
-                title: "InnoDignity (אינו-דיגניטי)",
-                subtitle: "הحזרת הכבוד האנושי באמצעות בינה ביולוגית ריבונית",
-                aboutH: "אודות הפרויקט",
-                aboutP: "InnoDignity היא מערכת טכנולוגית עמוקה ואינטגרטיבית שנועדה להחזיר את האוטונומיה האישית, הביטחון העצמי והכבוד לקשישים, בעלי מוגבלויות וטיפול ביילודים. נוסד ומונהג על ידי נזיה עת'מאן מטמרה, ישראל, הפרויקט מחבר בין הנדסה מדויקת לבינה מלאכותית ריבונית מקומית.",
-                pillarsH: "עמודי התווך הטכנולוגיים",
-                p1Title: "בגדים ביו-חכמים (Smart Bio-Garments):",
-                p1Desc: "טקסטיל רפואי עם אלקטרודות יבשות ובדים מתקדמים לחישה ביולוגית, כולל תחתונים רפואיים ייעודיים (תחתונים), לניטור בריאות רציף.",
-                p2Title: "מזכיר דיגיטלי ריבוני (SDS):",
-                p2Desc: "בן לוויה של בינה מלאכותית מקומית ורב-לשונית המבטיחה פרטיות נתונים מוחלטת ללא תלות בענן.",
-                p3Title: "מיטה ריבונית וטכנולוגיות אוטונומיה:",
-                p3Desc: "דינמיקה מכטרוניקה המאפשרת מעבר חלק משכיבה לישיבה ולעמידה, בשילוב פרוטוקולי טיפול אוטומטיים.",
-                doctrineH: "דוקטרינת תשעת האפסים / חמשת האפסים",
-                doctrineP: "פילוסופיית התכנון שלנו סובבת סביב קיימות מוחלטת, בטיחות ושלמות תפעולית:",
-                d1: "אפס פסולת, אפס זיהום ואפס נזק.",
-                d2: "אפס ריחות, אפס שגיאות קליניות ואפס הזנחה.",
-                d3: "אפס הדרה, אפס אובדן נתונים ואפס פגיעה בכבוד.",
-                footer: "© 2026 InnoDignity - בעלים: נזיה עת'מאן. כל הזכויות שמורות."
-            },
-            de: {
-                title: "InnoDignity",
-                subtitle: "Wiederherstellung der menschlichen Würde durch souveräne Bio-Intelligenz",
-                aboutH: "Über das Projekt",
-                aboutP: "InnoDignity ist ein vertikal integriertes Deep-Tech-Ökosystem zur Wiederherstellung von Autonomie und Würde für ältere, behinderte und neugeborene Menschen. Gegründet und geleitet von Nazeh Osman aus Tamra, Israel, verbindet es Präzisionstechnik mit offline souveräner KI.",
-                pillarsH: "Technologische Säulen",
-                p1Title: "Intelligente Bio-Kleidung:",
-                p1Desc: "Medizinische Textilien mit Trockenelektroden und Bio-Sensorik, einschließlich spezieller medizinischer Unterwäsche (תחתונים), für kontinuierliche Gesundheitsüberwachung.",
-                p2Title: "Souveräner Digitaler Sekretär (SDS):",
-                p2Desc: "Lokaler, mehrsprachiger KI-Begleiter auf dem Gerät für absolute Datenschutzsicherheit.",
-                p3Title: "Souveränes Bett & Autonomie-Technologien:",
-                p3Desc: "Mechatronische Dynamik für den nahtlosen Übergang vom Liegen zum Sitzen und Stehen.",
-                doctrineH: "Die Null-Fehler-Doktrin",
-                doctrineP: "Unsere Designphilosophie basiert auf absoluter Nachhaltigkeit und Sicherheit:",
-                d1: "Null Abfall, Null Umweltverschmutzung, Null Schaden.",
-                d2: "Null Geruch, Null klinische Fehler, Null Vernachlässigung.",
-                d3: "Null Ausschluss, Null Datenverlust, Null Würdelosigkeit.",
-                footer: "© 2026 InnoDignity - Inhaber: Nazeh Osman. Alle Rechte vorbehalten."
-            },
-            fr: {
-                title: "InnoDignity",
-                subtitle: "Restaurer la dignité humaine grâce à la bio-intelligence souveraine",
-                aboutH: "À propos du projet",
-                aboutP: "InnoDignity est un écosystème technologique vertical conçu pour restaurer l'autonomie et la dignité des personnes âgées, handicapées et des nouveau-nés. Fondé et dirigé par Nazeh Osman de Tamra, Israël, il associe ingénierie de précision et IA souveraine.",
-                pillarsH: "Piliers Technologiques",
-                p1Title: "Vêtements Bio-Intelligents:",
-                p1Desc: "Textiles médicaux à électrodes sèches et tissus de bio-détection, y compris des sous-vêtements médicaux spécialisés (תחתונים), pour un suivi de santé.",
-                p2Title: "Secrétaire Numérique Souverain (SDS):",
-                p2Desc: "Compagnon d'IA multilingue local garantissant une confidentialité totale des données.",
-                p3Title: "Lit Souverain & Technologies d'Autonomie:",
-                p3Desc: "Dynamique mécatronique permettant une transition fluide de la position allongée à assise et debout.",
-                doctrineH: "La Doctrine des Zéros",
-                doctrineP: "Notre philosophie s'articule autour de la durabilité absolue et de la sécurité :",
-                d1: "Zéro déchet, zéro pollution, zéro dommage.",
-                d2: "Zéro odeur, zéro erreur clinique, zéro négligence.",
-                d3: "Zéro exclusion, zéro perte de données, zéro indignité.",
-                footer: "© 2026 InnoDignity - Propriétaire : Nazeh Osman. Tous droits réservés."
-            },
-            es: {
-                title: "InnoDignity",
-                subtitle: "Restaurando la dignidad humana a través de la biointeligencia soberana",
-                aboutH: "Acerca del Proyecto",
-                aboutP: "InnoDignity es un ecosistema tecnológico integrado verticalmente diseñado para restaurar la autonomía y la dignidad de los ancianos, discapacitados y cuidados neonatales. Fundado y dirigido por Nazeh Osman de Tamra, Israel.",
-                pillarsH: "Pilares Tecnológicos",
-                p1Title: "Bio-prendas Inteligentes:",
-                p1Desc: "Textiles médicos de electrodos secos y tejidos de biosensores, incluyendo ropa interior médica especializada (תחתונים), para el monitoreo continuo.",
-                p2Title: "Secretario Digital Soberano (SDS):",
-                p2Desc: "Compañero de IA multilingüe local que garantiza la privacidad total de los datos.",
-                p3Title: "Cama Soberana y Tecnologías de Autonomía:",
-                p3Desc: "Dinámica mecatrónica que permite la transición fluida de acostado a sentado y de pie.",
-                doctrineH: "La Doctrina de los Ceros",
-                doctrineP: "Nuestra filosofía de diseño gira en torno a la sostenibilidad absoluta y la seguridad:",
-                d1: "Cero residuos, cero contaminación, cero daños.",
-                d2: "Cero olores, cero errores clínicos, cero negligencia.",
-                d3: "Cero exclusión, cero pérdida de datos, cero indignidad.",
-                footer: "© 2026 InnoDignity - Propietario: Nazeh Osman. Todos los derechos reservados."
-            }
-        };
-
-        function changeLanguage(lang) {
-            const root = document.getElementById('htmlRoot');
-            root.setAttribute('lang', lang);
-            if(lang === 'ar' || lang === 'he') {
-                root.setAttribute('dir', 'rtl');
-            } else {
-                root.setAttribute('dir', 'ltr');
-            }
-
-            const t = translations[lang];
-            document.getElementById('t-title').innerText = t.title;
-            document.getElementById('t-subtitle').innerText = t.subtitle;
-            document.getElementById('t-about-h').innerText = t.aboutH;
-            document.getElementById('t-about-p').innerText = t.aboutP;
-            document.getElementById('t-pillars-h').innerText = t.pillarsH;
-            document.getElementById('t-p1-title').innerText = t.p1Title;
-            document.getElementById('t-p1-desc').innerText = t.p1Desc;
-            document.getElementById('t-p2-title').innerText = t.p2Title;
-            document.getElementById('t-p2-desc').innerText = t.p2Desc;
-            document.getElementById('t-p3-title').innerText = t.p3Title;
-            document.getElementById('t-p3-desc').innerText = t.p3Desc;
-            document.getElementById('t-doctrine-h').innerText = t.doctrineH;
-            document.getElementById('t-doctrine-p').innerText = t.doctrineP;
-            document.getElementById('t-d1').innerText = t.d1;
-            document.getElementById('t-d2').innerText = t.d2;
-            document.getElementById('t-d3').innerText = t.d3;
-            document.getElementById('t-footer').innerText = t.footer;
-        }
-    </script>
 </body>
 </html>
