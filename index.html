@@ -3,20 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InnoDignity - Sovereign Bio-Intelligence Ecosystem</title>
+    <title>InnoDignity - نظام بيئي سيادي للذكاء البيولوجي</title>
     <style>
         :root {
             --primary: #0f172a;
             --tech-blue: #0284c7;
-            --gold: #d4af37;
             --accent: #38bdf8;
             --bg: #f0f9ff;
             --text: #1e293b;
             --card-bg: #ffffff;
             --danger-bg: #fff1f2;
-            --danger-border: #f43f5e;
+            --danger-border: #8f435e;
             --solution-bg: #f0fdf4;
-            --solution-border: #22c55e;
+            --solution-border: #822c55e;
         }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -24,7 +23,7 @@
             color: var(--text);
             margin: 0;
             padding: 0;
-            line-height: 1.8;
+            line-height: 1.6;
         }
         .top-bar {
             background: var(--primary);
@@ -33,8 +32,15 @@
             justify-content: space-between;
             align-items: center;
             color: white;
-            font-weight: bold;
-            font-size: 0.95rem;
+        }
+        .top-bar select {
+            padding: 0.4rem;
+            border-radius: 6px;
+            background: #1e293b;
+            color: white;
+            border: 1px solid var(--accent);
+            font-size: 0.9rem;
+            cursor: pointer;
         }
         header {
             background: linear-gradient(135deg, #0f172a, #0369a1);
@@ -42,96 +48,60 @@
             padding: 3rem 1rem;
             text-align: center;
         }
-        .images-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-        }
         .hero-img {
             width: 130px;
             height: 130px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid var(--gold);
+            border: 4px solid var(--accent);
+            margin-bottom: 1rem;
             box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         }
         header h1 {
             margin: 0;
             font-size: 2.5rem;
-            letter-spacing: 1px;
-            color: white;
+            letter-spacing: -0.025em;
         }
-        .tagline-ar {
-            font-size: 1.4rem;
-            color: var(--gold);
+        header p {
+            color: #bae6fd;
             margin-top: 0.5rem;
-            font-weight: bold;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
-        .tagline-en {
-            font-size: 1.15rem;
-            color: var(--accent);
-            margin-top: 0.4rem;
-            direction: ltr;
-            font-weight: 500;
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .container {
-            max-width: 950px;
+            max-width: 1000px;
             margin: 2rem auto;
             padding: 0 1rem;
         }
         .card {
             background: var(--card-bg);
             border-radius: 12px;
-            padding: 2.5rem;
+            padding: 2rem;
             margin-bottom: 1.5rem;
             box-shadow: 0 10px 15px -3px rgba(2, 132, 199, 0.1);
-            border-top: 4px solid var(--gold);
+            border-top: 4px solid var(--tech-blue);
         }
-        .card-danger {
+        .card.problem {
             background: var(--danger-bg);
             border-top: 4px solid var(--danger-border);
         }
-        .card-solution {
+        .card.solution {
             background: var(--solution-bg);
-            border-top: 4px solid var(--solution-border);
+            border-top: 4px solid #16a34a;
         }
         h2 {
             color: var(--primary);
-            border-bottom: 2px solid var(--gold);
+            border-bottom: 2px solid var(--accent);
             padding-bottom: 0.5rem;
             margin-top: 0;
         }
-        .card-danger h2 {
-            color: #9f1239;
-            border-bottom-color: var(--danger-border);
-        }
-        .card-solution h2 {
-            color: #166534;
-            border-bottom-color: var(--solution-border);
-        }
         ul {
-            padding-right: 1.5rem;
+            padding-left: 1.5rem;
         }
         li {
-            margin-bottom: 0.8rem;
-            font-size: 1.05rem;
-        }
-        p {
-            font-size: 1.1rem;
-            color: #334155;
-        }
-        .lang-en {
-            direction: ltr;
-            text-align: left;
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px dashed rgba(0,0,0,0.1);
-            font-size: 1.05rem;
-            color: #475569;
+            margin-bottom: 0.6rem;
         }
         footer {
             text-align: center;
@@ -147,63 +117,247 @@
 <body>
 
     <div class="top-bar">
-        <span>InnoDignity Ecosystem</span>
-        <span>Founder & Lead Developer: Nazih Osman</span>
+        <strong id="brandName">InnoDignity | Nazih Osman</strong>
+        <select id="langSelector" onchange="changeLanguage(this.value)">
+            <option value="en">English</option>
+            <option value="ar" selected>العربية</option>
+            <option value="he">עברית</option>
+            <option value="de">Deutsch</option>
+            <option value="fr">Français</option>
+            <option value="es">Español</option>
+        </select>
     </div>
 
     <header>
-        <div class="images-container">
-            <img src="1000116682.jpg" alt="InnoDignity Logo" class="hero-img">
-            <img src="1000118451.png" alt="InnoDignity User Care" class="hero-img">
-        </div>
-        <h1>InnoDignity</h1>
-        <div class="tagline-ar">أطمئن، وصلت إلى موقع يحفظ كرامة الإنسان</div>
-        <div class="tagline-en">Rest assured, you have reached a site that preserves human dignity</div>
+        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=300&q=80" alt="InnoDignity Bio-Intelligence" class="hero-img">
+        <h1 id="mainTitle">InnoDignity</h1>
+        <p id="mainSubtitle">برعاية كريمة لحفظ الكرامة الإنسانية - تقنية تسبق الزمن</p>
     </header>
 
     <div class="container">
-        <!-- المقدمة والترحيب -->
+        
+        <div class="card" style="text-align: center;">
+            <h2 id="welcomeH" style="border: none; color: var(--tech-blue); font-size: 1.8rem;">أهلاً بكم</h2>
+            <p id="welcomeP" style="font-size: 1.1rem; color: var(--text); max-width: 800px; margin: 0 auto;">
+                من فيتنس، نهانين، مستوصفين وترفيل برعاية بيولوجية روبوتية متقدمة للنساء، كبار السن، والمعاقين، والأطفال الخدج.
+            </p>
+        </div>
+
+        <div class="card problem">
+            <h2 id="problemH" style="color: var(--danger-border);">المشكلة: المعاناة الإنسانية الصامتة</h2>
+            <p id="problemP">
+                تجرد كبار السن، والمرضى، والمعاقين، والأطفال الخدج من أبسط حقوق الكرامة الإنسانية. الحلول التقليدية اعتمدت على البتروكيماويات والبلاستيك، مما تؤدي إلى ألم نفسياً وعصبياً، وتشكل كاهل لطواقم الطباخة الصحية والبيئية، وحفاضات تقليدية ضارة تسبب قرحات جلدية ورائحة كريهة ومعاناة قاسية يعاني منها الخدج وكبار السن نتيجة الملامسة الطويلة للمواد الكيماوية والفضلات.
+            </p>
+        </div>
+
+        <div class="card solution">
+            <h2 id="solutionH" style="color: #16a34a;">الحل السيادي والبديل النقي</h2>
+            <p id="solutionP">
+                جاء InnoDignity ليضع حدّاً لهذه المعاناة، عبر توفير بيئة رعاية ذكية ومحترمة محافظة على البشتر وتمتع النفايات البترولية، الروائح الكريهة، والتقرحات الجلدية، لحماية كرامة الإنسان. بديل نقي يضع الإنسان التقى الذي يضع حدا لهذه المعاناة، عبر توفير بيئة رعاية ذكية ومحترمة محافظة على البشر وتمنع النفايات البترولية، الروائح الكريهة، والتقرحات الجلدية، لحماية كرامة الإنسان، تضمن الراحة النفسية التامة للمريض وكوادر الطبية العناية الفائقة.
+            </p>
+        </div>
+
         <div class="card">
-            <h2>Welcome / أهلاً وسهلاً</h2>
-            <p><strong>العربية:</strong> أوقات سعيدة، اشعر بالراحة والاطمئنان، أنت بأيدي أمينة. منظومة عالمية متكاملة مخصصة لحفظ الكرامة الإنسانية واستقلالية الفرد في أقوى لحظات حياته وأضعفها.</p>
-            <div class="lang-en">
-                <strong>English:</strong> Have a wonderful time; feel relaxed and reassured, you are in safe hands. An integrated global ecosystem dedicated to preserving human dignity and individual autonomy at all stages of life.
-            </div>
+            <h2 id="pillarsH">الأركان التقنية والتكنولوجية</h2>
+            <ul>
+                <li><strong id="p1Title">أولاً:</strong> <span id="p1Desc">ملابس بيو-حكيمة (תحتונים)، كلسون متقدم، כולל מחתונים רפואיים ייעודיים (תحتונים)، لنيتور בריאות רציף.</span></li>
+                <li><strong id="p2Title">ثانياً:</strong> <span id="p2Desc">سكرتير رقمي روبوتي (SDS)، بن לוייה של בינה מלאכותית מקומית המבטיחה פרטיות נתונים מוחלטת.</span></li>
+                <li><strong id="p3Title">ثالثاً:</strong> <span id="p3Desc">מיטה ריבונית וטכנולוגיות אוטונומיות، דינמיקה מכسترولنيكا الماخرة מעבר مسخوبة לישיבה ולעמידה.</span></li>
+            </ul>
         </div>
 
-        <!-- كشف الحقيقة والمأساة التقليدية -->
-        <div class="card card-danger">
-            <h2>مأساة الحفاظ التقليدي: إلى متى هذا الاستهتار بالإنسان والبيئة؟</h2>
-            <p><strong>كيف يجرؤ العالم على الاستمرار بهذه الطريقة البديلة المبتذلة؟</strong> لسنوات طويلة، عانت البشرية من الحلول التقليدية البدائية التي دمرت البيئة وأهانت كرامة الإنسان في أكثر لحظات ضعفه:</p>
-            <ul>
-                <li><strong>الدمار البيئي والبتروكيماوي:</strong> صناعات تعتمد كلياً على المشتقات البترولية والبلاستيك الملوث، تنتهي بحرق النفايات أو طمرها لمئات السنين، مدمرةً طبقة الأوزون ومسببة تلوثاً كارثياً للأرض والهواء.</li>
-                <li><strong>امتهان الكرامة الإنسانية:</strong> عمليات التغيير المؤلمة، التعرض الدائم للبلل، والقيود التي تجرّد كبار السن، والمرضى، والمعاقين، والأطفال الخدج من أبسط حقوقهم في الاستقلالية والستر.</li>
-                <li><strong>الروائح الكريهة والأضرار الصحية:</strong> انبعاثات سامة وروائح مهينة تؤذي المريض نفسياً وجسدياً، وتثقل كاهل الطواقم الطبية ببيئة عمل غير إنسانية.</li>
-                <li><strong>التقرحات والحساسية المفرطة:</strong> تفاعلات كيميائية وحساسية جلدية قاسية يعاني منها الخدج وكبار السن نتيجة الملامسة الطويلة للمواد الاصطناعية الرديئة.</li>
+        <div class="card" style="background: var(--primary); color: white;">
+            <h2 id="doctrineH" style="color: var(--accent); border-color: var(--tech-blue);">دوكترينا خمسة الأصفار (The Five Zeros Doctrine)</h2>
+            <ul style="color: #f8fafc;">
+                <li><strong id="d1">صفر فضلت، صفر ذره وام وائت نرك:</strong> <span id="d1Desc">Zero waste, zero pollution, zero harm.</span></li>
+                <li><strong id="d2">صفر ريحات، صفر ضئيات كلينيكية وافست النحاه:</strong> <span id="d2Desc">Zero odors, zero clinical errors, zero negligence.</span></li>
+                <li><strong id="d3">صفر هدرى، أفست أودين נתונים وافست قريعة בכבוד:</strong> <span id="d3Desc">Zero waste, zero data loss, zero loss of dignity.</span></li>
             </ul>
-            <div class="lang-en">
-                <strong>English:</strong> The Tragedy of Conventional Diapers: For decades, conventional solutions have relied heavily on petrochemicals and plastics, leading to toxic waste incineration, severe ozone depletion, and catastrophic environmental pollution. Furthermore, they strip vulnerable infants, the elderly, and patients of their basic dignity while causing severe skin allergies, unbearable odors, and an inhumane experience for caregivers.
-            </div>
         </div>
 
-        <!-- الحل السيادي والبديل النقي -->
-        <div class="card card-solution">
-            <h2>الحل الجذري: كفى، ليس بعد الان! لدينا البديل السيادي</h2>
-            <p><strong>لقد انتهى عصر الإهانة والتلويث.</strong> جاءت منظومة <strong>InnoDignity</strong> لتقدم البديل الإنساني النقي الذي يضع حداً لكل هذه المعاناة:</p>
-            <ul>
-                <li><strong>كرامة مطلقة واستقلالية تامة:</strong> إعادة الاعتبار للإنسان، كبار السن، الخدج، والمعاقين، عبر توفير بيئة رعاية ذكية ومحترمة تحافظ على الستر وتمنع الإحساس بالحرج تماماً.</li>
-                <li><strong>بيئة نظيفة وصحة مستدامة:</strong> القضاء التام على النفايات البترولية، الروائح الكريهة، والتقرحات الجلدية، لحماية صحة البشر وطبقة الأوزون.</li>
-                <li><strong>رعاية إنسانية متقدمة للطواقم والمرضى:</strong> بيئة خالية من الروائح والانبعاثات الضارة، تضمن الراحة النفسية التامة للمريض والمحاور الطبية المحيطة به.</li>
-            </ul>
-            <div class="lang-en">
-                <strong>English:</strong> The Radical Solution: Enough is enough! InnoDignity introduces a sovereign, eco-friendly ecosystem that brings an end to this suffering. It restores absolute human dignity, eradicates toxic waste and unbearable odors, protects sensitive skin, and provides a clean, respectful care environment for all.
-            </div>
-        </div>
     </div>
 
     <footer>
-        <p>&copy; 2026 InnoDignity - Founder & Lead Developer: Nazih Osman. All Rights Reserved.</p>
+        <p id="footer">© 2026 InnoDignity - Founder & Lead Developer: Nazih Osman. All Rights Reserved.</p>
     </footer>
 
+    <script>
+        const translations = {
+            ar: {
+                brandName: "InnoDignity | Nazih Osman",
+                mainTitle: "InnoDignity",
+                mainSubtitle: "برعاية كريمة لحفظ الكرامة الإنسانية - تقنية تسبق الزمن",
+                welcomeH: "أهلاً بكم",
+                welcomeP: "من فيتنس، نهانين، مستوصفين وترفيل برعاية بيولوجية روبوتية متقدمة للنساء، كبار السن، والمعاقين، والأطفال الخدج.",
+                problemH: "المشكلة: المعاناة الإنسانية الصامتة",
+                problemP: "تجرد كبار السن، والمرضى، والمعاقين، والأطفال الخدج من أبسط حقوق الكرامة الإنسانية. الحلول التقليدية اعتمدت على البتروكيماويات والبلاستيك، مما تؤدي إلى ألم نفسياً وعصبياً، وتشكل كاهل لطواقم الطباخة الصحية والبيئية، وحفاضات تقليدية ضارة تسبب قرحات جلدية ورائحة كريهة ومعاناة قاسية يعاني منها الخدج وكبار السن نتيجة الملامسة الطويلة للمواد الكيماوية والفضلات.",
+                solutionH: "الحل السيادي والبديل النقي",
+                solutionP: "جاء InnoDignity ليضع حدّاً لهذه المعاناة، عبر توفير بيئة رعاية ذكية ومحترمة محافظة على البشر وتمنع النفايات البترولية، الروائح الكريهة، والتقرحات الجلدية، لحماية كرامة الإنسان، تضمن الراحة النفسية التامة للمريض وكوادر الطبية العناية الفائقة.",
+                pillarsH: "الأركان التقنية والتكنولوجية",
+                p1Title: "أولاً:",
+                p1Desc: "ملابس بيو-حكيمة (תحتונים)، كلسون متقدم، כולל מחתונים רפואיים ייעודיים (תحتונים)، لنيتور בריאות רציף.",
+                p2Title: "ثانياً:",
+                p2Desc: "سكرتير رقمي روبوتي (SDS)، بن לוייה של בינה מלאכותית מקומית المבטיחה פרטיות נתונים מוחלטת.",
+                p3Title: "ثالثاً:",
+                p3Desc: "מיטה ריבונית وטכנולוגיות אוטונומיות، דינמיקה מכסטרוניקה الماخرة מעבר مسخوبة לישיבה ולעמידה.",
+                doctrineH: "دوكترينا خمسة الأصفار",
+                d1: "صفر فضلات، صفر تلوث، صفر ضرر:",
+                d1Desc: "Zero waste, zero pollution, zero harm.",
+                d2: "صفر روائح، صفر أخطاء كلينيكية، صفر إهمال:",
+                d2Desc: "Zero odors, zero clinical errors, zero negligence.",
+                d3: "صفر هدر، صفر فقدان بيانات، صفر مساس بالكرامة:",
+                d3Desc: "Zero waste, zero data loss, zero loss of dignity.",
+                footer: "© 2026 InnoDignity - مؤسس ومפתח رئيسي: Nazih Osman. كل الحقوق محفوظة."
+            },
+            he: {
+                brandName: "InnoDignity | נזיה עثمان",
+                mainTitle: "InnoDignity",
+                mainSubtitle: "טכנולוגיה ריבונית לשימור הכבוד האנושי - עתיד הבינה הביולוגית",
+                welcomeH: "ברוכים הבאים",
+                welcomeP: "שעות נעימות, הרגישו בנוח, אתם בידיים בטוחות. פלטפורמה ייעודית לשימור כבודם של קبار סن, אנשים עם מוגבלויות, מלווים וטיפולים בריאותי ביולוגי רובוטי מתקדם.",
+                problemH: "הבעיה: הסבל האנושי השקט",
+                problemP: "קשישים, חולים, אנשים עם מוגבלויות ותינוקות פגים מופשטים מזכויות היסוד של הכבוד האנושי. פתרונות מסורתיים התבססו בכבדות על פטרוכימיקלים ופלסטיק, הגורמים לכאב פיזי ונפשי ומטילים עטל כבד על צוותי הסיעוד.",
+                solutionH: "הפתרון: אקוסיסטם ריבוני וידידותי לסביבה",
+                solutionP: "InnoDignity מציגה פתרון טכנולוגי מתקדם המשלב בינה מלאכותית מקומית, מערכות ביוב-טקסטיל וחומרים מתקדמים לשמירה אבסולוטית על כבוד המטופל.",
+                pillarsH: "עמודי התווך הטכנולוגיים",
+                p1Title: "1. בגדים ביו-חכמים:",
+                p1Desc: "טקסטיל רפואي متقدم، כולל תחתונים רפואיים ייעודיים (תحتונים) لنيتور בריאות רציף.",
+                p2Title: "2. מזכיר דיגיטלי רובוטי (SDS):",
+                p2Desc: "בן לוייה של בינה מלאכותית מקומית المבטיחה פרטיות נתונים מוחלטת.",
+                p3Title: "3. מיטה ריבונית & טכנולוגיות אוטונומיות:",
+                p3Desc: "דינמיקה מכטרוניקה المعاصرة מעבר משיבה לישיבה ולעמידה.",
+                doctrineH: "דוקטרינת חמשת האפסים",
+                d1: "אפס פסולת, אפס זיהום ואפס נזק.",
+                d2: "אפס ריחות, אפס שגיאות קליניות ואפס הזנחה.",
+                d3: "אפס הדרה, אפס אובדן נתונים ואפס פגיעה בכבוד.",
+                footer: "© 2026 InnoDignity - מייסד ומפתח ראשי: Nazih Osman. כל הזכויות שמורות."
+            },
+            en: {
+                brandName: "InnoDignity | Nazih Osman",
+                mainTitle: "InnoDignity",
+                mainSubtitle: "Sovereign Bio-Intelligence Ecosystem - Preserving Human Dignity",
+                welcomeH: "Welcome",
+                welcomeP: "Advanced robotic bio-care for seniors, individuals with disabilities, and premature infants.",
+                problemH: "The Problem: Silent Human Suffering",
+                problemP: "Traditional solutions rely heavily on petrochemicals and plastics, causing physical and psychological distress, and adding a heavy burden on care teams.",
+                solutionH: "The Sovereign Solution & Pure Alternative",
+                solutionP: "InnoDignity introduces a sovereign, eco-friendly ecosystem that brings an end to this suffering through smart bio-care environments.",
+                pillarsH: "Technological Pillars",
+                p1Title: "1. Smart Bio-Garments:",
+                p1Desc: "Medical textiles and biosensors, including specialized medical underwear (תחתונים) for continuous health monitoring.",
+                p2Title: "2. Sovereign Digital Secretary (SDS):",
+                p2Desc: "Local AI companion ensuring absolute data privacy and proactive care.",
+                p3Title: "3. Sovereign Bed & Autonomy Technologies:",
+                p3Desc: "Mechatronic dynamics for smooth transition from lying to sitting and standing.",
+                doctrineH: "The Five Zeros Doctrine",
+                d1: "Null Waste, Null Pollution, Null Harm.",
+                d2: "Null Odor, Null Clinical Errors, Null Negligence.",
+                d3: "Null Exclusion, Null Data Loss, Null Indignity.",
+                footer: "© 2026 InnoDignity - Founder & Lead Developer: Nazih Osman. All Rights Reserved."
+            },
+            de: {
+                brandName: "InnoDignity | Nazih Osman",
+                mainTitle: "InnoDignity",
+                mainSubtitle: "Souveränes Bio-Intelligenz-Ökosystem - Bewahrung der Menschenwürde",
+                welcomeH: "Herzlich willkommen",
+                welcomeP: "Fortschrittliche robotische Bio-Pflege für Senioren, Menschen mit Behinderungen und Frühgeborene.",
+                problemH: "Das Problem: Stilles menschliches Leiden",
+                problemP: "Herkömmliche Lösungen basieren stark auf Petrochemie und Plastik und verursachen physischen und psychischen Stress.",
+                solutionH: "Die souveräne Lösung",
+                solutionP: "InnoDignity bietet ein umweltfreundliches Ökosystem, das dieses Leiden durch intelligente Bio-Pflege beendet.",
+                pillarsH: "Technologische Säulen",
+                p1Title: "1. Intelligente Bio-Kleidung:",
+                p1Desc: "Medizinische Textilien und Biosensorik, einschließlich spezieller medizinischer Unterwäsche (תחתונים).",
+                p2Title: "2. Souveräner Digitaler Sekretär (SDS):",
+                p2Desc: "Lokaler KI-Begleiter für absolute Datensicherheit.",
+                p3Title: "3. Souveränes Bett & Autonomie-Technologien:",
+                p3Desc: "Mechatronische Dynamik für den Übergang vom Liegen zum Sitzen und Stehen.",
+                doctrineH: "Die Fünf-Nullen-Doktrin",
+                d1: "Null Abfall, Null Umweltverschmutzung, Null Schaden.",
+                d2: "Null Geruch, Null klinische Fehler, Null Vernachlässigung.",
+                d3: "Null Ausschluss, Null Datenverlust, Null Würdelosigkeit.",
+                footer: "© 2026 InnoDignity - Gründer & Entwickler: Nazih Osman. Alle Rechte vorbehalten."
+            },
+            fr: {
+                brandName: "InnoDignity | Nazih Osman",
+                mainTitle: "InnoDignity",
+                mainSubtitle: "Écosystème de bio-intelligence souverain - Préserver la dignité humaine",
+                welcomeH: "Bienvenue",
+                welcomeP: "Soins bio-robotiques avancés pour les personnes âgées, les personnes handicapées et les grands prématurés.",
+                problemH: "Le problème : La souffrance humaine silencieuse",
+                problemP: "Les solutions traditionnelles reposent lourdement sur la pétrochimie et le plastique, provoquant une détresse physique et psychologique.",
+                solutionH: "La solution souveraine",
+                solutionP: "InnoDignity introduit un écosystème souverain et écologique qui met fin à cette souffrance.",
+                pillarsH: "Piliers technologiques",
+                p1Title: "1. Vêtements bio-intelligents :",
+                p1Desc: "Textiles médicaux et capteurs biologiques, y compris des sous-vêtements médicaux spécialisés (תחתונים).",
+                p2Title: "2. Secrétaire numérique souverain (SDS) :",
+                p2Desc: "Compagnon IA local garantissant une confidentialité absolue des données.",
+                p3Title: "3. Lit souverain et technologies d'autonomie :",
+                p3Desc: "Dynamique mécatronique pour une transition en douceur de la position couchée à assise et debout.",
+                doctrineH: "La doctrine des cinq zéros",
+                d1: "Zéro déchet, zéro pollution, zéro dommage.",
+                d2: "Zéro odeur, zéro erreur clinique, zéro négligence.",
+                d3: "Zéro exclusion, zéro perte de données, zéro indignité.",
+                footer: "© 2026 InnoDignity - Fondateur et développeur principal : Nazih Osman. Tous droits réservés."
+            },
+            es: {
+                brandName: "InnoDignity | Nazih Osman",
+                mainTitle: "InnoDignity",
+                mainSubtitle: "Ecosistema de Bio-Inteligencia Soberana - Preservando la Dignidad Humana",
+                welcomeH: "Bienvenidos",
+                welcomeP: "Biocuidado robótico avanzado para personas mayores, personas con discapacidad y bebés prematuros.",
+                problemH: "El Problema: El Sufrimiento Humano Silencioso",
+                problemP: "Las soluciones tradicionales dependen en gran medida de petroquímicos y plásticos, causando malestar físico y psicológico.",
+                solutionH: "La Solución Soberana",
+                solutionP: "InnoDignity introduce un ecosistema soberano y ecológico que pone fin a este sufrimiento.",
+                pillarsH: "Pilares Tecnológicos",
+                p1Title: "1. Bio-prendas Inteligentes:",
+                p1Desc: "Textiles médicos y biosensores, incluyendo ropa interior médica especializada (תחתונים).",
+                p2Title: "2. Secretario Digital Soberano (SDS):",
+                p2Desc: "Compañero de IA local que garantiza la privacidad absoluta de los datos.",
+                p3Title: "3. Cama Soberana y Tecnologías de Autonomía:",
+                p3Desc: "Dinámica mecatrónica para una transición fluida de estar acostado a sentado y de pie.",
+                doctrineH: "La Doctrina de los Cinco Ceros",
+                d1: "Cero residuos, cero contaminación, cero daño.",
+                d2: "Cero olores, cero errores clínicos, cero negligencia.",
+                d3: "Cero exclusión, cero pérdida de datos, cero indignidad.",
+                footer: "© 2026 InnoDignity - Fundador y Desarrollador Principal: Nazih Osman. Todos los derechos reservados."
+            }
+        };
+
+        function changeLanguage(lang) {
+            const t = translations[lang];
+            if (!t) return;
+            
+            document.documentElement.lang = lang;
+            document.documentElement.dir = (lang === 'ar' || lang === 'he') ? 'rtl' : 'ltr';
+
+            document.getElementById('brandName').innerText = t.brandName;
+            document.getElementById('mainTitle').innerText = t.mainTitle;
+            document.getElementById('mainSubtitle').innerText = t.mainSubtitle;
+            document.getElementById('welcomeH').innerText = t.welcomeH;
+            document.getElementById('welcomeP').innerText = t.welcomeP;
+            document.getElementById('problemH').innerText = t.problemH;
+            document.getElementById('problemP').innerText = t.problemP;
+            document.getElementById('solutionH').innerText = t.solutionH;
+            document.getElementById('solutionP').innerText = t.solutionP;
+            document.getElementById('pillarsH').innerText = t.pillarsH;
+            document.getElementById('p1Title').innerText = t.p1Title;
+            document.getElementById('p1Desc').innerText = t.p1Desc;
+            document.getElementById('p2Title').innerText = t.p2Title;
+            document.getElementById('p2Desc').innerText = t.p2Desc;
+            document.getElementById('p3Title').innerText = t.p3Title;
+            document.getElementById('p3Desc').innerText = t.p3Desc;
+            document.getElementById('doctrineH').innerText = t.doctrineH;
+            document.getElementById('d1').innerText = t.d1;
+            document.getElementById('d1Desc').innerText = t.d1Desc;
+            document.getElementById('d2').innerText = t.d2;
+            document.getElementById('d2Desc').innerText = t.d2Desc;
+            document.getElementById('d3').innerText = t.d3;
+            document.getElementById('d3Desc').innerText = t.d3Desc;
+            document.getElementById('footer').innerText = t.footer;
+        }
+    </script>
 </body>
 </html>
