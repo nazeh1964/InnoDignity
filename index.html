@@ -1,1 +1,271 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InnoDignity - Sovereign Bio-Intelligence Ecosystem</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #0b1d3a;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+        h1 {
+            color: #00e5ff;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+        .languages {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .languages button {
+            background: none;
+            border: none;
+            color: #00e5ff;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+            border-bottom: 1px dashed #00e5ff;
+            padding-bottom: 2px;
+        }
+        .languages button:hover, .languages button.active {
+            color: #ffd700;
+            border-color: #ffd700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+        .info-box {
+            background-color: rgba(14, 35, 68, 0.9);
+            border: 1px solid #ffd700;
+            border-radius: 12px;
+            padding: 25px;
+            max-width: 750px;
+            margin-bottom: 25px;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+            text-align: right;
+        }
+        .info-box h3 {
+            color: #ffd700;
+            margin-top: 0;
+            font-size: 18px;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+            padding-bottom: 10px;
+            text-align: center;
+        }
+        .subtitle-text {
+            font-size: 15px;
+            line-height: 1.8;
+            margin: 15px 0;
+            color: #ffffff;
+        }
+        .word {
+            display: inline;
+            transition: color 0.2s ease;
+            margin-left: 3px;
+            margin-right: 3px;
+        }
+        .word.highlight {
+            color: #ffd700;
+            text-shadow: 0 0 10px #ffd700;
+            font-weight: bold;
+        }
+        .avatar-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+        .avatar-container img {
+            width: 105px;
+            height: 105px;
+            border-radius: 50%;
+            border: 3px solid #ffd700;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+            object-fit: cover;
+        }
+        .speak-btn {
+            background-color: #ffd700;
+            color: #0b1d3a;
+            border: none;
+            padding: 10px 22px;
+            font-size: 15px;
+            font-weight: bold;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+        .speak-btn:hover {
+            background-color: #ffffff;
+            box-shadow: 0 0 15px #ffffff;
+        }
+    </style>
+</head>
+<body id="bodyTag">
 
+    <h1 id="mainTitle">اختر لغتك | Choose Your Language</h1>
+
+    <!-- أزرار تغيير اللغة ديناميكياً -->
+    <div class="languages">
+        <button onclick="setLanguage('ar')">العربية | Arabic</button>
+        <button onclick="setLanguage('en')">English</button>
+        <button onclick="setLanguage('es')">Español</button>
+        <button onclick="setLanguage('fr')">Français</button>
+        <button onclick="setLanguage('de')">Deutsch</button>
+    </div>
+
+    <!-- صندوق عرض النص -->
+    <div class="info-box">
+        <h3 id="boxTitle">النظام السيادي لاستعادة الكرامة الإنسانية</h3>
+        <div class="subtitle-text" id="transcript"></div>
+    </div>
+
+    <div class="avatar-container">
+        <!-- ضع مسار صورة الأفاتار الخاصة بك هنا -->
+        <img src="images/nora_avatar.png" alt="Nora Avatar">
+        <button class="speak-btn" id="listenBtn" onclick="speakText()">استمع إلى التقرير المهني 🔊</button>
+    </div>
+
+    <script>
+        // النصوص مدمجة بالكامل داخل الكود لكل لغة مع رمز اللغة المناسب للنطق الآلي
+        const contentData = {
+            ar: {
+                dir: "rtl",
+                langCode: "ar-SA",
+                title: "اختر لغتك | Choose Your Language",
+                boxTitle: "النظام السيادي لاستعادة الكرامة الإنسانية",
+                btnText: "استمع إلى التقرير المهني 🔊",
+                text: "مرحباً بكم في منظومة إنو ديغنيتي السيادية. نواجه اليوم تحديات جذرية في أنظمة الرعاية التقليدية، حيث يعاني المرضى وكبار السن من فقدان الخصوصية واستقلالية الحركة في أصعب اللحظات. ابتكارنا يقدم الرداء الحيوي الذكي المزود بالذكاء الاصطناعي السيادي غير المتصل بالإنترنت، لنحقق رعاية استباقية دقيقة تضع حداً لمعاناة إنسانية طال أمدها، وتستعيد الثقة بالنفس والكرامة البشريّة بكل سيادة واستقلالية."
+            },
+            en: {
+                dir: "ltr",
+                langCode: "en-US",
+                title: "Choose Your Language",
+                boxTitle: "Sovereign System for Human Dignity Restoration",
+                btnText: "Listen to Professional Report 🔊",
+                text: "Welcome to the InnoDignity Sovereign System. Today, we face critical challenges in traditional care systems, where patients and the elderly suffer from a loss of privacy and movement independence in their most difficult moments. Our innovation delivers the Smart Bio-Garment equipped with offline sovereign artificial intelligence, achieving precise proactive care that puts an end to a long-standing human suffering, and restoring self-confidence and human dignity with absolute sovereignty and independence."
+            },
+            es: {
+                dir: "ltr",
+                langCode: "es-ES",
+                title: "Elija su idioma",
+                boxTitle: "Sistema soberano para la restauración de la dignidad humana",
+                btnText: "Escuchar informe profesional 🔊",
+                text: "Bienvenidos al sistema soberano InnoDignity. Hoy enfrentamos desafíos críticos en los sistemas de atención tradicional, donde los pacientes y los ancianos sufren la pérdida de privacidad e independencia de movimiento en sus momentos más difíciles. nuestra innovación ofrece la prenda bio-inteligente equipada con inteligencia artificial soberana fuera de línea, logrando un cuidado proactivo y preciso que pone fin a un sufrimiento humano prolongado, y restaurando la confianza en sí mismo y la dignidad humana con absoluta soberanía e independencia."
+            },
+            fr: {
+                dir: "ltr",
+                langCode: "fr-FR",
+                title: "Choisissez votre langue",
+                boxTitle: "Système souverain pour la restauration de la dignité humaine",
+                btnText: "Écouter le rapport professionnel 🔊",
+                text: "Bienvenue dans le système souverain InnoDignity. Nous faisons face aujourd'hui à des défis critiques dans les systèmes de soins traditionnels, où les patients et les personnes âgées souffrent d'une perte d'intimité et d'indépendance de mouvement dans leurs moments les plus difficiles. Notre innovation propose le vêtement bio-intelligent équipé d'une intelligence artificielle souveraine hors ligne, réalisant des soins proactifs précis qui mettent fin à une souffrance humaine de longue date, et restaurant la confiance en soi et la dignité humaine avec une souveraineté et une indépendance absolues."
+            },
+            de: {
+                dir: "ltr",
+                langCode: "de-DE",
+                title: "Wählen Sie Ihre Sprache",
+                boxTitle: "Souveränes System zur Wiederherstellung der menschlichen Würde",
+                btnText: "Professionellen Bericht anhören 🔊",
+                text: "Willkommen beim souveränen InnoDignity-System. Heute stehen wir vor kritischen Herausforderungen in traditionellen Pflegesystemen, in denen Patienten und ältere Menschen in ihren schwierigsten Momenten unter Verlust von Privatsphäre und Bewegungsunabhängigkeit leiden. Unsere Innovation liefert das intelligente Bio-Kleidungsstück, das mit souveräner Offline-Künstlicher Intelligenz ausgestattet ist, um eine präzise, proaktive Pflege zu erreichen, die einem langjährigen menschlichen Leiden ein Ende setzt und Selbstvertrauen sowie menschliche Würde mit absoluter Souveränität und Unabhängigkeit wiederherstellt."
+            }
+        };
+
+        let currentLang = 'ar';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            let data = contentData[lang];
+            
+            // إيقاف أي قراءة صوتية سابقة عند تغيير اللغة
+            window.speechSynthesis.cancel();
+
+            document.getElementById('bodyTag').setAttribute('dir', data.dir);
+            document.getElementById('mainTitle').innerText = data.title;
+            document.getElementById('boxTitle').innerText = data.boxTitle;
+            document.getElementById('listenBtn').innerText = data.btnText;
+
+            // تقسيم النص إلى كلمات وعرضها داخل الصندوق
+            let container = document.getElementById('transcript');
+            container.innerHTML = '';
+            let words = data.text.split(' ');
+            words.forEach((word, index) => {
+                let span = document.createElement('span');
+                span.className = 'word';
+                span.id = `word-${index}`;
+                span.innerText = word + ' ';
+                container.appendChild(span);
+            });
+        }
+
+        function speakText() {
+            // إلغاء أي نطق حالي قبل بدء نطق جديد
+            window.speechSynthesis.cancel();
+
+            let data = contentData[currentLang];
+            let utterance = new SpeechSynthesisUtterance(data.text);
+            utterance.lang = data.langCode;
+            utterance.rate = 0.95; // سرعة هادئة ومحترفة
+
+            let words = data.text.split(' ');
+            let currentHighlighted = -1;
+
+            // تتبع حدود نطق الكلمات لإضاءة الكلمة بالتزامن مع الصوت الحقيقي
+            utterance.onboundary = function(event) {
+                if (event.name === 'word') {
+                    // حساب الكلمة الحالية تقريبياً بناءً على موقع الحرف المنطوق
+                    let charIndex = event.charIndex;
+                    let countedChars = 0;
+                    let targetWordIndex = 0;
+
+                    for (let i = 0; i < words.length; i++) {
+                        countedChars += words[i].length + 1;
+                        if (charIndex < countedChars) {
+                            targetWordIndex = i;
+                            break;
+                        }
+                    }
+
+                    if (currentHighlighted !== -1) {
+                        let prevSpan = document.getElementById(`word-${currentHighlighted}`);
+                        if (prevSpan) prevSpan.classList.remove('highlight');
+                    }
+
+                    let currSpan = document.getElementById(`word-${targetWordIndex}`);
+                    if (currSpan) {
+                        currSpan.classList.add('highlight');
+                        currentHighlighted = targetWordIndex;
+                    }
+                }
+            };
+
+            // إزالة الإضاءة عند انتهاء الصوت
+            utterance.onend = function() {
+                if (currentHighlighted !== -1) {
+                    let lastSpan = document.getElementById(`word-${currentHighlighted}`);
+                    if (lastSpan) lastSpan.classList.remove('highlight');
+                }
+            };
+
+            window.speechSynthesis.speak(utterance);
+        }
+
+        // تشغيل اللغة العربية افتراضياً عند فتح الصفحة
+        window.onload = function() {
+            setLanguage('ar');
+        };
+    </script>
+
+</body>
+</html>
