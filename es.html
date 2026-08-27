@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="es" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InnoDignity - النظام السيادي لاستعادة الكرامة</title>
+    <title>InnoDignity - Sistema Soberano para la Restauración de la Dignidad</title>
     <style>
         body {
             margin: 0;
@@ -30,7 +30,6 @@
             margin-bottom: 15px;
             text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
         }
-        /* الشريط العلوي لنورا واختيار اللغات */
         .top-nav-bar {
             background-color: rgba(14, 35, 68, 0.9);
             border: 1px solid rgba(255, 215, 0, 0.4);
@@ -60,7 +59,7 @@
             object-fit: cover;
         }
         .nora-text {
-            text-align: right;
+            text-align: left;
         }
         .nora-text .name {
             color: #ffd700;
@@ -85,7 +84,6 @@
         .speak-top-btn:hover {
             background-color: #ffffff;
         }
-        /* أزرار الانتقال بين اللغات */
         .languages {
             display: flex;
             gap: 10px;
@@ -105,7 +103,6 @@
             border-color: #ffd700;
             font-weight: bold;
         }
-        /* صناديق المحتوى */
         .content-box {
             background-color: rgba(14, 35, 68, 0.9);
             border: 1px solid #ffd700;
@@ -115,7 +112,7 @@
             width: 100%;
             margin-bottom: 20px;
             box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
-            text-align: right;
+            text-align: left;
             box-sizing: border-box;
         }
         .content-box h3 {
@@ -135,7 +132,7 @@
             width: 100%;
             margin-bottom: 20px;
             box-shadow: 0 0 15px rgba(255, 77, 77, 0.2);
-            text-align: right;
+            text-align: left;
             box-sizing: border-box;
         }
         .warning-box h3 {
@@ -146,7 +143,6 @@
             padding-bottom: 8px;
             text-align: center;
         }
-        /* شريط المراسلة الخلفية بيضاء */
         .contact-box-white {
             background-color: #ffffff;
             color: #0b1d3a;
@@ -183,69 +179,60 @@
             margin: 10px 0;
             color: #ffffff;
         }
-        .word.highlight {
-            color: #ffd700;
-            text-shadow: 0 0 10px #ffd700;
-            font-weight: bold;
-        }
     </style>
 </head>
 <body>
 
-    <h1>InnoDignity - Sovereign Bio-Intelligence Ecosystem</h1>
-    <div class="project-tagline">مشروع ولد من رحم المعاناة لاستعادة الكرامة البشرية</div>
+    <h1>InnoDignity - Ecosistema de Bio-Inteligencia Soberana</h1>
+    <div class="project-tagline">Un proyecto nacido del vientre del sufrimiento para restaurar la dignidad humana</div>
 
-    <!-- الشريط العلوي: نورا وزر الاستمع + الانتقال بين اللغات -->
     <div class="top-nav-bar">
         <div class="nora-container">
             <img src="images/nora_avatar.png" alt="Nora">
             <div class="nora-text">
-                <div class="name">نورا (Nora)</div>
-                <div class="welcome">أرحب بك بكل الحب</div>
+                <div class="name">Nora</div>
+                <div class="welcome">Te doy la bienvenida con amor</div>
             </div>
-            <button class="speak-top-btn" onclick="speakText()">استمع 🔊</button>
+            <button class="speak-top-btn" onclick="speakText()">Escuchar 🔊</button>
         </div>
 
         <div class="languages">
-            <a href="index.html" class="active">العربية</a>
+            <a href="index.html">العربية</a>
             <a href="en.html">English</a>
-            <a href="es.html">Español</a>
+            <a href="es.html" class="active">Español</a>
             <a href="fr.html">Français</a>
             <a href="de.html">Deutsch</a>
         </div>
     </div>
 
-    <!-- نبذة عن الابتكار (بدون أسرار) -->
     <div class="content-box">
-        <h3>نبذة عن الابتكار السيادي</h3>
-        <div class="text-desc" id="descText">
-            منظومة "إنو ديغنيتي" تعتمد على دمج الهندسة الدقيقة مع الذكاء الاصطناعي السيادي المحلي غير المتصل بالإنترنت (Offline Sovereign AI). نقدم الرداء الحيوي الذكي الذي يوفر رعاية استباقية متطورة تضمن خصوصية المستخدم واستقلاليته المطلقة دون مشاركة أي بيانات حيوية مع السحاب الرقمي.
+        <h3>Acerca de la Innovación Soberana</h3>
+        <div class="text-desc">
+            El ecosistema InnoDignity integra micromecánica de precisión con Inteligencia Artificial Soberana fuera de línea. Ofrecemos la prenda bio-inteligente que brinda un cuidado proactivo avanzado que garantiza la privacidad e independencia absoluta del usuario.
         </div>
     </div>
 
-    <!-- المشكلة والحل -->
     <div class="warning-box">
-        <h3>المشكلة والحل الجذري</h3>
+        <h3>El Problema y la Solución Radical</h3>
         <div class="text-desc" style="color: #ffcccc;">
-            <strong>المشكلة:</strong> تعاني الرعاية التقليدية (كالحفاضات العادية) من حبس الرطوبة والروائح، مسببة التهابات جلدية حادة، فضلاً عن كونها نفايات بلاستيكية مدمرة للبيئة ومستهلكة لمئات السنين لكي تتفكك.<br><br>
-            <strong>الحل:</strong> الرداء الحيوي الذكي الذي يعالج هذه المعاناة هندسياً وصحياً وبيئياً، محققاً الاستدامة المطلقة وإنهاء الهزيمة البيئية والصحية تماماً.
+            <strong>El Problema:</strong> El cuidado tradicional (como los pañales convencionales) retiene humedad y olores, provocando infecciones graves y actuando como residuos plásticos que destruyen la naturaleza.<br><br>
+            <strong>La Solución:</strong> La prenda bio-inteligente resuelve ingeniería y salud, logrando la sostenibilidad absoluta.
         </div>
     </div>
 
-    <!-- قنوات المراسلة (خلفية بيضاء) -->
     <div class="contact-box-white">
-        <h3>قنوات المراسلة والتواصل المباشر مع المؤسس</h3>
-        <p><strong>المؤسس والمطور الرئيسي:</strong> نزيه عثمان (Nazih Othman)</p>
-        <p>📧 البريد الإلكتروني: <a href="mailto:nazehotman@gmail.com">nazehotman@gmail.com</a></p>
-        <p>📱 الهاتف / واتساب: <a href="tel:+972544943569" dir="ltr">+972 54 494 3569</a></p>
+        <h3>Canales de Mensajería y Comunicación Directa con el Fundador</h3>
+        <p><strong>Fundador y Desarrollador Principal:</strong> Nazih Othman</p>
+        <p>📧 Correo Electrónico: <a href="mailto:nazehotman@gmail.com">nazehotman@gmail.com</a></p>
+        <p>📱 Teléfono / WhatsApp: <a href="tel:+972544943569">+972 54 494 3569</a></p>
     </div>
 
     <script>
         function speakText() {
             window.speechSynthesis.cancel();
-            let textToSpeak = "أنا نورا، أرحب بك بكل الحب في منظومتنا السيادية. نبذة عن الابتكار: منظومة إنو ديغنيتي تعتمد على دمج الهندسة الدقيقة مع الذكاء الاصطناعي السيادي غير المتصل بالإنترنت. المشكلة: الحفاضات التقليدية تسبب التهابات جلدية ونفايات بلاستيكية مدمرة للبيئة. الحل: الرداء الحيوي الذكي لتحقيق الاستدامة المطلقة واستعادة الكرامة البشرية.";
+            let textToSpeak = "Soy Nora, te doy la bienvenida con todo amor a nuestro ecosistema soberano. Acerca de la innovación: InnoDignity integra micromecánica con inteligencia artificial soberana fuera de línea. El problema: Los pañales tradicionales causan infecciones y residuos plásticos. La solución: La prenda bio-inteligente para lograr la sostenibilidad absoluta y restaurar la dignidad humana.";
             let utterance = new SpeechSynthesisUtterance(textToSpeak);
-            utterance.lang = "ar-SA";
+            utterance.lang = "es-ES";
             utterance.rate = 0.95;
             window.speechSynthesis.speak(utterance);
         }
