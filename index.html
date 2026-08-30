@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InnoDignity - النظام السيادي لاستعادة الكرامة</title>
+    <title>InnoDignity - Sovereign Bio-Intelligence Ecosystem</title>
+    <link rel="stylesheet" href="innodignity-widget-style.css">
+    <link rel="stylesheet" href="nora-widget.css">
     <style>
         body {
             margin: 0;
             padding: 20px;
-            background: linear-gradient(135deg, #0b1d3a, #142850, #1b365d);
+            background-color: #0b1d3a;
             color: #ffffff;
             font-family: Arial, sans-serif;
             display: flex;
@@ -27,90 +29,68 @@
             color: #ffd700;
             font-size: 15px;
             font-weight: bold;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
         }
-        /* الشريط العلوي لنورا واختيار اللغات */
+        /* قسم نورا العلوي واللغات */
         .top-nav-bar {
-            background-color: rgba(14, 35, 68, 0.9);
+            background-color: rgba(14, 35, 68, 0.8);
             border: 1px solid rgba(255, 215, 0, 0.4);
             border-radius: 15px;
-            padding: 12px 20px;
+            padding: 15px 25px;
             max-width: 800px;
             width: 100%;
             margin-bottom: 20px;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            box-sizing: border-box;
+            gap: 12px;
             box-shadow: 0 0 15px rgba(255, 215, 0, 0.15);
         }
-        .nora-container {
+        .nora-header-container {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
-        .nora-container img {
-            width: 45px;
-            height: 45px;
+        .nora-header-container img {
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             border: 2px solid #ffd700;
             object-fit: cover;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
         }
-        .nora-text {
-            text-align: right;
-        }
-        .nora-text .name {
+        .nora-welcome-text {
             color: #ffd700;
-            font-size: 13px;
+            font-size: 15px;
             font-weight: bold;
         }
-        .nora-text .welcome {
-            color: #ffffff;
-            font-size: 12px;
-        }
-        .speak-top-btn {
-            background-color: #ffd700;
-            color: #0b1d3a;
-            border: none;
-            padding: 6px 14px;
-            font-size: 13px;
-            font-weight: bold;
-            border-radius: 15px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .speak-top-btn:hover {
-            background-color: #ffffff;
-        }
-        /* أزرار الانتقال بين اللغات */
         .languages {
             display: flex;
-            gap: 10px;
+            gap: 15px;
             flex-wrap: wrap;
             justify-content: center;
         }
-        .languages a {
-            text-decoration: none;
+        .languages button {
+            background: none;
+            border: none;
             color: #00e5ff;
-            font-size: 13px;
-            padding: 4px 8px;
-            border-bottom: 1px dashed #00e5ff;
+            font-size: 14px;
+            cursor: pointer;
             transition: 0.3s;
+            border-bottom: 1px dashed #00e5ff;
+            padding-bottom: 2px;
         }
-        .languages a:hover, .languages a.active {
+        .languages button:hover, .languages button.active {
             color: #ffd700;
             border-color: #ffd700;
-            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
         }
-        /* صناديق المحتوى */
-        .content-box {
+        .info-box, .contact-box {
             background-color: rgba(14, 35, 68, 0.9);
             border: 1px solid #ffd700;
             border-radius: 12px;
-            padding: 20px;
+            padding: 25px;
             max-width: 800px;
             width: 100%;
             margin-bottom: 20px;
@@ -118,16 +98,16 @@
             text-align: right;
             box-sizing: border-box;
         }
-        .content-box h3 {
+        .info-box h3, .contact-box h3 {
             color: #ffd700;
             margin-top: 0;
-            font-size: 17px;
+            font-size: 18px;
             border-bottom: 1px solid rgba(255, 215, 0, 0.3);
-            padding-bottom: 8px;
+            padding-bottom: 10px;
             text-align: center;
         }
         .warning-box {
-            background-color: rgba(68, 14, 14, 0.8);
+            background-color: rgba(68, 14, 14, 0.7);
             border: 1px solid #ff4d4d;
             border-radius: 12px;
             padding: 20px;
@@ -146,110 +126,363 @@
             padding-bottom: 8px;
             text-align: center;
         }
-        /* شريط المراسلة الخلفية بيضاء */
-        .contact-box-white {
-            background-color: #ffffff;
-            color: #0b1d3a;
-            border-radius: 12px;
-            padding: 20px;
-            max-width: 800px;
-            width: 100%;
-            margin-bottom: 30px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-            text-align: center;
-            box-sizing: border-box;
-        }
-        .contact-box-white h3 {
-            color: #0b1d3a;
-            margin-top: 0;
-            font-size: 17px;
-            border-bottom: 2px solid #ffd700;
-            padding-bottom: 8px;
-        }
-        .contact-box-white p {
+        .subtitle-text {
             font-size: 15px;
             line-height: 1.8;
-            margin: 8px 0;
-            color: #0b1d3a;
-        }
-        .contact-box-white a {
-            color: #0b1d3a;
-            font-weight: bold;
-            text-decoration: underline;
-        }
-        .text-desc {
-            font-size: 14px;
-            line-height: 1.8;
-            margin: 10px 0;
+            margin: 15px 0;
             color: #ffffff;
+        }
+        .contact-info {
+            font-size: 16px;
+            line-height: 2.2;
+            color: #00e5ff;
+            text-align: center;
+        }
+        .contact-info span {
+            color: #ffd700;
+            font-weight: bold;
+        }
+        .word {
+            display: inline;
+            transition: color 0.2s ease;
+            margin-left: 3px;
+            margin-right: 3px;
         }
         .word.highlight {
             color: #ffd700;
             text-shadow: 0 0 10px #ffd700;
             font-weight: bold;
         }
+        .avatar-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        .speak-btn {
+            background-color: #ffd700;
+            color: #0b1d3a;
+            border: none;
+            padding: 10px 22px;
+            font-size: 15px;
+            font-weight: bold;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+        .speak-btn:hover {
+            background-color: #ffffff;
+            box-shadow: 0 0 15px #ffffff;
+        }
     </style>
 </head>
-<body>
+<body id="bodyTag">
 
-    <h1>InnoDignity - Sovereign Bio-Intelligence Ecosystem</h1>
-    <div class="project-tagline">مشروع ولد من رحم المعاناة لاستعادة الكرامة البشرية</div>
+    <h1 id="mainTitle">InnoDignity - Sovereign Bio-Intelligence Ecosystem</h1>
+    <div class="project-tagline" id="tagline">مشروع ولد من رحم المعاناة لاستعادة الكرامة البشرية</div>
 
-    <!-- الشريط العلوي: نورا وزر الاستمع + الانتقال بين اللغات -->
+    <!-- شريط نورا واللغات في الأعلى -->
     <div class="top-nav-bar">
-        <div class="nora-container">
-            <img src="images/nora_avatar.png" alt="Nora">
-            <div class="nora-text">
-                <div class="name">نورا (Nora)</div>
-                <div class="welcome">أرحب بك بكل الحب</div>
-            </div>
-            <button class="speak-top-btn" onclick="speakText()">استمع 🔊</button>
+        <div class="nora-header-container">
+            <img src="images/nora_avatar.png" alt="Nora Avatar">
+            <div class="nora-welcome-text" id="noraWelcome">أنا نورا، أرحب بك بكل الحب في منظومتنا السيادية</div>
         </div>
-
+        <!-- أزرار تغيير اللغة ديناميكياً -->
         <div class="languages">
-            <a href="index.html" class="active">العربية</a>
-            <a href="en.html">English</a>
-            <a href="es.html">Español</a>
-            <a href="fr.html">Français</a>
-            <a href="de.html">Deutsch</a>
+            <button onclick="setLanguage('ar')">العربية | Arabic</button>
+            <button onclick="setLanguage('en')">English</button>
+            <button onclick="setLanguage('es')">Español</button>
+            <button onclick="setLanguage('fr')">Français</button>
+            <button onclick="setLanguage('de')">Deutsch</button>
         </div>
     </div>
 
-    <!-- نبذة عن الابتكار (بدون أسرار) -->
-    <div class="content-box">
-        <h3>نبذة عن الابتكار السيادي</h3>
-        <div class="text-desc" id="descText">
-            منظومة "إنو ديغنيتي" تعتمد على دمج الهندسة الدقيقة مع الذكاء الاصطناعي السيادي المحلي غير المتصل بالإنترنت (Offline Sovereign AI). نقدم الرداء الحيوي الذكي الذي يوفر رعاية استباقية متطورة تضمن خصوصية المستخدم واستقلاليته المطلقة دون مشاركة أي بيانات حيوية مع السحاب الرقمي.
-        </div>
+    <!-- صندوق عرض التقرير الأساسي -->
+    <div class="info-box">
+        <h3 id="boxTitle">فلسفة ورؤية النظام السيادي</h3>
+        <div class="subtitle-text" id="transcript"></div>
     </div>
 
-    <!-- المشكلة والحل -->
+    <!-- صندوق سيئات الحفاظ التقليدي -->
     <div class="warning-box">
-        <h3>المشكلة والحل الجذري</h3>
-        <div class="text-desc" style="color: #ffcccc;">
-            <strong>المشكلة:</strong> تعاني الرعاية التقليدية (كالحفاضات العادية) من حبس الرطوبة والروائح، مسببة التهابات جلدية حادة، فضلاً عن كونها نفايات بلاستيكية مدمرة للبيئة ومستهلكة لمئات السنين لكي تتفكك.<br><br>
-            <strong>الحل:</strong> الرداء الحيوي الذكي الذي يعالج هذه المعاناة هندسياً وصحياً وبيئياً، محققاً الاستدامة المطلقة وإنهاء الهزيمة البيئية والصحية تماماً.
+        <h3 id="warningTitle">الآثار المدمرة للحفاضات التقليدية على الإنسان والطبيعة</h3>
+        <div class="subtitle-text" id="warningText"></div>
+    </div>
+
+    <!-- صندوق المراسلات والتواصل -->
+    <div class="contact-box">
+        <h3 id="contactTitle">قنوات المراسلة والتواصل المباشر مع المؤسس</h3>
+        <div class="contact-info">
+            <p id="founderName">المؤسس والمطور الرئيسي: <span>نزيه عثمان (Nazih Othman)</span></p>
+            <p>📧 البريد الإلكتروني: <a href="mailto:nazehotman@gmail.com" style="color: #ffd700; text-decoration: none;">nazehotman@gmail.com</a></p>
+            <p>📱 الهاتف / واتساب: <a href="tel:+972544943569" dir="ltr" style="color: #ffd700; text-decoration: none;">+972 54 494 3569</a></p>
         </div>
     </div>
 
-    <!-- قنوات المراسلة (خلفية بيضاء) -->
-    <div class="contact-box-white">
-        <h3>قنوات المراسلة والتواصل المباشر مع المؤسس</h3>
-        <p><strong>المؤسس والمطور الرئيسي:</strong> نزيه عثمان (Nazih Othman)</p>
-        <p>📧 البريد الإلكتروني: <a href="mailto:nazehotman@gmail.com">nazehotman@gmail.com</a></p>
-        <p>📱 الهاتف / واتساب: <a href="tel:+972544943569" dir="ltr">+972 54 494 3569</a></p>
+    <div class="avatar-container">
+        <button class="speak-btn" id="listenBtn" onclick="speakText()">استمع إلى التقرير والتحذير البيئي 🔊</button>
     </div>
 
     <script>
-        function speakText() {
+        const contentData = {
+            ar: {
+                dir: "rtl",
+                langCode: "ar-SA",
+                title: "InnoDignity - النظام السيادي لاستعادة الكرامة",
+                tagline: "مشروع ولد من رحم المعاناة لاستعادة الكرامة البشرية",
+                noraWelcome: "أنا نورا، أرحب بك بكل الحب في منظومتنا السيادية",
+                boxTitle: "فلسفة ورؤية النظام السيادي",
+                warningTitle: "الآثار المدمرة للحفاضات التقليدية على الإنسان والطبيعة",
+                contactTitle: "قنوات المراسلة والتواصل المباشر مع المؤسس",
+                founderName: "المؤسس والمطور الرئيسي: نزيه عثمان (Nazih Othman)",
+                btnText: "استمع إلى التقرير والتحذير البيئي 🔊",
+                text: "مرحباً بكم في منظومة إنو ديغنيتي السيادية. نواجه اليوم تحديات جذرية في أنظمة الرعاية التقليدية، حيث يعاني المرضى وكبار السن والأطفال من فقدان الخصوصية واستقلالية الحركة. ابتكارنا يقدم الرداء الحيوي الذكي المزود بالذكاء الاصطناعي السيادي غير المتصل بالإنترنت، لنحقق رعاية استباقية دقيقة تستعيد الكرامة البشرية بكل سيادة واستقلالية.",
+                warning: "تشكل الحفاضات التقليدية كارثة مزدوجة؛ فهي صحياً تسبب التهابات جلدية حادة، تقرحات سريرية، وتكاثراً للبكتيريا نتيجة حبس الرطوبة والروائح. أما بيئياً، فهي نفايات بلاستيكية غير قابلة للتحلل تستغرق مئات السنين لتتفكك، ملوثةً التربة والمياه الجوفية بمواد كيميائية سامة، فضلاً عن انبعاثات الكربون الضارة. من هنا تنطلق فلسفتنا القائمة على الاستدامة المطلقة وإنهاء الهزيمة البيئية."
+            },
+            en: {
+                dir: "ltr",
+                langCode: "en-US",
+                title: "InnoDignity - Sovereign Bio-Intelligence Ecosystem",
+                tagline: "A project born from the womb of suffering to restore human dignity",
+                noraWelcome: "I am Nora, welcoming you with all love to our sovereign ecosystem",
+                boxTitle: "Sovereign System Philosophy & Vision",
+                warningTitle: "The Devastating Impacts of Traditional Diapers on Humans and Nature",
+                contactTitle: "Direct Messaging and Communication Channels with the Founder",
+                founderName: "Founder & Lead Developer: Nazih Othman",
+                btnText: "Listen to the Report & Environmental Warning 🔊",
+                text: "Welcome to the InnoDignity Sovereign System. Today, we face critical challenges in traditional care systems, where patients, the elderly, and infants suffer from a loss of privacy and movement independence. Our innovation delivers the Smart Bio-Garment equipped with offline sovereign artificial intelligence, achieving precise proactive care that restores human dignity with absolute sovereignty.",
+                warning: "Traditional diapers pose a dual crisis: health-wise, they cause severe skin infections, pressure ulcers, and bacterial proliferation due to trapped moisture and odors. Ecologically, they are non-biodegradable plastic waste that takes hundreds of years to decompose, contaminating soil and groundwater with toxic chemicals, alongside harmful carbon emissions. Hence, our philosophy is rooted in absolute sustainability and ending environmental defeat."
+            },
+            es: {
+                dir: "ltr",
+                langCode: "es-ES",
+                title: "InnoDignity - Ecosistema de Bio-Inteligencia Soberana",
+                tagline: "Un proyecto nacido del vientre del sufrimiento para restaurar la dignidad humana",
+                noraWelcome: "Soy Nora, te doy la bienvenida con todo amor a nuestro ecosistema soberano",
+                boxTitle: "Filosofía y visión del sistema soberano",
+                warningTitle: "Impactos devastadores de los pañales tradicionales en el ser humano y la naturaleza",
+                contactTitle: "Canales de mensajería y comunicación directa con el fundador",
+                founderName: "Fundador y Desarrollador Principal: Nazih Othman",
+                btnText: "Escuchar informe y advertencia ambiental 🔊",
+                text: "Bienvenidos al sistema soberano InnoDignity. Hoy enfrentamos desafíos críticos en los sistemas de atención tradicional, donde los pacientes, ancianos y bebés sufren la pérdida de privacidad e independencia. nuestra innovación ofrece la prenda bio-inteligente equipada con inteligencia artificial soberana fuera de línea, logrando un cuidado proactivo que restaura la dignidad humana con absoluta soberanía.",
+                warning: "Los pañales tradicionales plantean una doble crisis: a nivel de salud, provocan infecciones cutáneas graves, úlceras por presión y proliferación bacteriana por la humedad y los olores atrapados. Ecológicamente, son residuos plásticos no biodegradables que tardan cientos de años en descomponerse, contaminando el suelo y el agua subterránea con químicos tóxicos. De ahí surge nuestra filosofía basada en la sostenibilidad absoluta."
+            },
+            fr: {
+                dir: "ltr",
+                langCode: "fr-FR",
+                title: "InnoDignity - Écosystème de Bio-Intelligence Souveraine",
+                tagline: "Un projet né du ventre de la souffrance pour restaurer la dignité humaine",
+                noraWelcome: "Je suis Nora, je vous accueille avec tout mon amour dans notre écosystème souverain",
+                boxTitle: "Philosophie et vision du système souverain",
+                warningTitle: "Les impacts dévastateurs des couches traditionnelles sur l'humain et la nature",
+                contactTitle: "Canaux de messagerie et de communication directe avec le fondateur",
+                founderName: "Fondateur et Développeur Principal : Nazih Othman",
+                btnText: "Écouter le rapport et l'avertissement environnemental 🔊",
+                text: "Bienvenue dans le système souverain InnoDignity. Nous faisons face aujourd'hui à des défis critiques dans les soins traditionnels, où les patients, les personnes âgées et les nourrissons souffrent d'une perte d'intimité et d'indépendance. Notre innovation propose le vêtement bio-intelligent équipé d'une IA souveraine hors ligne, réalisant des soins proactifs qui restaurent la dignité humaine.",
+                warning: "Les couches traditionnelles constituent une double crise : sur le plan sanitaire, elles provoquent de graves infections cutanées et des escarres dues à l'humidité et aux odeurs emprisonnées. Sur le plan écologique, ce sont des déchets plastiques non biodégradables qui mettent des centaines d'années à se décomposer, contaminant les sols et les eaux souterraines par des produits chimiques toxiques. D'où notre philosophie ancrée dans la durabilité absolue."
+            },
+            de: {
+                dir: "ltr",
+                langCode: "de-DE",
+                title: "InnoDignity - Souveränes Bio-Intelligenz-Ökosystem",
+                tagline: "Ein Projekt, geboren aus dem Schoß des Leidens, um die menschliche Würde wiederherzustellen",
+                noraWelcome: "Ich bin Nora und heiße Sie mit all meiner Liebe in unserem souveränen Ökosystem willkommen",
+                boxTitle: "Philosophie und Vision des souveränen Systems",
+                warningTitle: "Die verheerenden Auswirkungen herkömmlicher Windeln auf Mensch und Natur",
+                contactTitle: "Direkte Nachrichten- und Kommunikationskanäle mit dem Gründer",
+                founderName: "Gründer & Leitender Entwickler: Nazih Othman",
+                btnText: "Bericht und Umwelthinweis anhören 🔊",
+                text: "Willkommen beim souveränen InnoDignity-System. Heute stehen wir vor kritischen Herausforderungen in traditionellen Pflegesystemen, in denen Patienten, ältere Menschen und Kleinkinder unter dem Verlust von Privatsphäre und Unabhängigkeit leiden. Unsere Innovation liefert das intelligente Bio-Kleidungsstück mit souveräner Offline-KI und erreicht eine präzise proaktive Pflege.",
+                warning: "Herkömmliche Windeln stellen eine doppelte Krise dar: Gesundheitlich verursachen sie schwere Hautinfektionen und Druckgeschwüre durch eingeschlossene Feuchtigkeit und Gerüche. Ökologisch handelt es sich um nicht biologisch abbaubare Kunststoffabfälle, die Hunderte von Jahren brauchen, um sich zu zersetzen, wodurch Boden und Grundwasser mit giftigen Chemikalien kontaminiert werden. Daher basiert unsere Philosophie auf absoluter Nachhaltigkeit."
+            }
+        };
+
+        let currentLang = 'ar';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            let data = contentData[lang];
+            
             window.speechSynthesis.cancel();
-            let textToSpeak = "أنا نورا، أرحب بك بكل الحب في منظومتنا السيادية. نبذة عن الابتكار: منظومة إنو ديغنيتي تعتمد على دمج الهندسة الدقيقة مع الذكاء الاصطناعي السيادي غير المتصل بالإنترنت. المشكلة: الحفاضات التقليدية تسبب التهابات جلدية ونفايات بلاستيكية مدمرة للبيئة. الحل: الرداء الحيوي الذكي لتحقيق الاستدامة المطلقة واستعادة الكرامة البشرية.";
-            let utterance = new SpeechSynthesisUtterance(textToSpeak);
-            utterance.lang = "ar-SA";
-            utterance.rate = 0.95;
-            window.speechSynthesis.speak(utterance);
+
+            document.getElementById('bodyTag').setAttribute('dir', data.dir);
+            document.getElementById('mainTitle').innerText = data.title;
+            document.getElementById('tagline').innerText = data.tagline;
+            document.getElementById('noraWelcome').innerText = data.noraWelcome;
+            document.getElementById('boxTitle').innerText = data.boxTitle;
+            document.getElementById('warningTitle').innerText = data.warningTitle;
+            document.getElementById('contactTitle').innerText = data.contactTitle;
+            document.getElementById('founderName').innerHTML = data.founderName.includes(':') ? 
+                data.founderName.split(':')[0] + ': <span>' + data.founderName.split(':')[1] + '</span>' : data.founderName;
+            document.getElementById('listenBtn').innerText = data.btnText;
+
+            // عرض النص الأساسي
+            let container = document.getElementById('transcript');
+            container.innerHTML = '';
+            let words = data.text.split(' ');
+            words.forEach((word, index) => {
+                let span = document.createElement('span');
+                span.className = 'word';
+                span.id = `word-${index}`;
+                span.innerText = word + ' ';
+                container.appendChild(span);
+            });
+
+            // عرض نص التحذير البيئي
+            let warningContainer = document.getElementById('warningText');
+            warningContainer.innerText = data.warning;
         }
+
+     // تشغيل ملف الـ MP3 الخاص بصوت نورا الحقيقي
+function playNoraVoice(lang) {
+    let audio = document.getElementById('nora-audio');
+    if (!audio) {
+        audio = document.createElement('audio');
+        audio.id = 'nora-audio';
+        document.body.appendChild(audio);
+    }
+    
+    // تحديد ملف الصوت حسب اللغة المختارة
+    let audioSrc = 'nora-ar.mp3'; // الافتراضي
+    if (lang === 'fr') audioSrc = 'nora-fr.mp3';
+    else if (lang === 'en') audioSrc = 'nora-en.mp3';
+    else if (lang === 'de') audioSrc = 'nora-de.mp3';
+    else if (lang === 'es') audioSrc = 'nora-es.mp3';
+
+    audio.src = audioSrc;
+    audio.play().catch(err => console.log("التشغيل يتطلب تفاعل المستخدم:", err));
+}
+
+        window.onload = function() {
+            setLanguage('ar');
+        };
     </script>
+    <script src="nora-widget.js"></script>
+<!-- InnoDignity Secure Agent Widget -->
+<div id="inno-agent-ui" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; font-family: system-ui, sans-serif;">
+    <button onclick="toggleAgentPanel()" style="background: #0284c7; color: white; border: none; padding: 12px 20px; border-radius: 30px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+        🤖 InnoDignity Agent (Secure)
+    </button>
+    
+    <div id="agent-panel" style="display: none; background: #0f172a; color: #fff; padding: 20px; border-radius: 12px; width: 300px; margin-top: 10px; box-shadow: 0 10px 25px rgba(0,0,0,0.4); border: 1px solid #334155; text-align: right; direction: rtl;">
+        <h4 style="margin: 0 0 10px 0; font-size: 15px; color: #38bdf8;">سجل الشركاء الآمن</h4>
+        
+        <input type="text" id="partner-name" placeholder="أدخل اسم الشريك أو الجهة..." style="width: 100%; padding: 8px; background: #1e293b; color: #fff; border: 1px solid #475569; border-radius: 6px; box-sizing: border-box; margin-bottom: 10px;">
+        
+        <button onclick="addNewPartner()" style="width: 100%; background: #22c55e; color: white; border: none; padding: 8px; border-radius: 6px; cursor: pointer; font-weight: bold;">حفظ الشريك 🔒</button>
+    </div>
+</div>
+
+<script>
+function toggleAgentPanel() {
+    const panel = document.getElementById('agent-panel');
+    if (panel) {
+        panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+    }
+}
+
+function addNewPartner() {
+    const partnerInput = document.getElementById('partner-name');
+    const storageKey = 'innoDignityPartners';
+
+    if (!partnerInput) {
+        window.alert('تعذر العثور على حقل اسم الشريك.');
+        return;
+    }
+
+    const partnerName = partnerInput.value.trim();
+    if (!partnerName) {
+        window.alert('يرجى إدخال اسم الشريك أو الجهة أولاً.');
+        partnerInput.focus();
+        return;
+    }
+
+    try {
+        const storedPartners = window.localStorage.getItem(storageKey);
+        let partners = [];
+
+        if (storedPartners) {
+            const parsedPartners = JSON.parse(storedPartners);
+            if (Array.isArray(parsedPartners)) {
+                partners = parsedPartners;
+            }
+        }
+
+        partners.push(partnerName);
+        window.localStorage.setItem(storageKey, JSON.stringify(partners));
+        partnerInput.value = '';
+        window.alert('تم حفظ الشريك بنجاح.');
+    } catch (error) {
+        console.error('Unable to save partner:', error);
+        window.alert('تعذر حفظ الشريك على هذا الجهاز.');
+    }
+}
+
+
+<!-- LAUNCH Zurich 2026 Alignment Section -->
+<section id="launch-zurich-alignment" class="py-12 bg-gray-900 text-white px-6 rounded-2xl my-8 border border-red-500/30" dir="ltr" style="direction: ltr; text-align: left; unicode-bidi: embed;">
+    <div class="max-w-4xl mx-auto">
+            <span class="bg-red-600/20 text-red-400 text-sm font-semibold px-4 py-1.5 rounded-full border border-red-500/30">
+                LAUNCH Zurich 2026 Candidate Alignment
+            </span>
+            <h2 class="text-3xl font-bold mt-4 mb-2">How InnoDignity Meets & Exceeds LAUNCH Criteria</h2>
+            <p class="text-gray-400">Engineered for Zurich's Largest Startup Conference Pitching Evaluation Framework.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+            <!-- 1. Problem & Customer Validation (25%) -->
+            <div class="bg-gray-800/60 p-6 rounded-xl border border-gray-700">
+                <div class="text-red-400 font-bold text-lg mb-2">1. Problem & Customer Validation (25%)</div>
+                <h3 class="text-xl font-semibold mb-2">Restoring Human Dignity at Critical Moments</h3>
+                <p class="text-gray-300 text-sm">
+                    InnoDignity tackles an urgent, universal crisis: preserving personal autonomy, hygiene, and self-confidence for the elderly, premature infants, and individuals with limited mobility. Backed by deep user empathy and clear market demand.
+                </p>
+            </div>
+
+            <!-- 2. Solution & Technical Edge (25%) -->
+            <div class="bg-gray-800/60 p-6 rounded-xl border border-gray-700">
+                <div class="text-red-400 font-bold text-lg mb-2">2. Solution & Technical Edge (25%)</div>
+                <h3 class="text-xl font-semibold mb-2">The Smart Bio-Garment & Offline Sovereign AI</h3>
+                <p class="text-gray-300 text-sm">
+                    A novel, highly differentiated ecosystem combining micro-mechanical engineering, anti-bacterial smart textiles, micro-fluidic channels, and localized edge AI (Gemma) ensuring absolute data sovereignty without cloud dependency.
+                </p>
+            </div>
+
+            <!-- 3. Execution & Traction (20%) -->
+            <div class="bg-gray-800/60 p-6 rounded-xl border border-gray-700">
+                <div class="text-red-400 font-bold text-lg mb-2">3. Execution & Traction (20%)</div>
+                <h3 class="text-xl font-semibold mb-2">Prototype-Ready & Rapid Iteration</h3>
+                <p class="text-gray-300 text-sm">
+                    Transitioning smoothly from unified MVP concepts to concrete prototype construction. Backed by rigorous engineering frameworks, precise component sourcing, and clear milestone execution.
+                </p>
+            </div>
+
+        <!<!-- 4. Team & Support System (20%) -->
+            <div class="bg-gray-800/60 p-6 rounded-xl border border-gray-700">
+                <div class="text-red-400 font-bold text-lg mb-2">4. Team & Support System (20%)</div>
+                <h3 class="text-xl font-semibold mb-2">Founder-Led & Co-Founder Synergy</h3>
+                <p class="text-gray-300 text-sm mb-4">
+                    Led by founder Nazih Osman, combining decades of real-world operational experience with software architecture expertise from a co-founding software engineering partner, supported by specialized legal and R&D networks.
+                </p>
+        <!-- LinkedIn Profile Button -->
+                <div class="mt-4">
+                    <a href="https://www.linkedin.com/in/nazih-osman-626ab6116" target="_blank" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-4 py-2 rounded-lg transition duration-200 shadow-md">
+                        <span class="bg-white text-blue-600 font-bold text-xs px-1.5 py-0.5 rounded">in</span>
+                        Connect on LinkedIn
+                    </a>
+        <!-- 5. Market Potential & Scalability (10%) -->
+        <div class="mt-6 bg-gray-800/60 p-6 rounded-xl border border-gray-700">
+            <div class="text-red-400 font-bold text-lg mb-2">5. Market Potential & Scalability (10%)</div>
+            <h3 class="text-xl font-semibold mb-2">Massive FemTech & Global Healthcare Disruption</h3>
+            <p class="text-gray-300 text-sm">
+                Targeting high-growth global markets across FemTech, senior care, and specialized medical garments, offering a scalable, multi-billion-dollar commercial opportunity with a clear path to international expansion.
+            </p>
+        </div>
+    </div>
+</section>
 
 </body>
 </html>
+
