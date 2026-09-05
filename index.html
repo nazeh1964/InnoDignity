@@ -1,486 +1,362 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html :dir="lang === 'ar' ? 'rtl' : 'ltr'" :lang="lang" x-data="innoPlatform()">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InnoDignity - Sovereign Bio-Intelligence Ecosystem</title>
-    <link rel="stylesheet" href="innodignity-widget-style.css">
-    <link rel="stylesheet" href="nora-widget.css">
-    <style>
-        body {
-            margin: 0;
-            padding: 20px;
-            background-color: #0b1d3a;
-            color: #ffffff;
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            color: #00e5ff;
-            margin-bottom: 5px;
-            font-size: 24px;
-        }
-        .project-tagline {
-            color: #ffd700;
-            font-size: 15px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
-        }
-        /* قسم نورا العلوي واللغات */
-        .top-nav-bar {
-            background-color: rgba(14, 35, 68, 0.8);
-            border: 1px solid rgba(255, 215, 0, 0.4);
-            border-radius: 15px;
-            padding: 15px 25px;
-            max-width: 800px;
-            width: 100%;
-            margin-bottom: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.15);
-        }
-        .nora-header-container {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .nora-header-container img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            border: 2px solid #ffd700;
-            object-fit: cover;
-            box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
-        }
-        .nora-welcome-text {
-            color: #ffd700;
-            font-size: 15px;
-            font-weight: bold;
-        }
-        .languages {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .languages button {
-            background: none;
-            border: none;
-            color: #00e5ff;
-            font-size: 14px;
-            cursor: pointer;
-            transition: 0.3s;
-            border-bottom: 1px dashed #00e5ff;
-            padding-bottom: 2px;
-        }
-        .languages button:hover, .languages button.active {
-            color: #ffd700;
-            border-color: #ffd700;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-        }
-        .info-box, .contact-box {
-            background-color: rgba(14, 35, 68, 0.9);
-            border: 1px solid #ffd700;
-            border-radius: 12px;
-            padding: 25px;
-            max-width: 800px;
-            width: 100%;
-            margin-bottom: 20px;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
-            text-align: right;
-            box-sizing: border-box;
-        }
-        .info-box h3, .contact-box h3 {
-            color: #ffd700;
-            margin-top: 0;
-            font-size: 18px;
-            border-bottom: 1px solid rgba(255, 215, 0, 0.3);
-            padding-bottom: 10px;
-            text-align: center;
-        }
-        .warning-box {
-            background-color: rgba(68, 14, 14, 0.7);
-            border: 1px solid #ff4d4d;
-            border-radius: 12px;
-            padding: 20px;
-            max-width: 800px;
-            width: 100%;
-            margin-bottom: 20px;
-            box-shadow: 0 0 15px rgba(255, 77, 77, 0.2);
-            text-align: right;
-            box-sizing: border-box;
-        }
-        .warning-box h3 {
-            color: #ff4d4d;
-            margin-top: 0;
-            font-size: 17px;
-            border-bottom: 1px solid rgba(255, 77, 77, 0.3);
-            padding-bottom: 8px;
-            text-align: center;
-        }
-        .subtitle-text {
-            font-size: 15px;
-            line-height: 1.8;
-            margin: 15px 0;
-            color: #ffffff;
-        }
-        .contact-info {
-            font-size: 16px;
-            line-height: 2.2;
-            color: #00e5ff;
-            text-align: center;
-        }
-        .contact-info span {
-            color: #ffd700;
-            font-weight: bold;
-        }
-        .word {
-            display: inline;
-            transition: color 0.2s ease;
-            margin-left: 3px;
-            margin-right: 3px;
-        }
-        .word.highlight {
-            color: #ffd700;
-            text-shadow: 0 0 10px #ffd700;
-            font-weight: bold;
-        }
-        .avatar-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 30px;
-        }
-        .speak-btn {
-            background-color: #ffd700;
-            color: #0b1d3a;
-            border: none;
-            padding: 10px 22px;
-            font-size: 15px;
-            font-weight: bold;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
-        }
-        .speak-btn:hover {
-            background-color: #ffffff;
-            box-shadow: 0 0 15px #ffffff;
-        }
+    <title>InnoDignity | Nazih Osman - Sovereign Bio-Intelligence Ecosystem</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <style> 
+        body { font-family: 'Cairo', 'Montserrat', sans-serif; } 
+        .vip-card { background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.9)); backdrop-filter: blur(16px); }
+        .vip-glow { box-shadow: 0 0 40px rgba(6, 182, 212, 0.15); }
     </style>
 </head>
-<body id="bodyTag">
+<body class="bg-slate-950 text-slate-100 antialiased selection:bg-cyan-500 selection:text-white">
 
-    <h1 id="mainTitle">InnoDignity - Sovereign Bio-Intelligence Ecosystem</h1>
-    <div class="project-tagline" id="tagline">مشروع ولد من رحم المعاناة لاستعادة الكرامة البشرية</div>
-
-    <!-- شريط نورا واللغات في الأعلى -->
-    <div class="top-nav-bar">
-        <div class="nora-header-container">
-            <img src="images/nora_avatar.png" alt="Nora Avatar">
-            <div class="nora-welcome-text" id="noraWelcome">أنا نورا، أرحب بك بكل الحب في منظومتنا السيادية</div>
-        </div>
-        <!-- أزرار تغيير اللغة ديناميكياً -->
-        <div class="languages">
-            <button onclick="setLanguage('ar')">العربية | Arabic</button>
-            <button onclick="setLanguage('en')">English</button>
-            <button onclick="setLanguage('es')">Español</button>
-            <button onclick="setLanguage('fr')">Français</button>
-            <button onclick="setLanguage('de')">Deutsch</button>
-        </div>
-    </div>
-
-    <!-- صندوق عرض التقرير الأساسي -->
-    <div class="info-box">
-        <h3 id="boxTitle">فلسفة ورؤية النظام السيادي</h3>
-        <div class="subtitle-text" id="transcript"></div>
-    </div>
-
-    <!-- صندوق سيئات الحفاظ التقليدي -->
-    <div class="warning-box">
-        <h3 id="warningTitle">الآثار المدمرة للحفاضات التقليدية على الإنسان والطبيعة</h3>
-        <div class="subtitle-text" id="warningText"></div>
-    </div>
-
-    <!-- صندوق المراسلات والتواصل -->
-    <div class="contact-box">
-        <h3 id="contactTitle">قنوات المراسلة والتواصل المباشر مع المؤسس</h3>
-        <div class="contact-info">
-            <p id="founderName">المؤسس والمطور الرئيسي: <span>نزيه عثمان (Nazih Othman)</span></p>
-            <p>📧 البريد الإلكتروني: <a href="mailto:nazehotman@gmail.com" style="color: #ffd700; text-decoration: none;">nazehotman@gmail.com</a></p>
-            <p>📱 الهاتف / واتساب: <a href="tel:+972544943569" dir="ltr" style="color: #ffd700; text-decoration: none;">+972 54 494 3569</a></p>
-        </div>
-    </div>
-
-    <div class="avatar-container">
-        <button class="speak-btn" id="listenBtn" onclick="speakText()">استمع إلى التقرير والتحذير البيئي 🔊</button>
-    </div>
-
-    <script>
-        const contentData = {
-            ar: {
-                dir: "rtl",
-                langCode: "ar-SA",
-                title: "InnoDignity - النظام السيادي لاستعادة الكرامة",
-                tagline: "مشروع ولد من رحم المعاناة لاستعادة الكرامة البشرية",
-                noraWelcome: "أنا نورا، أرحب بك بكل الحب في منظومتنا السيادية",
-                boxTitle: "فلسفة ورؤية النظام السيادي",
-                warningTitle: "الآثار المدمرة للحفاضات التقليدية على الإنسان والطبيعة",
-                contactTitle: "قنوات المراسلة والتواصل المباشر مع المؤسس",
-                founderName: "المؤسس والمطور الرئيسي: نزيه عثمان (Nazih Othman)",
-                btnText: "استمع إلى التقرير والتحذير البيئي 🔊",
-                text: "مرحباً بكم في منظومة إنو ديغنيتي السيادية. نواجه اليوم تحديات جذرية في أنظمة الرعاية التقليدية، حيث يعاني المرضى وكبار السن والأطفال من فقدان الخصوصية واستقلالية الحركة. ابتكارنا يقدم الرداء الحيوي الذكي المزود بالذكاء الاصطناعي السيادي غير المتصل بالإنترنت، لنحقق رعاية استباقية دقيقة تستعيد الكرامة البشرية بكل سيادة واستقلالية.",
-                warning: "تشكل الحفاضات التقليدية كارثة مزدوجة؛ فهي صحياً تسبب التهابات جلدية حادة، تقرحات سريرية، وتكاثراً للبكتيريا نتيجة حبس الرطوبة والروائح. أما بيئياً، فهي نفايات بلاستيكية غير قابلة للتحلل تستغرق مئات السنين لتتفكك، ملوثةً التربة والمياه الجوفية بمواد كيميائية سامة، فضلاً عن انبعاثات الكربون الضارة. من هنا تنطلق فلسفتنا القائمة على الاستدامة المطلقة وإنهاء الهزيمة البيئية."
-            },
-            en: {
-                dir: "ltr",
-                langCode: "en-US",
-                title: "InnoDignity - Sovereign Bio-Intelligence Ecosystem",
-                tagline: "A project born from the womb of suffering to restore human dignity",
-                noraWelcome: "I am Nora, welcoming you with all love to our sovereign ecosystem",
-                boxTitle: "Sovereign System Philosophy & Vision",
-                warningTitle: "The Devastating Impacts of Traditional Diapers on Humans and Nature",
-                contactTitle: "Direct Messaging and Communication Channels with the Founder",
-                founderName: "Founder & Lead Developer: Nazih Othman",
-                btnText: "Listen to the Report & Environmental Warning 🔊",
-                text: "Welcome to the InnoDignity Sovereign System. Today, we face critical challenges in traditional care systems, where patients, the elderly, and infants suffer from a loss of privacy and movement independence. Our innovation delivers the Smart Bio-Garment equipped with offline sovereign artificial intelligence, achieving precise proactive care that restores human dignity with absolute sovereignty.",
-                warning: "Traditional diapers pose a dual crisis: health-wise, they cause severe skin infections, pressure ulcers, and bacterial proliferation due to trapped moisture and odors. Ecologically, they are non-biodegradable plastic waste that takes hundreds of years to decompose, contaminating soil and groundwater with toxic chemicals, alongside harmful carbon emissions. Hence, our philosophy is rooted in absolute sustainability and ending environmental defeat."
-            },
-            es: {
-                dir: "ltr",
-                langCode: "es-ES",
-                title: "InnoDignity - Ecosistema de Bio-Inteligencia Soberana",
-                tagline: "Un proyecto nacido del vientre del sufrimiento para restaurar la dignidad humana",
-                noraWelcome: "Soy Nora, te doy la bienvenida con todo amor a nuestro ecosistema soberano",
-                boxTitle: "Filosofía y visión del sistema soberano",
-                warningTitle: "Impactos devastadores de los pañales tradicionales en el ser humano y la naturaleza",
-                contactTitle: "Canales de mensajería y comunicación directa con el fundador",
-                founderName: "Fundador y Desarrollador Principal: Nazih Othman",
-                btnText: "Escuchar informe y advertencia ambiental 🔊",
-                text: "Bienvenidos al sistema soberano InnoDignity. Hoy enfrentamos desafíos críticos en los sistemas de atención tradicional, donde los pacientes, ancianos y bebés sufren la pérdida de privacidad e independencia. nuestra innovación ofrece la prenda bio-inteligente equipada con inteligencia artificial soberana fuera de línea, logrando un cuidado proactivo que restaura la dignidad humana con absoluta soberanía.",
-                warning: "Los pañales tradicionales plantean una doble crisis: a nivel de salud, provocan infecciones cutáneas graves, úlceras por presión y proliferación bacteriana por la humedad y los olores atrapados. Ecológicamente, son residuos plásticos no biodegradables que tardan cientos de años en descomponerse, contaminando el suelo y el agua subterránea con químicos tóxicos. De ahí surge nuestra filosofía basada en la sostenibilidad absoluta."
-            },
-            fr: {
-                dir: "ltr",
-                langCode: "fr-FR",
-                title: "InnoDignity - Écosystème de Bio-Intelligence Souveraine",
-                tagline: "Un projet né du ventre de la souffrance pour restaurer la dignité humaine",
-                noraWelcome: "Je suis Nora, je vous accueille avec tout mon amour dans notre écosystème souverain",
-                boxTitle: "Philosophie et vision du système souverain",
-                warningTitle: "Les impacts dévastateurs des couches traditionnelles sur l'humain et la nature",
-                contactTitle: "Canaux de messagerie et de communication directe avec le fondateur",
-                founderName: "Fondateur et Développeur Principal : Nazih Othman",
-                btnText: "Écouter le rapport et l'avertissement environnemental 🔊",
-                text: "Bienvenue dans le système souverain InnoDignity. Nous faisons face aujourd'hui à des défis critiques dans les soins traditionnels, où les patients, les personnes âgées et les nourrissons souffrent d'une perte d'intimité et d'indépendance. Notre innovation propose le vêtement bio-intelligent équipé d'une IA souveraine hors ligne, réalisant des soins proactifs qui restaurent la dignité humaine.",
-                warning: "Les couches traditionnelles constituent une double crise : sur le plan sanitaire, elles provoquent de graves infections cutanées et des escarres dues à l'humidité et aux odeurs emprisonnées. Sur le plan écologique, ce sont des déchets plastiques non biodégradables qui mettent des centaines d'années à se décomposer, contaminant les sols et les eaux souterraines par des produits chimiques toxiques. D'où notre philosophie ancrée dans la durabilité absolue."
-            },
-            de: {
-                dir: "ltr",
-                langCode: "de-DE",
-                title: "InnoDignity - Souveränes Bio-Intelligenz-Ökosystem",
-                tagline: "Ein Projekt, geboren aus dem Schoß des Leidens, um die menschliche Würde wiederherzustellen",
-                noraWelcome: "Ich bin Nora und heiße Sie mit all meiner Liebe in unserem souveränen Ökosystem willkommen",
-                boxTitle: "Philosophie und Vision des souveränen Systems",
-                warningTitle: "Die verheerenden Auswirkungen herkömmlicher Windeln auf Mensch und Natur",
-                contactTitle: "Direkte Nachrichten- und Kommunikationskanäle mit dem Gründer",
-                founderName: "Gründer & Leitender Entwickler: Nazih Othman",
-                btnText: "Bericht und Umwelthinweis anhören 🔊",
-                text: "Willkommen beim souveränen InnoDignity-System. Heute stehen wir vor kritischen Herausforderungen in traditionellen Pflegesystemen, in denen Patienten, ältere Menschen und Kleinkinder unter dem Verlust von Privatsphäre und Unabhängigkeit leiden. Unsere Innovation liefert das intelligente Bio-Kleidungsstück mit souveräner Offline-KI und erreicht eine präzise proaktive Pflege.",
-                warning: "Herkömmliche Windeln stellen eine doppelte Krise dar: Gesundheitlich verursachen sie schwere Hautinfektionen und Druckgeschwüre durch eingeschlossene Feuchtigkeit und Gerüche. Ökologisch handelt es sich um nicht biologisch abbaubare Kunststoffabfälle, die Hunderte von Jahren brauchen, um sich zu zersetzen, wodurch Boden und Grundwasser mit giftigen Chemikalien kontaminiert werden. Daher basiert unsere Philosophie auf absoluter Nachhaltigkeit."
-            }
-        };
-
-        let currentLang = 'ar';
-
-        function setLanguage(lang) {
-            currentLang = lang;
-            let data = contentData[lang];
-            
-            window.speechSynthesis.cancel();
-
-            document.getElementById('bodyTag').setAttribute('dir', data.dir);
-            document.getElementById('mainTitle').innerText = data.title;
-            document.getElementById('tagline').innerText = data.tagline;
-            document.getElementById('noraWelcome').innerText = data.noraWelcome;
-            document.getElementById('boxTitle').innerText = data.boxTitle;
-            document.getElementById('warningTitle').innerText = data.warningTitle;
-            document.getElementById('contactTitle').innerText = data.contactTitle;
-            document.getElementById('founderName').innerHTML = data.founderName.includes(':') ? 
-                data.founderName.split(':')[0] + ': <span>' + data.founderName.split(':')[1] + '</span>' : data.founderName;
-            document.getElementById('listenBtn').innerText = data.btnText;
-
-            let container = document.getElementById('transcript');
-            container.innerHTML = '';
-            let words = data.text.split(' ');
-            words.forEach((word, index) => {
-                let span = document.createElement('span');
-                span.className = 'word';
-                span.id = `word-${index}`;
-                span.innerText = word + ' ';
-                container.appendChild(span);
-            });
-
-            let warningContainer = document.getElementById('warningText');
-            warningContainer.innerText = data.warning;
-        }
-
-        function playNoraVoice(lang) {
-            let audio = document.getElementById('nora-audio');
-            if (!audio) {
-                audio = document.createElement('audio');
-                audio.id = 'nora-audio';
-                document.body.appendChild(audio);
-            }
-            
-            let audioSrc = 'nora-ar.mp3';
-            if (lang === 'fr') audioSrc = 'nora-fr.mp3';
-            else if (lang === 'en') audioSrc = 'nora-en.mp3';
-            else if (lang === 'de') audioSrc = 'nora-de.mp3';
-            else if (lang === 'es') audioSrc = 'nora-es.mp3';
-
-            audio.src = audioSrc;
-            audio.play().catch(err => console.log("التشغيل يتطلب تفاعل المستخدم:", err));
-        }
-
-        window.onload = function() {
-            setLanguage('ar');
-        };
-    </script>
-    <script src="nora-widget.js"></script>
-
-    <!-- InnoDignity Secure Agent Widget -->
-    <div id="inno-agent-ui" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; font-family: system-ui, sans-serif;">
-        <button onclick="toggleAgentPanel()" style="background: #0284c7; color: white; border: none; padding: 12px 20px; border-radius: 30px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
-            🤖 InnoDignity Agent (Secure)
-        </button>
-        
-        <div id="agent-panel" style="display: none; background: #0f172a; color: #fff; padding: 20px; border-radius: 12px; width: 300px; margin-top: 10px; box-shadow: 0 10px 25px rgba(0,0,0,0.4); border: 1px solid #334155; text-align: right; direction: rtl;">
-            <h4 style="margin: 0 0 10px 0; font-size: 15px; color: #38bdf8;">سجل الشركاء الآمن</h4>
-            <input type="text" id="partner-name" placeholder="أدخل اسم الشريك أو الجهة..." style="width: 100%; padding: 8px; background: #1e293b; color: #fff; border: 1px solid #475569; border-radius: 6px; box-sizing: border-box; margin-bottom: 10px;">
-            <button onclick="addNewPartner()" style="width: 100%; background: #22c55e; color: white; border: none; padding: 8px; border-radius: 6px; cursor: pointer; font-weight: bold;">حفظ الشريك 🔒</button>
-        </div>
-    </div>
-
-    <script>
-    function toggleAgentPanel() {
-        const panel = document.getElementById('agent-panel');
-        if (panel) {
-            panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
-        }
-    }
-
-    function addNewPartner() {
-        const partnerInput = document.getElementById('partner-name');
-        const storageKey = 'innoDignityPartners';
-
-        if (!partnerInput) {
-            window.alert('تعذر العثور على حقل اسم الشريك.');
-            return;
-        }
-
-        const partnerName = partnerInput.value.trim();
-        if (!partnerName) {
-            window.alert('يرجى إدخال اسم الشريك أو الجهة أولاً.');
-            partnerInput.focus();
-            return;
-        }
-
-        try {
-            const storedPartners = window.localStorage.getItem(storageKey);
-            let partners = [];
-
-            if (storedPartners) {
-                const parsedPartners = JSON.parse(storedPartners);
-                if (Array.isArray(parsedPartners)) {
-                    partners = parsedPartners;
-                }
-            }
-
-            partners.push(partnerName);
-            window.localStorage.setItem(storageKey, JSON.stringify(partners));
-            partnerInput.value = '';
-            window.alert('تم حفظ الشريك بنجاح.');
-        } catch (error) {
-            console.error('Unable to save partner:', error);
-            window.alert('تعذر حفظ الشريك على هذا الجهاز.');
-        }
-    }
-    </script>
-
-    <!-- LAUNCH Zurich 2026 Alignment Section -->
-    <section id="launch-zurich-alignment" class="py-12 bg-gray-900 text-white px-6 rounded-2xl my-8 border border-red-500/30" dir="ltr" style="direction: ltr; text-align: left; unicode-bidi: embed;">
-        <div class="max-w-4xl mx-auto mb-8">
-            <span class="bg-red-600/20 text-red-400 text-sm font-semibold px-4 py-1.5 rounded-full border border-red-500/30">
-                LAUNCH Zurich 2026 Candidate Alignment
-            </span>
-            <h2 class="text-3xl font-bold mt-4 mb-2">How InnoDignity Meets & Exceeds LAUNCH Criteria</h2>
-            <p class="text-gray-400">Engineered for Zurich's Largest Startup Conference Pitching Evaluation Framework.</p>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            <!-- 1. Problem & Customer Validation (25%) -->
-            <div class="bg-gray-800/60 p-6 rounded-xl border border-gray-700">
-                <div class="text-red-400 font-bold text-lg mb-2">1. Problem & Customer Validation (25%)</div>
-                <h3 class="text-xl font-semibold mb-2">Restoring Human Dignity at Critical Moments</h3>
-                <p class="text-gray-300 text-sm">
-                    InnoDignity tackles an urgent, universal crisis: preserving personal autonomy, hygiene, and self-confidence for the elderly, premature infants, and individuals with limited mobility. Backed by deep user empathy and clear market demand.
-                </p>
-            </div>
-
-            <!-- 2. Solution & Technical Edge (25%) -->
-            <div class="bg-gray-800/60 p-6 rounded-xl border border-gray-700">
-                <div class="text-red-400 font-bold text-lg mb-2">2. Solution & Technical Edge (25%)</div>
-                <h3 class="text-xl font-semibold mb-2">The Smart Bio-Garment & Offline Sovereign AI</h3>
-                <p class="text-gray-300 text-sm">
-                    A novel, highly differentiated ecosystem combining micro-mechanical engineering, anti-bacterial smart textiles, micro-fluidic channels, and localized edge AI (Gemma) ensuring absolute data sovereignty without cloud dependency.
-                </p>
-            </div>
-
-            <!-- 3. Execution & Traction (20%) -->
-            <div class="bg-gray-800/60 p-6 rounded-xl border border-gray-700">
-                <div class="text-red-400 font-bold text-lg mb-2">3. Execution & Traction (20%)</div>
-                <h3 class="text-xl font-semibold mb-2">Prototype-Ready & Rapid Iteration</h3>
-                <p class="text-gray-300 text-sm">
-                    Transitioning smoothly from unified MVP concepts to concrete prototype construction. Backed by rigorous engineering frameworks, precise component sourcing, and clear milestone execution.
-                </p>
-            </div>
-
-            <!-- 4. Team & Support System (20%) -->
-            <div class="bg-gray-800/60 p-6 rounded-xl border border-gray-700">
-                <div class="text-red-400 font-bold text-lg mb-2">4. Team & Support System (20%)</div>
-                <h3 class="text-xl font-semibold mb-2">Founder-Led & Co-Founder Synergy</h3>
-                <p class="text-gray-300 text-sm mb-4">
-                    Led by founder Nazih Osman, combining decades of real-world operational experience with software architecture expertise from a co-founding software engineering partner, supported by specialized legal and R&D networks.
-                </p>
-                <div class="mt-4">
-                    <a href="https://www.linkedin.com/in/nazih-osman-626ab6116" target="_blank" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-4 py-2 rounded-lg transition duration-200 shadow-md">
-                        <span class="bg-white text-blue-600 font-bold text-xs px-1.5 py-0.5 rounded">in</span>
-                        Connect on LinkedIn
-                    </a>
+    <!-- Top Navigation -->
+    <nav class="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-xl border-b border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-slate-900 rounded-xl border border-cyan-500/50 flex items-center justify-center shadow-inner">
+                    <svg class="w-5 h-5 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 8v8m-4-4h8" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-lg font-black tracking-wider text-white">InnoDignity</span>
+                        <span class="px-2 py-0.5 bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-[9px] font-bold rounded-full">VIP SECURE</span>
+                    </div>
+                    <span class="text-[10px] font-bold text-cyan-400 tracking-[0.2em] block">NAZIH OSMAN</span>
                 </div>
             </div>
+            
+            <div class="flex items-center gap-4">
+                <div class="hidden lg:flex items-center gap-6 text-xs font-bold text-slate-300">
+                    <a href="#sectors" class="hover:text-cyan-400 transition" x-text="t.navSectors"></a>
+                    <a href="#documentation" class="hover:text-cyan-400 transition" x-text="t.navDocs"></a>
+                    <a href="#contact" class="hover:text-cyan-400 transition" x-text="t.navContact"></a>
+                </div>
+                <select x-model="lang" @change="changeLang(lang)" class="bg-slate-900 border border-cyan-500/40 text-cyan-300 text-xs font-bold rounded-xl px-3 py-2 outline-none cursor-pointer shadow-lg hover:border-cyan-400 transition">
+                    <option value="ar">🇸🇦 العربية</option>
+                    <option value="en">🇬🇧 English</option>
+                    <option value="fr">🇫🇷 Français</option>
+                    <option value="es">🇪🇸 Español</option>
+                    <option value="de">🇩🇪 Deutsch</option>
+                    <option value="it">🇮🇹 Italiano</option>
+                    <option value="sv">🇸🇪 Svenska</option>
+                </select>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="py-16 text-center max-w-5xl mx-auto px-6 space-y-6">
+        <div class="inline-flex items-center px-5 py-2 rounded-full bg-cyan-950/60 border border-cyan-500/40 text-cyan-300 text-xs font-black shadow-inner">
+            <span x-text="t.badge"></span>
+        </div>
+        <h1 class="text-2xl lg:text-5xl font-black leading-tight text-white tracking-tight" x-text="t.title"></h1>
+        <p class="text-sm lg:text-base text-slate-400 max-w-3xl mx-auto leading-relaxed" x-text="t.desc"></p>
+    </header>
+
+    <!-- Target Sectors (Human Dignity Focus) -->
+    <section id="sectors" class="py-16 max-w-7xl mx-auto px-6 space-y-8">
+        <div class="text-center space-y-2">
+            <h2 class="text-xs font-bold text-cyan-400 tracking-widest uppercase" x-text="t.sectorsSub"></h2>
+            <h3 class="text-xl lg:text-3xl font-black text-white" x-text="t.sectorsTitle"></h3>
         </div>
 
-        <!-- 5. Market Potential & Scalability (10%) -->
-        <div class="max-w-4xl mx-auto mt-6">
-            <div class="bg-gray-800/60 p-6 rounded-xl border border-gray-700">
-                <div class="text-red-400 font-bold text-lg mb-2">5. Market Potential & Scalability (10%)</div>
-                <h3 class="text-xl font-semibold mb-2">Massive FemTech & Global Healthcare Disruption</h3>
-                <p class="text-gray-300 text-sm">
-                    Targeting high-growth global markets across FemTech, senior care, and specialized medical garments, offering a scalable, multi-billion-dollar commercial opportunity with a clear path to international expansion.
-                </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <template x-for="sector in t.sectorsList">
+                <div class="vip-card border border-slate-800 p-6 rounded-3xl space-y-3">
+                    <div class="text-cyan-400 font-bold text-sm" x-text="sector.title"></div>
+                    <p class="text-xs text-slate-300 leading-relaxed" x-text="sector.desc"></p>
+                </div>
+            </template>
+        </div>
+    </section>
+
+    <!-- Documentation & Secure Files -->
+    <section id="documentation" class="py-16 max-w-6xl mx-auto px-6 space-y-8">
+        <div class="text-center space-y-2">
+            <h2 class="text-xs font-bold text-cyan-400 tracking-widest uppercase" x-text="t.docSub"></h2>
+            <h3 class="text-xl lg:text-3xl font-black text-white" x-text="t.docTitle"></h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="vip-card border border-cyan-500/30 p-8 rounded-3xl shadow-2xl vip-glow flex flex-col justify-between space-y-6">
+                <div class="space-y-4">
+                    <div class="w-12 h-12 bg-cyan-500/10 border border-cyan-500/30 rounded-2xl flex items-center justify-center text-cyan-400 font-bold">PDF</div>
+                    <h4 class="text-lg font-black text-white" x-text="t.execTitle"></h4>
+                    <p class="text-xs text-slate-300 leading-relaxed" x-text="t.execDesc"></p>
+                </div>
+                <button @click="openModal(t.execTitle)" class="w-full py-3 bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold rounded-2xl transition shadow-lg" x-text="t.btnViewPdf"></button>
+            </div>
+
+            <div class="vip-card border border-cyan-500/30 p-8 rounded-3xl shadow-2xl vip-glow flex flex-col justify-between space-y-6">
+                <div class="space-y-4">
+                    <div class="w-12 h-12 bg-cyan-500/10 border border-cyan-500/30 rounded-2xl flex items-center justify-center text-cyan-400 font-bold">NDA</div>
+                    <h4 class="text-lg font-black text-white" x-text="t.ndaTitle"></h4>
+                    <p class="text-xs text-slate-300 leading-relaxed" x-text="t.ndaDesc"></p>
+                </div>
+                <button @click="openModal(t.ndaTitle)" class="w-full py-3 bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold rounded-2xl transition shadow-lg" x-text="t.btnViewNda"></button>
             </div>
         </div>
     </section>
 
+    <!-- Contact Developer (Nazih Osman) -->
+    <section id="contact" class="py-16 max-w-4xl mx-auto px-6">
+        <div class="vip-card border border-cyan-500/40 p-8 lg:p-12 rounded-3xl shadow-2xl space-y-8 vip-glow">
+            <div class="text-center space-y-2">
+                <h3 class="text-2xl font-black text-white" x-text="t.contactTitle"></h3>
+                <p class="text-xs text-slate-400" x-text="t.contactSub"></p>
+            </div>
+
+            <form @submit.prevent="submitForm" class="space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <input type="text" required :placeholder="t.placeholderName" class="w-full bg-slate-950 border border-slate-800 rounded-2xl px-4 py-3 text-xs text-white outline-none focus:border-cyan-500 transition">
+                    <input type="email" required :placeholder="t.placeholderEmail" class="w-full bg-slate-950 border border-slate-800 rounded-2xl px-4 py-3 text-xs text-white outline-none focus:border-cyan-500 transition">
+                </div>
+                <textarea rows="4" required :placeholder="t.placeholderMsg" class="w-full bg-slate-950 border border-slate-800 rounded-2xl p-4 text-xs text-white outline-none focus:border-cyan-500 transition"></textarea>
+                <button type="submit" class="w-full py-4 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white text-xs font-bold rounded-2xl shadow-xl transition" x-text="t.btnSend"></button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-slate-900 text-center space-y-2">
+        <div class="text-xs font-black text-white tracking-widest">InnoDignity™ - NAZIH OSMAN</div>
+        <p class="text-[10px] text-slate-500 font-mono" x-text="t.rights"></p>
+        <p class="text-[9px] text-cyan-400 font-mono" x-text="t.confidential"></p>
+    </footer>
+
+    <!-- Modal -->
+    <div x-show="showModal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-6">
+        <div class="vip-card border border-cyan-500/40 w-full max-w-3xl p-6 rounded-3xl space-y-6">
+            <div class="flex justify-between items-center border-b border-slate-800 pb-4">
+                <h3 class="text-sm font-black text-cyan-300" x-text="modalTitle"></h3>
+                <button @click="showModal = false" class="text-slate-400 hover:text-white font-bold">✕</button>
+            </div>
+            <div class="bg-slate-950 border border-slate-800 rounded-2xl p-8 text-center space-y-4">
+                <p class="text-xs text-slate-300 leading-relaxed" x-text="t.modalNotice"></p>
+                <div class="text-cyan-400 font-mono text-xs" x-text="t.modalSecurity"></div>
+            </div>
+            <button @click="showModal = false" class="w-full py-3 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-2xl" x-text="t.btnClose"></button>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            ar: {
+                navSectors: "الفئات المستهدفة", navDocs: "التوثيق والأمان", navContact: "تواصل مع المبتكر",
+                badge: "✨ نظام ذكي حيوي مستقل لحفظ الكرامة البشرية",
+                title: "InnoDignity Ecosystem",
+                desc: "منظومة سيادية متكاملة مصممة هندسياً لتوفير رعاية استباقية فائقة، وتحصين استقلالية الإنسان وكرامته بإدارة الذكاء الاصطناعي المحلي الآمن.",
+                sectorsSub: "نطاق الحماية الإنسانية", sectorsTitle: "الفئات المستفيدة من المنظومة السيادية",
+                sectorsList: [
+                    { title: "👴 كبار السن", desc: "توفير الدعم الحركي وتغيير الوضعيات باستقلالية تامة دون الحاجة لمساعدة مستمرة." },
+                    { title: "♿ ذوو الاحتياجات الخاصة", desc: "تمكين تام واستعادة القدرة على التنقل والجلوس والوقوف بأمان وموثوقية عالية." },
+                    { title: "👶 الأطفال الخدج", desc: "حفاض ذكي حيوي متطور لمراقبة المؤشرات الصحية بدقة فائقة وحماية فائقة للبشرة." },
+                    { title: "🚗 السائقون", desc: "أنظمة مقاعد ذكية تمنع الإجهاد وتحافظ على التركيز والوضعيات الصحية أثناء القيادة الطويلة." },
+                    { title: "🧭 المتجولون والمستكشفون", desc: "أجهزة استشعار ورداء حيوي خفيف يدعم الحماية الذاتية والاستجابة الاستباقية للظروف." },
+                    { title: "🌸 الرعاية النسائية (FemTech)", desc: "تطبيقات رعاية حيوية متقدمة مصممة خصيصاً للخصوصية المطلقة والراحة التامة." }
+                ],
+                docSub: "الوثائق الرسمية والأمان", docTitle: "الملف التنفيذي واتفاقية عدم الإفصاح (NDA)",
+                execTitle: "الملف التنفيذي للمشروع (Executive Summary)", execDesc: "ملخص هندسي وتجاري شامل يوضح القيمة السوقية للمنظومة ونموذج العمل الموجه للشركاء.",
+                ndaTitle: "اتفاقية عدم الإفصاح وحماية الأسرار (NDA)", ndaDesc: "حماية كاملة للملكية الفكرية والأسرار التقنية للمنظومة وفق أعلى معايير الأمان الدولي.",
+                btnViewPdf: "عرض الملف التنفيذي (PDF)", btnViewNda: "عرض اتفاقية NDA",
+                contactTitle: "تواصل مع المؤسس والمبتكر Nazih Osman", contactSub: "للتنسيق الاستراتيجي وعروض الشراكة والتمويل البحثي.",
+                placeholderName: "الاسم الكامل / الجهة", placeholderEmail: "البريد الإلكتروني الرسمي", placeholderMsg: "رسالتك أو استفسارك الاستراتيجي...",
+                btnSend: "إرسال الرسالة بشكل آمن",
+                rights: "© 2026 InnoDignity - Nazih Osman. All Rights Reserved.",
+                confidential: "جميع الأسرار التقنية والمستندات محمية بموجب حقوق الملكية الفكرية.",
+                modalNotice: "هذا المستند محمي باتفاقية سرية صارمة. يتم عرض النسخة التنفيذية المعتمدة للشركاء المعتمدين.",
+                modalSecurity: "🔒 Secured Sovereign Document - Encrypted Offline View",
+                btnClose: "إغلاق", alertSuccess: "تم إرسال رسالتك بنجاح إلى المبتكر Nazih Osman. شكراً لتواصلك."
+            },
+            en: {
+                navSectors: "Target Sectors", navDocs: "Documentation", navContact: "Contact Innovator",
+                badge: "✨ Independent Bio-Intelligent System Preserving Human Dignity",
+                title: "InnoDignity Ecosystem",
+                desc: "An integrated sovereign ecosystem engineered to provide proactive care, securing human independence and dignity via local sovereign AI.",
+                sectorsSub: "Human Protection Scope", sectorsTitle: "Beneficiary Sectors of the Sovereign System",
+                sectorsList: [
+                    { title: "👴 Elderly", desc: "Providing mobility support and position changes independently without continuous assistance." },
+                    { title: "♿ People with Disabilities", desc: "Full empowerment and restoration of mobility, sitting, and standing safely." },
+                    { title: "👶 Premature Infants", desc: "Advanced bio-smart diaper monitoring health vitals with supreme skin protection." },
+                    { title: "🚗 Drivers", desc: "Smart seating systems preventing fatigue and maintaining healthy posture during long drives." },
+                    { title: "🧭 Wanderers & Explorers", desc: "Lightweight bio-garments supporting self-protection and proactive environmental response." },
+                    { title: "🌸 Women's Care (FemTech)", desc: "Advanced bio-care applications designed specifically for absolute privacy and comfort." }
+                ],
+                docSub: "Official Documents & Security", docTitle: "Executive Summary & NDA",
+                execTitle: "Project Executive Summary", execDesc: "Comprehensive engineering and commercial summary detailing market value and partner model.",
+                ndaTitle: "Non-Disclosure Agreement (NDA)", ndaDesc: "Complete intellectual property and technical secret protection under international standards.",
+                btnViewPdf: "View Executive Summary (PDF)", btnViewNda: "View NDA Agreement",
+                contactTitle: "Contact Founder & Lead Developer Nazih Osman", contactSub: "For strategic coordination, partnerships, and R&D funding.",
+                placeholderName: "Full Name / Organization", placeholderEmail: "Official Email Address", placeholderMsg: "Your strategic message...",
+                btnSend: "Send Secure Message",
+                rights: "© 2026 InnoDignity - Nazih Osman. All Rights Reserved.",
+                confidential: "All technical secrets and documents are protected under IP laws.",
+                modalNotice: "This document is strictly protected. Authorized executive preview only.",
+                modalSecurity: "🔒 Secured Sovereign Document - Encrypted Offline View",
+                btnClose: "Close", alertSuccess: "Your message has been successfully sent to Nazih Osman."
+            },
+            fr: {
+                navSectors: "Secteurs", navDocs: "Documentation", navContact: "Contact",
+                badge: "✨ Système Bio-Intelligent Indépendant Préservant la Dignité Humaine",
+                title: "InnoDignity Ecosystem",
+                desc: "Un écosystème souverain intégré conçu pour offrir des soins proactifs et préserver la dignité humaine.",
+                sectorsSub: "Portée de Protection", sectorsTitle: "Secteurs Bénéficiaires du Système Souverain",
+                sectorsList: [
+                    { title: "👴 Personnes Âgées", desc: "Support de mobilité et changement de position en toute autonomie." },
+                    { title: "♿ Personnes Handicapées", desc: "Autonomie complète et restauration de la mobilité en toute sécurité." },
+                    { title: "👶 Nourrissons Prématurés", desc: "Couche bio-intelligente avancée pour surveiller les signes vitaux." },
+                    { title: "🚗 Conducteurs", desc: "Sièges intelligents prévenant la fatigue et maintenant une posture saine." },
+                    { title: "🧭 Voyageurs & Explorateurs", desc: "Vêtements bio légers pour une protection proactive." },
+                    { title: "🌸 Soins Féminins (FemTech)", desc: "Applications de soins avancées conçues pour une intimité absolue." }
+                ],
+                docSub: "Documents Officiels", docTitle: "Résumé Exécutif & NDA",
+                execTitle: "Résumé Exécutif du Projet", execDesc: "Résumé technique et commercial complet.",
+                ndaTitle: "Accord de Non-Divulgation (NDA)", ndaDesc: "Protection complète de la propriété intellectuelle.",
+                btnViewPdf: "Voir le Résumé (PDF)", btnViewNda: "Voir l'Accord NDA",
+                contactTitle: "Contactez le Fondateur Nazih Osman", contactSub: "Pour la coordination stratégique et partenariats.",
+                placeholderName: "Nom Complet / Organisation", placeholderEmail: "Email Officiel", placeholderMsg: "Votre message...",
+                btnSend: "Envoyer le Message",
+                rights: "© 2026 InnoDignity - Nazih Osman. Tous droits réservés.",
+                confidential: "Tous les secrets techniques sont protégés.",
+                modalNotice: "Ce document est strictement protégé. Aperçu exécutif autorisé.",
+                modalSecurity: "🔒 Secured Sovereign Document - Encrypted Offline View",
+                btnClose: "Fermer", alertSuccess: "Votre message a été envoyé avec succès à Nazih Osman."
+            },
+            es: {
+                navSectors: "Sectores", navDocs: "Documentación", navContact: "Contacto",
+                badge: "✨ Sistema Bio-Inteligente Independiente que Preserva la Dignidad Humana",
+                title: "InnoDignity Ecosystem",
+                desc: "Un ecosistema soberano integrado diseñado para brindar atención proactiva y asegurar la dignidad humana.",
+                sectorsSub: "Alcance de Protección", sectorsTitle: "Sectores Beneficiarios del Sistema Soberano",
+                sectorsList: [
+                    { title: "👴 Adultos Mayores", desc: "Soporte de movilidad y cambio de postura de forma independiente." },
+                    { title: "♿ Personas con Discapacidad", desc: "Empoderamiento total y restauración de la movilidad segura." },
+                    { title: "👶 Bebés Prematuros", desc: "Pañal bio-inteligente avanzado para monitorear signos vitales." },
+                    { title: "🚗 Conductores", desc: "Asientos inteligentes que previenen la fatiga y mantienen una postura saludable." },
+                    { title: "🧭 Exploradores y Viajeros", desc: "Prendas bio-inteligentes ligeras para protección ambiental." },
+                    { title: "🌸 Cuidado Femenino (FemTech)", desc: "Aplicaciones de bio-cuidado avanzadas diseñadas para privacidad absoluta." }
+                ],
+                docSub: "Documentos Oficiales", docTitle: "Resumen Ejecutivo y NDA",
+                execTitle: "Resumen Ejecutivo del Proyecto", execDesc: "Resumen técnico y comercial detallado.",
+                ndaTitle: "Acuerdo de Confidencialidad (NDA)", ndaDesc: "Protección total de la propiedad intelectual y secretos técnicos.",
+                btnViewPdf: "Ver Resumen Ejecutivo (PDF)", btnViewNda: "Ver Acuerdo NDA",
+                contactTitle: "Contactar al Fundador Nazih Osman", contactSub: "Para coordinación estratégica y financiación en I+D.",
+                placeholderName: "Nombre Completo / Organización", placeholderEmail: "Correo Oficial", placeholderMsg: "Su mensaje estratégico...",
+                btnSend: "Enviar Mensaje de Forma Segura",
+                rights: "© 2026 InnoDignity - Nazih Osman. Todos los derechos reservados.",
+                confidential: "Todos los secretos técnicos están protegidos por leyes de PI.",
+                modalNotice: "Este documento está protegido bajo estricta confidencialidad.",
+                modalSecurity: "🔒 Secured Sovereign Document - Encrypted Offline View",
+                btnClose: "Cerrar", alertSuccess: "Su mensaje ha sido enviado exitosamente a Nazih Osman."
+            },
+            de: {
+                navSectors: "Sektoren", navDocs: "Dokumentation", navContact: "Kontakt",
+                badge: "✨ Unabhängiges Bio-Intelligentes System zur Wahrung der Menschenwürde",
+                title: "InnoDignity Ecosystem",
+                desc: "Ein integriertes souveränes Ökosystem zur Gewährleistung proaktiver Pflege und menschlicher Unabhängigkeit.",
+                sectorsSub: "Schutzbereich", sectorsTitle: "Begünstigte Sektoren des souveränen Systems",
+                sectorsList: [
+                    { title: "👴 Ältere Menschen", desc: "Mobilitätsunterstützung und Positionswechsel in völliger Autonomie." },
+                    { title: "♿ Menschen mit Behinderungen", desc: "Vollständige Befähigung und sichere Wiederherstellung der Mobilität." },
+                    { title: "👶 Frühgeborene", desc: "Fortschrittliche bio-intelligente Windel zur Überwachung von Vitalwerten." },
+                    { title: "🚗 Autofahrer", desc: "Intelligente Sitzsysteme zur Vermeidung von Ermüdung." },
+                    { title: "🧭 Wanderer & Entdecker", desc: "Leichte Bio-Kleidung zur proaktiven Selbstrettung." },
+                    { title: "🌸 Frauenpflege (FemTech)", desc: "Fortschrittliche Bio-Pflegeanwendungen für absolute Privatsphäre." }
+                ],
+                docSub: "Offizielle Dokumente", docTitle: "Executive Summary & NDA",
+                execTitle: "Projekt Executive Summary", execDesc: "Umfassende technische und kommerzielle Zusammenfassung.",
+                ndaTitle: "Geheimhaltungsvereinbarung (NDA)", ndaDesc: "Vollständiger Schutz des geistigen Eigentums.",
+                btnViewPdf: "Executive Summary anzeigen (PDF)", btnViewNda: "NDA anzeigen",
+                contactTitle: "Gründer Nazih Osman kontaktieren", contactSub: "Für strategische Koordination und Partnerschaften.",
+                placeholderName: "Vollständiger Name / Organisation", placeholderEmail: "Offizielle E-Mail", placeholderMsg: "Ihre Nachricht...",
+                btnSend: "Sichere Nachricht senden",
+                rights: "© 2026 InnoDignity - Nazih Osman. Alle Rechte vorbehalten.",
+                confidential: "Alle technischen Geheimnisse sind geschützt.",
+                modalNotice: "Dieses Dokument ist streng vertraulich geschützt.",
+                modalSecurity: "🔒 Secured Sovereign Document - Encrypted Offline View",
+                btnClose: "Schließen", alertSuccess: "Ihre Nachricht wurde erfolgreich an Nazih Osman gesendet."
+            },
+            it: {
+                navSectors: "Settori", navDocs: "Documentazione", navContact: "Contatta",
+                badge: "✨ Sistema Bio-Intelligente Indipendente a Tutela della Dignità Umana",
+                title: "InnoDignity Ecosystem",
+                desc: "Un ecosistema sovrano integrato progettato per fornire cure proattive e preservare la dignità umana.",
+                sectorsSub: "Ambito di Protezione", sectorsTitle: "Settori Beneficiari del Sistema Sovrano",
+                sectorsList: [
+                    { title: "👴 Anziani", desc: "Supporto alla mobilità e cambio di posizione in totale autonomia." },
+                    { title: "♿ Persone con Disabilità", desc: "Piena autonomia e ripristino della mobilità in sicurezza." },
+                    { title: "👶 Neonati Pretermine", desc: "Pannolino bio-intelligente avanzato per il monitoraggio vitale." },
+                    { title: "🚗 Guidatori", desc: "Sistemi di seduta intelligenti che prevengono l'affaticamento." },
+                    { title: "🧭 Viaggiatori ed Esploratori", desc: "Indumenti bio leggeri per la protezione ambientale proattiva." },
+                    { title: "🌸 Cura Femminile (FemTech)", desc: "Applicazioni di bio-cura avanzate per la massima privacy." }
+                ],
+                docSub: "Documenti Ufficiali", docTitle: "Sommario Esecutivo e NDA",
+                execTitle: "Sommario Esecutivo del Progetto", execDesc: "Riepilogo tecnico e commerciale completo.",
+                ndaTitle: "Accordo di Non Divulgazione (NDA)", ndaDesc: "Protezione completa della proprietà intellettuale.",
+                btnViewPdf: "Visualizza Sommario (PDF)", btnViewNda: "Visualizza NDA",
+                contactTitle: "Contatta il Fondatore Nazih Osman", contactSub: "Per coordinamento strategico e finanziamenti R&D.",
+                placeholderName: "Nome Completo / Organizzazione", placeholderEmail: "Email Ufficiale", placeholderMsg: "Il tuo messaggio...",
+                btnSend: "Invia Messaggio Sicuro",
+                rights: "© 2026 InnoDignity - Nazih Osman. Tutti i diritti riservati.",
+                confidential: "Tutti i segreti tecnici sono protetti.",
+                modalNotice: "Questo documento è protetto da severa riservatezza.",
+                modalSecurity: "🔒 Secured Sovereign Document - Encrypted Offline View",
+                btnClose: "Chiudi", alertSuccess: "Il tuo messaggio è stato inviato con successo a Nazih Osman."
+            },
+            sv: {
+                navSectors: "Sektorer", navDocs: "Dokumentation", navContact: "Kontakt",
+                badge: "✨ Ett oberoende bio-intelligent system som värnar om mänsklig värdighet",
+                title: "InnoDignity Ecosystem",
+                desc: "Ett integrerat suveränt ekosystem konstruerat för att erbjuda proaktiv vård och säkerställa mänsklig självständighet.",
+                sectorsSub: "Skyddsområde", sectorsTitle: "Mottagarsektorer för det suveräna systemet",
+                sectorsList: [
+                    { title: "👴 Äldre", desc: "Mobilitetsstöd och lägesändring helt självständigt utan ständig hjälp." },
+                    { title: "♿ Personer med funktionsnedsättning", desc: "Fullständig egenmakt och säker återställd rörlighet." },
+                    { title: "👶 Prematurfödda barn", desc: "Avancerad bio-smart blöja som övervakar hälsotillstånd med hudskydd." },
+                    { title: "🚗 Förare", desc: "Smarta sätesystem som motverkar trötthet under långa bilresor." },
+                    { title: "🧭 Resenärer & Utforskare", desc: "Lätta bio-kläder som stöder självskydd och proaktiv respons." },
+                    { title: "🌸 Kvinnohälsa (FemTech)", desc: "Avancerade bio-vårdapplikationer designade för absolut integritet." }
+                ],
+                docSub: "Officiella Dokument", docTitle: "Executive Summary & NDA",
+                execTitle: "Projektets Executive Summary", execDesc: "Omfattande teknisk och kommersiell sammanfattning.",
+                ndaTitle: "Sekretessavtal (NDA)", ndaDesc: "Fullständigt skydd av immateriella rättigheter och tekniska hemligheter.",
+                btnViewPdf: "Visa Executive Summary (PDF)", btnViewNda: "Visa NDA-avtal",
+                contactTitle: "Kontakta Grundare & Utvecklare Nazih Osman", contactSub: "För strategisk samordning och forskningssamarbeten.",
+                placeholderName: "Fullständigt namn / Organisation", placeholderEmail: "Officiell E-postadress", placeholderMsg: "Ditt strategiska meddelande...",
+                btnSend: "Skicka säkert meddelande",
+                rights: "© 2026 InnoDignity - Nazih Osman. Alla rättigheter förbehållna.",
+                confidential: "Alla tekniska hemligheter är skyddade enligt lag.",
+                modalNotice: "Detta dokument skyddas av strikt sekretess.",
+                modalSecurity: "🔒 Secured Sovereign Document - Encrypted Offline View",
+                btnClose: "Stäng", alertSuccess: "Ditt meddelande har skickats framgångsrikt till Nazih Osman."
+            }
+        };
+
+        function innoPlatform() {
+            return {
+                lang: 'ar',
+                get t() { return translations[this.lang]; },
+                showModal: false,
+                modalTitle: '',
+                changeLang(newLang) { this.lang = newLang; },
+                openModal(title) {
+                    this.modalTitle = title;
+                    this.showModal = true;
+                },
+                submitForm() {
+                    alert(this.t.alertSuccess);
+                }
+            }
+        }
+    </script>
 </body>
 </html>
