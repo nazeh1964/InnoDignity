@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html :dir="lang === 'ar' ? 'rtl' : 'ltr'" :lang="lang" x-data="multiLangPlatform()">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InnoDignity | Nazih Osman - VIP Sovereign Technology</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <style> 
+        body { font-family: 'Cairo', 'Montserrat', sans-serif; } 
+        .vip-card { background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.8)); backdrop-filter: blur(16px); }
+        .vip-glow { box-shadow: 0 0 40px rgba(6, 182, 212, 0.12); }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased selection:bg-cyan-500 selection:text-white">
+
+    <!-- Top Navigation Bar -->
+    <nav class="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-xl border-b border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-slate-900 rounded-xl border border-cyan-500/50 flex items-center justify-center shadow-inner">
+                    <svg class="w-5 h-5 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 8v8m-4-4h8" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400"/>
+                    </svg>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-lg font-black tracking-wider text-white">InnoDignity</span>
+                        <span class="px-2 py-0.5 bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-[9px] font-bold rounded-full">VIP 5-STAR</span>
+                    </div>
+                    <span class="text-[10px] font-bold text-cyan-400 tracking-[0.2em] block">NAZIH OSMAN</span>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-3">
+                <select x-model="lang" @change="changeLang(lang)" class="bg-slate-900 border border-cyan-500/40 text-cyan-300 text-xs font-bold rounded-xl px-3 py-2 outline-none cursor-pointer shadow-lg hover:border-cyan-400 transition">
+                    <option value="ar">🇸🇦 العربية</option>
+                    <option value="en">🇬🇧 English</option>
+                    <option value="fr">🇫🇷 Français</option>
+                    <option value="es">🇪🇸 Español</option>
+                    <option value="de">🇩🇪 Deutsch</option>
+                    <option value="it">🇮🇹 Italiano</option>
+                </select>
+                <a href="#simulation" class="hidden md:inline-flex items-center px-5 py-2.5 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white text-xs font-bold rounded-xl shadow-lg transition" x-text="t.navBtn"></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Header -->
+    <header class="py-16 text-center max-w-5xl mx-auto px-6 space-y-6">
+        <div class="inline-flex items-center px-5 py-2 rounded-full bg-cyan-950/60 border border-cyan-500/40 text-cyan-300 text-xs font-black shadow-inner">
+            <span x-text="t.sufferingSentence"></span>
+        </div>
+        <h1 class="text-2xl lg:text-5xl font-black leading-tight text-white tracking-tight" x-text="t.vipSentence"></h1>
+        <p class="text-sm lg:text-base text-slate-400 max-w-2xl mx-auto leading-relaxed" x-text="t.heroDesc"></p>
+    </header>
+
+    <!-- Strategic Comparison Cards -->
+    <section class="py-12 max-w-6xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-rose-950/10 border border-rose-900/30 p-6 lg:p-8 rounded-3xl space-y-4">
+                <h4 class="text-sm font-black text-rose-400" x-text="t.badTitle"></h4>
+                <ul class="space-y-3 text-xs text-slate-300">
+                    <template x-for="item in t.badList">
+                        <li class="flex items-start gap-2"><span class="text-rose-500 font-bold">•</span><span x-text="item"></span></li>
+                    </template>
+                </ul>
+            </div>
+            <div class="vip-card border border-cyan-500/30 p-6 lg:p-8 rounded-3xl space-y-4 vip-glow">
+                <h4 class="text-sm font-black text-cyan-400" x-text="t.goodTitle"></h4>
+                <ul class="space-y-3 text-xs text-slate-300">
+                    <template x-for="item in t.goodList">
+                        <li class="flex items-start gap-2"><span class="text-cyan-400 font-bold">✓</span><span x-text="item"></span></li>
+                    </template>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Control Center & Simulation (Clean Non-Overlapping Grid) -->
+    <section id="simulation" class="py-16 max-w-7xl mx-auto px-6 space-y-10">
+        <div class="text-center space-y-2">
+            <h2 class="text-xs font-bold text-cyan-400 tracking-widest uppercase" x-text="t.simSub"></h2>
+            <h3 class="text-xl lg:text-3xl font-black text-white" x-text="t.simTitle"></h3>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- Component 1: Bed Posture Control -->
+            <div class="vip-card border border-slate-800 p-6 rounded-3xl shadow-2xl flex flex-col justify-between space-y-6">
+                <div class="space-y-4">
+                    <div class="border-b border-slate-800 pb-3">
+                        <h4 class="text-xs font-extrabold text-cyan-300 uppercase tracking-wider" x-text="t.simBedTitle"></h4>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2">
+                        <button @click="setBed('lying')" :class="bedPosture==='lying'?'bg-cyan-600 text-white shadow-lg':'bg-slate-900 text-slate-300 hover:bg-slate-800'" class="py-3 text-xs font-bold rounded-2xl border border-slate-800 transition" x-text="t.btnLying"></button>
+                        <button @click="setBed('sitting')" :class="bedPosture==='sitting'?'bg-cyan-600 text-white shadow-lg':'bg-slate-900 text-slate-300 hover:bg-slate-800'" class="py-3 text-xs font-bold rounded-2xl border border-slate-800 transition" x-text="t.btnSitting"></button>
+                        <button @click="setBed('standing')" :class="bedPosture==='standing'?'bg-cyan-600 text-white shadow-lg':'bg-slate-900 text-slate-300 hover:bg-slate-800'" class="py-3 text-xs font-bold rounded-2xl border border-slate-800 transition" x-text="t.btnStanding"></button>
+                    </div>
+                </div>
+                <div class="text-xs text-cyan-300 bg-slate-950/80 p-4 rounded-2xl border border-slate-800 font-mono leading-relaxed min-h-[70px] flex items-center" x-text="bedText"></div>
+            </div>
+
+            <!-- Component 2: Biometric Telemetry -->
+            <div class="vip-card border border-cyan-500/30 rounded-3xl p-6 shadow-2xl flex flex-col justify-between space-y-6">
+                <div class="space-y-4">
+                    <div class="border-b border-slate-800 pb-3">
+                        <h4 class="text-xs font-extrabold text-cyan-300 uppercase tracking-wider" x-text="t.simRobotTitle"></h4>
+                    </div>
+                    <div class="bg-slate-950/90 border border-cyan-500/40 rounded-2xl p-5 text-center space-y-2">
+                        <div class="text-[11px] text-slate-400 font-semibold" x-text="t.robotSub"></div>
+                        <div class="text-3xl font-black text-cyan-400 font-mono tracking-wider" x-text="robotData.heartRate + ' BPM'"></div>
+                    </div>
+                </div>
+                <button @click="pulseRobot()" class="w-full py-3.5 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white text-xs font-bold rounded-2xl transition shadow-lg" x-text="t.btnSync"></button>
+            </div>
+
+            <!-- Component 3: Expert Logs & Diagnostics -->
+            <div class="vip-card border border-slate-800 p-6 rounded-3xl shadow-2xl flex flex-col justify-between space-y-4">
+                <div class="space-y-3">
+                    <div class="border-b border-slate-800 pb-3">
+                        <h4 class="text-xs font-extrabold text-cyan-300 uppercase tracking-wider" x-text="t.simLogTitle"></h4>
+                    </div>
+                    <div class="bg-slate-950/90 p-3.5 rounded-2xl h-36 overflow-y-auto font-mono text-[10px] space-y-2 border border-slate-800 text-slate-300 leading-relaxed">
+                        <template x-for="log in masterLogs"><div x-text="log"></div></template>
+                    </div>
+                </div>
+                <button @click="runFullExpertsSync()" class="w-full py-3.5 bg-slate-900 hover:bg-slate-800 text-cyan-300 text-xs font-bold rounded-2xl border border-cyan-500/30 transition shadow" x-text="t.btnExperts"></button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Professional Footer -->
+    <footer class="py-12 border-t border-slate-900 text-center space-y-1">
+        <div class="text-xs font-black text-white tracking-widest">InnoDignity™ - NAZIH OSMAN</div>
+        <p class="text-[10px] text-slate-500 font-mono">© 2026 Sovereign Bio-Intelligence Ecosystem. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const translations = {
+            ar: {
+                navBtn: "تجربة النموذج الحي",
+                sufferingSentence: "✨ هذا الابتكار ولد من رحم المعاناة",
+                vipSentence: "مشروع سيغير المفاهيم القديمة إلى أعلى مستوى VIP (5 نجوم)",
+                heroDesc: "InnoDignity تنهي الهدر البترولي والمعدني، وتحول رعاية المرضى وكبار السن إلى منتجعات سيادية ذكية تدار بأحدث أنظمة الذكاء الاصطناعي المحلي.",
+                badTitle: "❌ عيوب المنظومة القديمة (التقليدية)",
+                badList: ["استهلاك جائر للبترول في تصنيع ملايين أطنان البلاستيك.", "تلويث البيئة بالنفايات الصلبة والمواد الكيميائية.", "استنزاف المعادن عبر أجهزة رديئة تتلف بسرعة.", "تحطيم كرامة الإنسان واعتماده الكلي على الآخرين."],
+                goodTitle: "✨ ثورة InnoDignity (رفاهية VIP 5 نجوم)",
+                goodList: ["صفر نفايات بلاستيكية وبترولية عبر تقنيات مستدامة.", "بيئة نظيفة تماماً تخلو من العدوى والروائح بفضل هندسة أرخميدس.", "كفاءة هندسية عالية لعمر تشغيلي استثنائي للمعادن.", "استقلالية تامة واستعادة مطلقة لكرامة الإنسان."],
+                simSub: "غرفة التشغيل والتحكم الرقمي",
+                simTitle: "اختبر التفاعل الحي للمنظومة والخبراء",
+                simBedTitle: "السرير السيادي والرداء الذكي",
+                btnLying: "استلقاء",
+                btnSitting: "جلوس",
+                btnStanding: "وقوف",
+                simRobotTitle: "شاشة الروبوت البشري",
+                robotSub: "معدل نبض وضغط الأنسجة الحيوية",
+                btnSync: "تحديث المزامنة الحيوية",
+                simLogTitle: "تقارير وغرفة الخبراء",
+                btnExperts: "فحص الخبراء الشامل"
+            },
+            en: {
+                navBtn: "Live Demo",
+                sufferingSentence: "✨ This innovation was born from suffering",
+                vipSentence: "Transforming old concepts into the highest VIP level (5-Star)",
+                heroDesc: "InnoDignity eliminates waste, transforming care into smart sovereign resorts powered by local sovereign AI.",
+                badTitle: "❌ Legacy System Drawbacks",
+                badList: ["Excessive petroleum consumption for plastics.", "Environmental pollution through solid waste.", "Metal waste via poorly designed devices.", "Destruction of human dignity."],
+                goodTitle: "✨ The InnoDignity Revolution (VIP 5-Star)",
+                goodList: ["Zero plastic waste via sustainable textile tech.", "Clean environment free of infections and odors.", "High engineering efficiency for operational longevity.", "Complete independence and dignity restoration."],
+                simSub: "Digital Control Room",
+                simTitle: "Test Live System & Expert Interaction",
+                simBedTitle: "Sovereign Bed & Bio-Garment",
+                btnLying: "Lying",
+                btnSitting: "Sitting",
+                btnStanding: "Standing",
+                simRobotTitle: "Humanoid Robot Screen",
+                robotSub: "Tissue Pulse & Pressure Rate",
+                btnSync: "Update Biometric Sync",
+                simLogTitle: "Expert Panel Logs",
+                btnExperts: "Run Full Diagnostic"
+            },
+            fr: {
+                navBtn: "Démo en direct",
+                sufferingSentence: "✨ Cette innovation est née de la souffrance",
+                vipSentence: "Transformer les concepts au plus haut niveau VIP (5 étoiles)",
+                heroDesc: "InnoDignity élimine le gaspillage et transforme les soins en complexes souverains intelligents.",
+                badTitle: "❌ Inconvénients Traditionnels",
+                badList: ["Consommation excessive de plastique.", "Pollution environnementale.", "Gaspillage de métaux.", "Perte de la dignité humaine."],
+                goodTitle: "✨ La Révolution InnoDignity",
+                goodList: ["Zéro déchet plastique.", "Environnement propre et sans odeur.", "Haute efficacité et durabilité.", "Autonomie totale et dignité."],
+                simSub: "Salle de Contrôle",
+                simTitle: "Testez le Système en Direct",
+                simBedTitle: "Lit Souverain & Vêtement",
+                btnLying: "Couché",
+                btnSitting: "Assis",
+                btnStanding: "Debout",
+                simRobotTitle: "Écran du Robot",
+                robotSub: "Fréquence du Pouls",
+                btnSync: "Mettre à jour",
+                simLogTitle: "Rapports Experts",
+                btnExperts: "Diagnostic Complet"
+            },
+            es: {
+                navBtn: "Demostración",
+                sufferingSentence: "✨ Esta innovación nació del sufrimiento",
+                vipSentence: "Transformando conceptos al más alto nivel VIP (5 Estrellas)",
+                heroDesc: "InnoDignity elimina residuos transformando la atención en complejos soberanos.",
+                badTitle: "❌ Desventajas Antiguas",
+                badList: ["Excesivo consumo de plástico.", "Contaminación ambiental.", "Desperdicio de metales.", "Destrucción de la dignidad."],
+                goodTitle: "✨ La Revolución InnoDignity",
+                goodList: ["Cero residuos plásticos.", "Entorno limpio sin olores.", "Alta eficiencia y durabilidad.", "Independencia y dignidad."],
+                simSub: "Sala de Control",
+                simTitle: "Pruebe el Sistema en Vivo",
+                simBedTitle: "Cama Soberana y Prenda",
+                btnLying: "Acostado",
+                btnSitting: "Sentado",
+                btnStanding: "De pie",
+                simRobotTitle: "Pantalla Robot",
+                robotSub: "Ritmo de Pulso",
+                btnSync: "Actualizar",
+                simLogTitle: "Informes de Expertos",
+                btnExperts: "Diagnóstico Experto"
+            },
+            de: {
+                navBtn: "Live-Demo",
+                sufferingSentence: "✨ Diese Innovation entstammt dem Leiden",
+                vipSentence: "Transformation auf höchstem VIP-Niveau (5-Sterne)",
+                heroDesc: "InnoDignity beseitigt Verschwendung und wandelt Pflege in smarte Resorts.",
+                badTitle: "❌ Altsystem Nachteile",
+                badList: ["Übermäßiger Plastikverbrauch.", "Umweltverschmutzung.", "Metallverschwendung.", "Verlust der Würde."],
+                goodTitle: "✨ Die InnoDignity-Revolution",
+                goodList: ["Null Plastikmüll.", "Saubere, geruchfreie Umwelt.", "Hohe Langlebigkeit.", "Völlige Unabhängigkeit."],
+                simSub: "Kontrollraum",
+                simTitle: "Testen Sie das Live-System",
+                simBedTitle: "Souveränes Bett & Bio-Kleidung",
+                btnLying: "Liegend",
+                btnSitting: "Sitzend",
+                btnStanding: "Stehend",
+                simRobotTitle: "Roboter-Display",
+                robotSub: "Pulsrate",
+                btnSync: "Aktualisieren",
+                simLogTitle: "Expertenberichte",
+                btnExperts: "Expertendiagnose"
+            },
+            it: {
+                navBtn: "Demo dal vivo",
+                sufferingSentence: "✨ Questa innovazione è nata dalla sofferenza",
+                vipSentence: "Trasformare i concetti al massimo livello VIP (5 Stelle)",
+                heroDesc: "InnoDignity elimina gli sprechi trasformando l'assistenza in resort intelligenti.",
+                badTitle: "❌ Svantaggi Tradizionali",
+                badList: ["Consumo eccessivo di plastica.", "Inquinamento ambientale.", "Spreco di metalli.", "Perdita di dignità."],
+                goodTitle: "✨ La Rivoluzione InnoDignity",
+                goodList: ["Zero rifiuti di plastica.", "Ambiente pulito senza odori.", "Alta efficienza e durata.", "Piena indipendenza."],
+                simSub: "Sala di Controllo",
+                simTitle: "Testa il Sistema in Tempo Reale",
+                simBedTitle: "Letto Sovrano e Indumento",
+                btnLying: "Sdraiato",
+                btnSitting: "Seduto",
+                btnStanding: "In piedi",
+                simRobotTitle: "Schermo Robot",
+                robotSub: "Frequenza Polso",
+                btnSync: "Aggiorna",
+                simLogTitle: "Rapporti Esperti",
+                btnExperts: "Diagnostica Esperta"
+            }
+        };
+
+        function multiLangPlatform() {
+            return {
+                lang: 'ar',
+                get t() { return translations[this.lang]; },
+                bedPosture: 'lying',
+                bedText: 'وضع الاستلقاء الآمن وتوزيع الضغط (Safe Lying & Pressure Distribution)',
+                robotData: { heartRate: 72 },
+                masterLogs: [
+                    '[Director Nazih Osman]: VIP Sovereign Platform initialized.',
+                    '[Ecosystem]: Anti-waste & dignity protocols active.'
+                ],
+                changeLang(newLang) {
+                    this.lang = newLang;
+                },
+                setBed(type) {
+                    this.bedPosture = type;
+                    if(type === 'lying') this.bedText = 'وضع الاستلقاء الآمن وتوزيع الضغط (Safe Lying & Pressure Distribution)';
+                    if(type === 'sitting') this.bedText = 'وضع الجلوس للطعام والتفاعل الاجتماعي (Dining & Interaction Sitting)';
+                    if(type === 'standing') this.bedText = 'وضع دعم الوقوف وتثبيت الأقدام لاستعادة الحركة (Standing Support & Mobility)';
+                    this.masterLogs.unshift(`[${new Date().toLocaleTimeString()}] [Mechatronics]: Bed posture -> ${type.toUpperCase()}`);
+                },
+                pulseRobot() {
+                    this.robotData.heartRate = Math.floor(70 + Math.random() * 6);
+                    this.masterLogs.unshift(`[${new Date().toLocaleTimeString()}] [Sovereign AI]: Biometric sync verified.`);
+                },
+                runFullExpertsSync() {
+                    this.masterLogs.unshift(`[${new Date().toLocaleTimeString()}] [All 7 Experts]: VIP Global ecosystem verified.`);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,215 @@
+.nora-audio-button {
+    align-items: center;
+    background: #ffd700;
+    border: 0;
+    border-radius: 50%;
+    color: #0b1d3a;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 13px;
+    height: 28px;
+    justify-content: center;
+    margin: 0 4px;
+    padding: 0;
+    width: 28px;
+}
+
+.nora-audio-button:hover,
+.nora-audio-button:focus-visible {
+    background: #ffffff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+    outline: none;
+}
+
+.nora-chat {
+    bottom: 20px;
+    direction: ltr;
+    left: 20px;
+    position: fixed;
+    z-index: 1000;
+}
+
+.nora-chat-toggle {
+    align-items: center;
+    background: #00e5ff;
+    border: 2px solid #ffd700;
+    border-radius: 50%;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+    color: #0b1d3a;
+    cursor: pointer;
+    display: flex;
+    font-size: 24px;
+    height: 58px;
+    justify-content: center;
+    width: 58px;
+}
+
+.nora-chat-toggle:hover,
+.nora-chat-toggle:focus-visible {
+    transform: translateY(-2px);
+    outline: none;
+}
+
+.nora-chat-panel {
+    background: #0e2344;
+    border: 1px solid #ffd700;
+    border-radius: 12px;
+    bottom: 70px;
+    box-shadow: 0 5px 24px rgba(0, 0, 0, 0.45);
+    color: #ffffff;
+    display: none;
+    padding: 14px;
+    position: absolute;
+    width: min(300px, calc(100vw - 40px));
+}
+
+.nora-chat-panel.is-open {
+    display: block;
+}
+
+.nora-chat-panel h2 {
+    color: #ffd700;
+    font-size: 16px;
+    margin: 0 0 10px;
+}
+
+.nora-chat-form {
+    display: flex;
+    gap: 6px;
+}
+
+.nora-chat-form input {
+    border: 1px solid #00e5ff;
+    border-radius: 6px;
+    box-sizing: border-box;
+    min-width: 0;
+    padding: 8px;
+    width: 100%;
+}
+
+.nora-chat-form button {
+    background: #ffd700;
+    border: 0;
+    border-radius: 6px;
+    color: #0b1d3a;
+    cursor: pointer;
+    padding: 8px 10px;
+}
+
+.nora-chat-reply {
+    color: #e0f7fa;
+    font-size: 13px;
+    line-height: 1.4;
+    margin: 0 0 10px;
+}
+
+/* Chat controls - Greeting and Stop buttons */
+.nora-chat-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.nora-button {
+    border: 0;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 10px 12px;
+    transition: all 0.2s ease;
+    flex: 1;
+    white-space: nowrap;
+}
+
+.nora-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    outline: none;
+}
+
+.nora-button:active {
+    transform: translateY(0);
+}
+
+/* Greeting button - Primary action (Green/Cyan) */
+.nora-greeting-btn {
+    background: linear-gradient(135deg, #00e5ff 0%, #00bcd4 100%);
+    color: #0b1d3a;
+    box-shadow: 0 2px 8px rgba(0, 229, 255, 0.3);
+}
+
+.nora-greeting-btn:hover {
+    background: linear-gradient(135deg, #00f7ff 0%, #00d4e5 100%);
+    box-shadow: 0 4px 12px rgba(0, 229, 255, 0.5);
+}
+
+.nora-greeting-btn:focus-visible {
+    outline: 2px solid #ffd700;
+    outline-offset: 2px;
+}
+
+/* Stop button - Secondary action (Red/Orange) */
+.nora-stop-btn {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
+}
+
+.nora-stop-btn:hover {
+    background: linear-gradient(135deg, #ff7b7b 0%, #ff6464 100%);
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.5);
+}
+
+.nora-stop-btn:focus-visible {
+    outline: 2px solid #ffd700;
+    outline-offset: 2px;
+}
+
+/* Button icons */
+.nora-btn-icon {
+    font-size: 14px;
+    display: inline-block;
+}
+
+.nora-btn-text {
+    font-size: 12px;
+}
+
+/* Chat header styling */
+.nora-chat-header {
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+    padding-bottom: 8px;
+}
+
+.nora-chat-header h2 {
+    margin: 0 0 4px;
+}
+
+.nora-chat-subtitle {
+    font-size: 11px;
+    color: #00e5ff;
+    margin: 0;
+}
+
+@media (max-width: 480px) {
+    .nora-chat {
+        bottom: 14px;
+        left: 14px;
+    }
+    
+    .nora-button {
+        padding: 8px 10px;
+        font-size: 11px;
+    }
+    
+    .nora-btn-icon {
+        font-size: 13px;
+    }
+}

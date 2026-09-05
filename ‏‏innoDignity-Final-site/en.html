@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InnoDignity - Sovereign System for Human Dignity Restoration</title>
+    <link rel="stylesheet" href="innodignity-widget-style.css">
+    <link rel="stylesheet" href="nora-widget.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #0b1d3a, #142850, #1b365d);
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            text-align: center;
+        }
+        h1 {
+            color: #00e5ff;
+            margin-bottom: 5px;
+            font-size: 24px;
+        }
+        .project-tagline {
+            color: #ffd700;
+            font-size: 15px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+        }
+        .top-nav-bar {
+            background-color: rgba(14, 35, 68, 0.9);
+            border: 1px solid rgba(255, 215, 0, 0.4);
+            border-radius: 15px;
+            padding: 12px 20px;
+            max-width: 800px;
+            width: 100%;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            box-sizing: border-box;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.15);
+        }
+        .nora-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .nora-container img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 2px solid #ffd700;
+            object-fit: cover;
+        }
+        .nora-text {
+            text-align: left;
+        }
+        .nora-text .name {
+            color: #ffd700;
+            font-size: 13px;
+            font-weight: bold;
+        }
+        .nora-text .welcome {
+            color: #ffffff;
+            font-size: 12px;
+        }
+        .speak-top-btn {
+            background-color: #ffd700;
+            color: #0b1d3a;
+            border: none;
+            padding: 6px 14px;
+            font-size: 13px;
+            font-weight: bold;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .speak-top-btn:hover {
+            background-color: #ffffff;
+        }
+        .languages {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .languages a {
+            text-decoration: none;
+            color: #00e5ff;
+            font-size: 13px;
+            padding: 4px 8px;
+            border-bottom: 1px dashed #00e5ff;
+            transition: 0.3s;
+        }
+        .languages a:hover, .languages a.active {
+            color: #ffd700;
+            border-color: #ffd700;
+            font-weight: bold;
+        }
+        .content-box {
+            background-color: rgba(14, 35, 68, 0.9);
+            border: 1px solid #ffd700;
+            border-radius: 12px;
+            padding: 20px;
+            max-width: 800px;
+            width: 100%;
+            margin-bottom: 20px;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+            text-align: left;
+            box-sizing: border-box;
+        }
+        .content-box h3 {
+            color: #ffd700;
+            margin-top: 0;
+            font-size: 17px;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+            padding-bottom: 8px;
+            text-align: center;
+        }
+        .warning-box {
+            background-color: rgba(68, 14, 14, 0.8);
+            border: 1px solid #ff4d4d;
+            border-radius: 12px;
+            padding: 20px;
+            max-width: 800px;
+            width: 100%;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px rgba(255, 77, 77, 0.2);
+            text-align: left;
+            box-sizing: border-box;
+        }
+        .warning-box h3 {
+            color: #ff4d4d;
+            margin-top: 0;
+            font-size: 17px;
+            border-bottom: 1px solid rgba(255, 77, 77, 0.3);
+            padding-bottom: 8px;
+            text-align: center;
+        }
+        .contact-box-white {
+            background-color: #ffffff;
+            color: #0b1d3a;
+            border-radius: 12px;
+            padding: 20px;
+            max-width: 800px;
+            width: 100%;
+            margin-bottom: 30px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            box-sizing: border-box;
+        }
+        .contact-box-white h3 {
+            color: #0b1d3a;
+            margin-top: 0;
+            font-size: 17px;
+            border-bottom: 2px solid #ffd700;
+            padding-bottom: 8px;
+        }
+        .contact-box-white p {
+            font-size: 15px;
+            line-height: 1.8;
+            margin: 8px 0;
+            color: #0b1d3a;
+        }
+        .contact-box-white a {
+            color: #0b1d3a;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+        .text-desc {
+            font-size: 14px;
+            line-height: 1.8;
+            margin: 10px 0;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>InnoDignity - Sovereign Bio-Intelligence Ecosystem</h1>
+    <div class="project-tagline">A project born from the womb of suffering to restore human dignity</div>
+
+    <div class="top-nav-bar">
+        <div class="nora-container">
+            <img src="images/nora_avatar.png" alt="Nora">
+            <div class="nora-text">
+                <div class="name">Nora</div>
+                <div class="welcome">Welcoming you with love</div>
+            </div>
+            <button class="speak-top-btn" onclick="speakText()">Listen 🔊</button>
+        </div>
+
+        <div class="languages">
+            <a href="index.html">العربية</a>
+            <a href="en.html" class="active">English</a>
+            <a href="es.html">Español</a>
+            <a href="fr.html">Français</a>
+            <a href="de.html">Deutsch</a>
+        </div>
+    </div>
+
+    <div class="content-box">
+        <h3>About the Sovereign Innovation</h3>
+        <div class="text-desc">
+            The InnoDignity ecosystem integrates precision micro-mechanics with offline Sovereign Artificial Intelligence. We provide the Smart Bio-Garment delivering advanced proactive care that ensures absolute user privacy and independence without sharing vital data with the cloud.
+        </div>
+    </div>
+
+    <div class="warning-box">
+        <h3>The Problem and the Radical Solution</h3>
+        <div class="text-desc" style="color: #ffcccc;">
+            <strong>The Problem:</strong> Traditional care (like conventional diapers) traps moisture and odors, causing severe skin infections and acting as non-biodegradable plastic waste destroying nature for centuries.<br><br>
+            <strong>The Solution:</strong> The Smart Bio-Garment engineeringly resolves this suffering, achieving absolute sustainability and ending environmental and health defeat.
+        </div>
+    </div>
+
+    <div class="contact-box-white">
+        <h3>Direct Messaging and Communication Channels with the Founder</h3>
+        <p><strong>Founder & Lead Developer:</strong> Nazih Othman</p>
+        <p>📧 Email: <a href="mailto:nazehotman@gmail.com">nazehotman@gmail.com</a></p>
+        <p>📱 Phone / WhatsApp: <a href="tel:+972544943569">+972 54 494 3569</a></p>
+    </div>
+
+    <script>
+        function speakText() {
+            window.speechSynthesis.cancel();
+            let textToSpeak = "I am Nora, welcoming you with all love to our sovereign ecosystem. About the innovation: InnoDignity integrates precision mechanics with offline Sovereign AI. The problem: Traditional diapers cause skin infections and plastic waste destroying nature. The solution: The Smart Bio-Garment to achieve absolute sustainability and restore human dignity.";
+            let utterance = new SpeechSynthesisUtterance(textToSpeak);
+            utterance.lang = "en-US";
+            utterance.rate = 0.95;
+            window.speechSynthesis.speak(utterance);
+        }
+    </script>
+    <script src="hifi-tts-engine.js"></script>
+    <script src="innodignity-widget.js"></script>
+    <script src="nora-widget.js"></script>
+
+</body>
+</html>

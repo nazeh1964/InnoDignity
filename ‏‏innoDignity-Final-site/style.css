@@ -1,0 +1,151 @@
+:root {
+    --bg: radial-gradient(circle at top, #002b40, #000);
+    --text: #e0f7fa;
+    --box: rgba(255, 255, 255, 0.06);
+    --link: #00eaff;
+    --link-hover: #00ffcc;
+}
+
+.light-mode {
+    --bg: #f4f4f4;
+    --text: #222;
+    --box: rgba(0, 0, 0, 0.05);
+    --link: #0066aa;
+    --link-hover: #0099dd;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    font-family: Arial, sans-serif;
+    color: var(--text);
+    transition: 0.4s;
+    text-align: center;
+}
+
+.logo img {
+    width: 160px;
+    margin: 20px auto;
+    border-radius: 12px;
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+    animation: glow 3s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+    }
+    to {
+        box-shadow: 0 0 25px rgba(0, 255, 255, 0.8);
+    }
+}
+
+.mode-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--box);
+    padding: 10px 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    color: var(--text);
+    border: none;
+    transition: 0.3s;
+}
+
+.mode-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.container {
+    margin: 40px auto;
+    width: 85%;
+    background: var(--box);
+    padding: 30px;
+    border-radius: 18px;
+    backdrop-filter: blur(12px);
+    animation: fadein 1.2s ease-out;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+nav a {
+    color: var(--link);
+    margin: 10px;
+    font-size: 18px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: var(--link-hover);
+}
+
+footer {
+    margin-top: 40px;
+    padding: 20px;
+    background: var(--box);
+    border-top: 1px solid rgba(0, 255, 200, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 12px 12px 0 0;
+    animation: fadein 1.5s ease-out;
+}
+
+footer img {
+    width: 120px;
+    margin-bottom: 10px;
+}
+
+footer p {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.voice-btn {
+    margin-top: 20px;
+    background: var(--box);
+    padding: 12px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    color: var(--text);
+    transition: 0.3s;
+    border: none;
+}
+
+.voice-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* تنسيقات إضافية خاصة بأفاتار نورا */
+.avatar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    gap: 15px;
+}
+
+.nora-avatar-img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--link);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.nora-avatar-img:hover {
+    transform: scale(1.05);
+}
