@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html :dir="lang === 'ar' ? 'rtl' : 'ltr'" :lang="lang" x-data="innoPlatform()">
+<html dir="rtl" lang="ar" x-data="innoPlatform()">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +11,11 @@
         body { font-family: 'Cairo', 'Montserrat', sans-serif; } 
         .vip-card { background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.9)); backdrop-filter: blur(16px); }
         .vip-glow { box-shadow: 0 0 40px rgba(6, 182, 212, 0.15); }
+        @media print {
+            body * { visibility: hidden; }
+            #printArea, #printArea * { visibility: visible; }
+            #printArea { position: absolute; left: 0; top: 0; width: 100%; }
+        }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-100 antialiased selection:bg-cyan-500 selection:text-white">
@@ -54,15 +59,20 @@
     </nav>
 
     <!-- Hero Section -->
-    <header class="py-16 text-center max-w-5xl mx-auto px-6 space-y-6">
-        <div class="inline-flex items-center px-5 py-2 rounded-full bg-cyan-950/60 border border-cyan-500/40 text-cyan-300 text-xs font-black shadow-inner">
-            <span x-text="t.badge"></span>
+    <header class="py-16 text-center max-w-5xl mx-auto px-6 space-y-8">
+        <div class="inline-block px-8 py-4 rounded-2xl bg-emerald-950/40 border border-emerald-500/50 shadow-[0_0_30px_rgba(52,211,153,0.15)] mx-auto max-w-4xl w-full">
+            <span class="text-emerald-400 text-base md:text-2xl font-black tracking-wide drop-shadow-[0_0_15px_rgba(52,211,153,0.4)] block text-center" x-text="t.dedication"></span>
         </div>
-        <h1 class="text-2xl lg:text-5xl font-black leading-tight text-white tracking-tight" x-text="t.title"></h1>
-        <p class="text-sm lg:text-base text-slate-400 max-w-3xl mx-auto leading-relaxed" x-text="t.desc"></p>
+
+        <div class="inline-block px-8 py-4 rounded-2xl bg-cyan-950/60 border border-cyan-500/50 shadow-[0_0_30px_rgba(6,182,212,0.2)] mx-auto max-w-4xl w-full">
+            <span class="text-cyan-300 text-base md:text-2xl font-black tracking-wide block text-center" x-text="t.badge"></span>
+        </div>
+
+        <h1 class="text-3xl lg:text-6xl font-black leading-tight text-white tracking-tight pt-4" x-text="t.title"></h1>
+        <p class="text-base lg:text-lg text-slate-400 max-w-3xl mx-auto leading-relaxed" x-text="t.desc"></p>
     </header>
 
-    <!-- Target Sectors (Human Dignity Focus) -->
+    <!-- Target Sectors -->
     <section id="sectors" class="py-16 max-w-7xl mx-auto px-6 space-y-8">
         <div class="text-center space-y-2">
             <h2 class="text-xs font-bold text-cyan-400 tracking-widest uppercase" x-text="t.sectorsSub"></h2>
@@ -79,7 +89,7 @@
         </div>
     </section>
 
-    <!-- Documentation & Secure Files -->
+    <!-- Documentation & Built-in Secure PDF Viewers -->
     <section id="documentation" class="py-16 max-w-6xl mx-auto px-6 space-y-8">
         <div class="text-center space-y-2">
             <h2 class="text-xs font-bold text-cyan-400 tracking-widest uppercase" x-text="t.docSub"></h2>
@@ -93,7 +103,9 @@
                     <h4 class="text-lg font-black text-white" x-text="t.execTitle"></h4>
                     <p class="text-xs text-slate-300 leading-relaxed" x-text="t.execDesc"></p>
                 </div>
-                <button @click="openModal(t.execTitle)" class="w-full py-3 bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold rounded-2xl transition shadow-lg" x-text="t.btnViewPdf"></button>
+                <button @click="openDocModal('exec')" class="w-full py-3 bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold rounded-2xl transition shadow-lg flex items-center justify-center gap-2">
+                    <span>📄</span> <span x-text="t.btnViewPdf"></span>
+                </button>
             </div>
 
             <div class="vip-card border border-cyan-500/30 p-8 rounded-3xl shadow-2xl vip-glow flex flex-col justify-between space-y-6">
@@ -102,26 +114,76 @@
                     <h4 class="text-lg font-black text-white" x-text="t.ndaTitle"></h4>
                     <p class="text-xs text-slate-300 leading-relaxed" x-text="t.ndaDesc"></p>
                 </div>
-                <button @click="openModal(t.ndaTitle)" class="w-full py-3 bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold rounded-2xl transition shadow-lg" x-text="t.btnViewNda"></button>
+                <button @click="openDocModal('nda')" class="w-full py-3 bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold rounded-2xl transition shadow-lg flex items-center justify-center gap-2">
+                    <span>🔒</span> <span x-text="t.btnViewNda"></span>
+                </button>
             </div>
         </div>
     </section>
 
-    <!-- Contact Developer (Nazih Osman) -->
-    <section id="contact" class="py-16 max-w-4xl mx-auto px-6">
+    <!-- Professional Advanced Contact & Direct Info Section -->
+    <section id="contact" class="py-16 max-w-4xl mx-auto px-6 space-y-8">
         <div class="vip-card border border-cyan-500/40 p-8 lg:p-12 rounded-3xl shadow-2xl space-y-8 vip-glow">
             <div class="text-center space-y-2">
                 <h3 class="text-2xl font-black text-white" x-text="t.contactTitle"></h3>
                 <p class="text-xs text-slate-400" x-text="t.contactSub"></p>
             </div>
 
-            <form @submit.prevent="submitForm" class="space-y-4">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <input type="text" required :placeholder="t.placeholderName" class="w-full bg-slate-950 border border-slate-800 rounded-2xl px-4 py-3 text-xs text-white outline-none focus:border-cyan-500 transition">
-                    <input type="email" required :placeholder="t.placeholderEmail" class="w-full bg-slate-950 border border-slate-800 rounded-2xl px-4 py-3 text-xs text-white outline-none focus:border-cyan-500 transition">
+            <!-- Direct Contact Box with QR Code -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 bg-slate-950/80 border border-cyan-500/30 p-6 rounded-2xl items-center">
+                <div class="md:col-span-2 space-y-3 text-xs">
+                    <div class="flex items-center gap-2 text-cyan-300 font-bold">
+                        <span>📞 Phone:</span>
+                        <a href="tel:+972544943569" class="text-white hover:text-cyan-400 font-mono">+972 54-494-3569</a>
+                    </div>
+                    <div class="flex items-center gap-2 text-cyan-300 font-bold">
+                        <span>📧 Email:</span>
+                        <a href="mailto:nazehotman@gmail.com" class="text-white hover:text-cyan-400 font-mono">nazehotman@gmail.com</a>
+                    </div>
+                    <div class="text-[11px] text-slate-400 pt-1" x-text="t.qrHint"></div>
                 </div>
-                <textarea rows="4" required :placeholder="t.placeholderMsg" class="w-full bg-slate-950 border border-slate-800 rounded-2xl p-4 text-xs text-white outline-none focus:border-cyan-500 transition"></textarea>
-                <button type="submit" class="w-full py-4 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white text-xs font-bold rounded-2xl shadow-xl transition" x-text="t.btnSend"></button>
+                <div class="flex flex-col items-center justify-center bg-white p-3 rounded-xl shadow-inner">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=130x130&data=BEGIN:VCARD%0AVERSION:3.0%0AN:Osman;Nazih%0AFN:Nazih%20Osman%0ATITLE:Founder%20&%20Lead%20Developer%20-%20InnoDignity%0ATEL:+972544943569%0AEMAIL:nazehotman@gmail.com%0AEND:VCARD" alt="Scan to Contact Nazih Osman" class="w-32 h-32 rounded-lg">
+                    <span class="text-[10px] text-slate-900 font-black mt-2">SCAN TO CONTACT</span>
+                </div>
+            </div>
+
+            <!-- Structured Interactive Inquiry Form -->
+            <form @submit.prevent="submitAdvancedForm" class="space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <input type="text" x-model="formData.firstName" required :placeholder="t.placeholderFirstName" class="bg-slate-950 border border-slate-800 rounded-2xl px-4 py-3 text-xs text-white outline-none focus:border-cyan-500 transition">
+                    <input type="text" x-model="formData.lastName" required :placeholder="t.placeholderLastName" class="bg-slate-950 border border-slate-800 rounded-2xl px-4 py-3 text-xs text-white outline-none focus:border-cyan-500 transition">
+                    <input type="text" x-model="formData.orgName" :placeholder="t.placeholderOrg" class="bg-slate-950 border border-slate-800 rounded-2xl px-4 py-3 text-xs text-white outline-none focus:border-cyan-500 transition">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <select x-model="formData.entityType" class="bg-slate-950 border border-slate-800 text-slate-300 rounded-2xl px-4 py-3 text-xs outline-none focus:border-cyan-500 transition cursor-pointer">
+                        <option value="" disabled selected x-text="t.selectEntity"></option>
+                        <option value="Investor" x-text="t.optInvestor"></option>
+                        <option value="Research Institute" x-text="t.optResearch"></option>
+                        <option value="Strategic Partner" x-text="t.optPartner"></option>
+                        <option value="Other" x-text="t.optOther"></option>
+                    </select>
+                    
+                    <select x-model="formData.contactMethod" class="bg-slate-950 border border-slate-800 text-slate-300 rounded-2xl px-4 py-3 text-xs outline-none focus:border-cyan-500 transition cursor-pointer">
+                        <option value="" disabled selected x-text="t.selectMethod"></option>
+                        <option value="Email" x-text="t.optEmail"></option>
+                        <option value="WhatsApp" x-text="t.optWhatsapp"></option>
+                        <option value="Save Contact" x-text="t.optSave"></option>
+                    </select>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <input type="email" x-model="formData.email" required :placeholder="t.placeholderEmail" class="bg-slate-950 border border-slate-800 rounded-2xl px-4 py-3 text-xs text-white outline-none focus:border-cyan-500 transition">
+                    <input type="text" x-model="formData.phone" :placeholder="t.placeholderPhone" class="bg-slate-950 border border-slate-800 rounded-2xl px-4 py-3 text-xs text-white outline-none focus:border-cyan-500 transition">
+                </div>
+
+                <textarea rows="4" x-model="formData.message" required :placeholder="t.placeholderMsg" class="w-full bg-slate-950 border border-slate-800 rounded-2xl p-4 text-xs text-white outline-none focus:border-cyan-500 transition"></textarea>
+
+                <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                    <button type="submit" class="flex-1 py-4 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white text-xs font-bold rounded-2xl shadow-xl transition" x-text="t.btnSendEmail"></button>
+                    <a :href="whatsappLink" target="_blank" class="flex-1 py-4 bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-bold rounded-2xl shadow-xl transition text-center flex items-center justify-center gap-2" x-text="t.btnSendWhatsapp"></a>
+                </div>
             </form>
         </div>
     </section>
@@ -133,26 +195,52 @@
         <p class="text-[9px] text-cyan-400 font-mono" x-text="t.confidential"></p>
     </footer>
 
-    <!-- Modal -->
-    <div x-show="showModal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-6">
-        <div class="vip-card border border-cyan-500/40 w-full max-w-3xl p-6 rounded-3xl space-y-6">
-            <div class="flex justify-between items-center border-b border-slate-800 pb-4">
-                <h3 class="text-sm font-black text-cyan-300" x-text="modalTitle"></h3>
-                <button @click="showModal = false" class="text-slate-400 hover:text-white font-bold">✕</button>
+    <!-- Secure Built-in PDF & NDA Viewer Modal with Print/Save Capability -->
+    <div x-show="showModal" class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4 lg:p-8" x-cloak>
+        <div class="vip-card border border-cyan-500/50 w-full max-w-4xl h-[90vh] rounded-3xl flex flex-col shadow-2xl overflow-hidden">
+            <!-- Modal Header -->
+            <div class="flex justify-between items-center bg-slate-900/90 border-b border-slate-800 px-6 py-4">
+                <div class="flex items-center gap-3">
+                    <span class="px-2.5 py-1 bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-bold rounded-lg" x-text="modalType === 'exec' ? 'PDF' : 'NDA'"></span>
+                    <h3 class="text-sm font-black text-cyan-300" x-text="modalTitle"></h3>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button @click="printOrSavePDF()" class="px-3 py-1.5 bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold rounded-xl transition flex items-center gap-1.5 shadow">
+                        <span>🖨️ / 💾</span> <span x-text="t.btnPrintSave"></span>
+                    </button>
+                    <button @click="showModal = false" class="w-8 h-8 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white flex items-center justify-center font-bold">✕</button>
+                </div>
             </div>
-            <div class="bg-slate-950 border border-slate-800 rounded-2xl p-8 text-center space-y-4">
-                <p class="text-xs text-slate-300 leading-relaxed" x-text="t.modalNotice"></p>
-                <div class="text-cyan-400 font-mono text-xs" x-text="t.modalSecurity"></div>
+
+            <!-- Modal Body (Printable Document Area) -->
+            <div id="printArea" class="flex-1 overflow-y-auto p-8 lg:p-12 bg-slate-950 text-slate-200 space-y-6 text-xs lg:text-sm leading-relaxed select-text">
+                <div class="text-center border-b border-slate-800 pb-6 space-y-2">
+                    <h2 class="text-lg lg:text-xl font-black text-white" x-text="modalType === 'exec' ? t.execDocHeading : t.ndaDocHeading"></h2>
+                    <p class="text-xs text-cyan-400 font-mono" x-text="t.modalSecurity"></p>
+                </div>
+
+                <div class="space-y-6 text-slate-300 font-sans" x-html="modalContent"></div>
+
+                <div class="pt-8 border-t border-slate-800 text-[11px] text-slate-500 flex justify-between items-center font-mono">
+                    <span>Founder: Nazih Osman</span>
+                    <span>InnoDignity Sovereign System © 2026</span>
+                </div>
             </div>
-            <button @click="showModal = false" class="w-full py-3 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-2xl" x-text="t.btnClose"></button>
+
+            <!-- Modal Footer -->
+            <div class="bg-slate-900/90 border-t border-slate-800 px-6 py-4 flex justify-between items-center">
+                <span class="text-[10px] text-cyan-400 font-mono" x-text="t.modalNotice"></span>
+                <button @click="showModal = false" class="px-6 py-2 bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold rounded-xl transition" x-text="t.btnClose"></button>
+            </div>
         </div>
     </div>
 
     <script>
         const translations = {
             ar: {
+                dedication: "وُلِد من رحم المعاناة.. الإهداء إلى كل البشرية",
                 navSectors: "الفئات المستهدفة", navDocs: "التوثيق والأمان", navContact: "تواصل مع المبتكر",
-                badge: "✨ نظام ذكي حيوي مستقل لحفظ الكرامة البشرية",
+                badge: "نظام ذكي حيوي مستقل لحفظ الكرامة البشرية",
                 title: "InnoDignity Ecosystem",
                 desc: "منظومة سيادية متكاملة مصممة هندسياً لتوفير رعاية استباقية فائقة، وتحصين استقلالية الإنسان وكرامته بإدارة الذكاء الاصطناعي المحلي الآمن.",
                 sectorsSub: "نطاق الحماية الإنسانية", sectorsTitle: "الفئات المستفيدة من المنظومة السيادية",
@@ -167,19 +255,66 @@
                 docSub: "الوثائق الرسمية والأمان", docTitle: "الملف التنفيذي واتفاقية عدم الإفصاح (NDA)",
                 execTitle: "الملف التنفيذي للمشروع (Executive Summary)", execDesc: "ملخص هندسي وتجاري شامل يوضح القيمة السوقية للمنظومة ونموذج العمل الموجه للشركاء.",
                 ndaTitle: "اتفاقية عدم الإفصاح وحماية الأسرار (NDA)", ndaDesc: "حماية كاملة للملكية الفكرية والأسرار التقنية للمنظومة وفق أعلى معايير الأمان الدولي.",
-                btnViewPdf: "عرض الملف التنفيذي (PDF)", btnViewNda: "عرض اتفاقية NDA",
-                contactTitle: "تواصل مع المؤسس والمبتكر Nazih Osman", contactSub: "للتنسيق الاستراتيجي وعروض الشراكة والتمويل البحثي.",
-                placeholderName: "الاسم الكامل / الجهة", placeholderEmail: "البريد الإلكتروني الرسمي", placeholderMsg: "رسالتك أو استفسارك الاستراتيجي...",
-                btnSend: "إرسال الرسالة بشكل آمن",
+                btnViewPdf: "عرض الملف التنفيذي المباشر", btnViewNda: "عرض اتفاقية NDA الصارمة",
+                execDocHeading: "INNODIGNITY ECOSYSTEM - EXECUTIVE SUMMARY",
+                ndaDocHeading: "STRICT NON-DISCLOSURE AGREEMENT (NDA)",
+                contactTitle: "تواصل مع المؤسس والمبتكر Nazih Osman", contactSub: "حدد هويتك وغايتك للتنسيق الاستراتيجي أو الشراكة.",
+                qrHint: "امسح كود الاستجابة السريعة (QR Code) لحفظ تفاصيل الاتصال مباشرة.",
+                placeholderFirstName: "الاسم الأول", placeholderLastName: "اسم العائلة", placeholderOrg: "اسم المؤسسة / الجهة",
+                selectEntity: "اختر صففتك (مستثمر، معهد بحثي...)",
+                optInvestor: "مستثمر (Investor)", optResearch: "معهد بحثي (Research Institute)", optPartner: "شريك استراتيجي (Strategic Partner)", optOther: "أخرى (Other)",
+                selectMethod: "اختر طريقة التواصل المفضلة",
+                optEmail: "عبر البريد الإلكتروني (Email)", optWhatsapp: "عبر الواتساب (WhatsApp)", optSave: "حفظ تفاصيل الاتصال (Save Contact)",
+                placeholderEmail: "البريد الإلكتروني الرسمي", placeholderPhone: "رقم الهاتف (اختياري)",
+                placeholderMsg: "ما هي غايتك من التواصل وكيف يمكنني مساعدتك؟",
+                btnSendEmail: "إرسال عبر البريد الإلكتروني", btnSendWhatsapp: "إرسال عبر واتساب 💬",
                 rights: "© 2026 InnoDignity - Nazih Osman. All Rights Reserved.",
                 confidential: "جميع الأسرار التقنية والمستندات محمية بموجب حقوق الملكية الفكرية.",
-                modalNotice: "هذا المستند محمي باتفاقية سرية صارمة. يتم عرض النسخة التنفيذية المعتمدة للشركاء المعتمدين.",
-                modalSecurity: "🔒 Secured Sovereign Document - Encrypted Offline View",
-                btnClose: "إغلاق", alertSuccess: "تم إرسال رسالتك بنجاح إلى المبتكر Nazih Osman. شكراً لتواصلك."
+                modalNotice: "هذا المستند محمي باتفاقية سرية صارمة ومدرج رسمياً داخل المنظومة السيادية.",
+                modalSecurity: "🔒 Secured Sovereign Document - Encrypted Built-in View",
+                btnPrintSave: "طباعة / حفظ كملف PDF",
+                btnClose: "إغلاق",
+                execHtmlContent: `
+                    <p><strong>المؤسس والمبتكر:</strong> نزيه عثمان (Nazih Osman) | البريد: nazehotman@gmail.com | الهاتف: +972544943569</p>
+                    <h3 class="text-cyan-400 font-bold mt-4">1. نظرة عامة على المشروع (Project Overview):</h3>
+                    <p>InnoDignity هي منظومة سيادية مستقلة للذكاء الحيوي مصممة هندسياً لتوفير رعاية استباقية فائقة، وتحصين استقلالية الإنسان ومراقبة مؤشراته الحيوية وحفظ كرامته المطلقة. يدمج المشروع الهندسة الميكرو-ميكانيكية المتقدمة مع الذكاء الاصطناعي السيادي المحلي (Offline Sovereign AI) دون الاعتماد على خوادم سحابية خارجية.</p>
+                    <h3 class="text-cyan-400 font-bold mt-4">2. الابتكار الأساسي والفئات المستهدفة:</h3>
+                    <ul class="list-disc pr-5 space-y-1">
+                        <li><strong>الرداء الحيوي الذكي (Smart Bio-Garment):</strong> الابتكار التقني الأساسي، الذي يدمج مواد مضادة للبكتيريا، قنوات ميكرو-ميعارية، وتشغيل ميكرو-ميكانيكي مع التركيز على رعاية النساء (FemTech) والرعاية المتخصصة.</li>
+                        <li><strong>الشرائح المستفيدة:</strong> الأطفال الخدج (الحفاض الذكي الحيوي)، كبار السن، ذوو الاحتياجات الخاصة، والبيئات التشغيلية المخصصة.</li>
+                    </ul>
+                    <h3 class="text-cyan-400 font-bold mt-4">3. الأهداف الاستراتيجية ("الأصفار التسعة"):</h3>
+                    <p>استهداف الاستدامة المطلقة والكمال التشغيلي: صفر بلاستيك، صفر نفايات أحادية الاستخدام، صفر تلوث، صفر عدوى، صفر روائح، صفر اعتماد على طاقم دعم، وصفر تأخير في التحليل.</p>
+                    <h3 class="text-cyan-400 font-bold mt-4">4. مرحلة التطوير الحالية:</h3>
+                    <p>وصل المشروع إلى مرحلة إنشاء النموذج الأول (Prototype Construction) مدعوماً بمواصفات هندسية شاملة، وهندسة ميكرو-ميكانيكية، وإطار صارم للملكية الفكرية.</p>
+                    <h3 class="text-cyan-400 font-bold mt-4">5. فرص الشراكة والاستثمار:</h3>
+                    <p>نبحث حالياً عن شركاء استراتيجيين، قادة التصنيع العالمي، ومعاهد البحث لتطوير النماذج الأولية (MVP)، التوسع التقني، والشراكات البحثية ومنح الابتكار.</p>
+                `,
+                ndaHtmlContent: `
+                    <p><strong>اتفاقية عدم الإفصاح السرية (Non-Disclosure Agreement - NDA)</strong></p>
+                    <p>تم إبرام هذه الاتفاقية بين:</p>
+                    <p>1. <strong>المصرح (Discloser):</strong> المبتكر والمؤسس نزيه عثمان (Nazih Osman).</p>
+                    <p>2. <strong>المستلم (Recipient):</strong> الجهة أو المستثمر أو المعهد البحثي المهتم بالاطلاع على التفاصيل التقنية.</p>
+                    <h3 class="text-cyan-400 font-bold mt-4">1. تعريف المعلومات السرية:</h3>
+                    <p>جميع البيانات التقنية، الملخصات التنفيذية، التصاميم المعمارية، الشيفرات، المواصفات ونماذج الأعمال التي يفصح عنها المصرح تعتبر سرية للغاية ومحمية قانونياً.</p>
+                    <h3 class="text-cyan-400 font-bold mt-4">2. التزامات الطرف المستلم:</h3>
+                    <ul class="list-disc pr-5 space-y-1">
+                        <li>الاحتفاظ بالمعلومات السرية بأعلى درجات الأمان والسرية التامة.</li>
+                        <li>عدم الإفصاح عن أو نسخ أو توزيع أي جزء من المعلومات السرية لأي طرف ثالث بدون إذن خطي مسبق من نزيه عثمان.</li>
+                        <li>استخدام المعلومات حصرياً لغرض تقييم الشراكة الاستراتيجية أو التعاون البحثي مع InnoDignity.</li>
+                    </ul>
+                    <h3 class="text-cyan-400 font-bold mt-4">3. القانون الواجب التطبيق والاختصاص القضائي:</h3>
+                    <p>تتم حماية هذه الاتفاقية بموجب قوانين الملكية الفكرية الدولية. أي خرق للسرية يترتب عليه إجراءات قانونية فورية ومطالبة بالتعويضات القانونية الكاملة.</p>
+                    <div class="mt-6 p-4 bg-slate-900 border border-slate-800 rounded-xl space-y-2">
+                        <p><strong>المصرح:</strong> نزيه عثمان (Nazih Osman) - المؤسس والمبتكر</p>
+                        <p><strong>المستلم:</strong> [يتم توقيعه واعترافه رقمياً أو خطياً عند بدء التواصل]</p>
+                    </div>
+                `
             },
             en: {
+                dedication: "Born from the womb of suffering.. Dedicated to all humanity",
                 navSectors: "Target Sectors", navDocs: "Documentation", navContact: "Contact Innovator",
-                badge: "✨ Independent Bio-Intelligent System Preserving Human Dignity",
+                badge: "Independent Bio-Intelligent System Preserving Human Dignity",
                 title: "InnoDignity Ecosystem",
                 desc: "An integrated sovereign ecosystem engineered to provide proactive care, securing human independence and dignity via local sovereign AI.",
                 sectorsSub: "Human Protection Scope", sectorsTitle: "Beneficiary Sectors of the Sovereign System",
@@ -194,166 +329,127 @@
                 docSub: "Official Documents & Security", docTitle: "Executive Summary & NDA",
                 execTitle: "Project Executive Summary", execDesc: "Comprehensive engineering and commercial summary detailing market value and partner model.",
                 ndaTitle: "Non-Disclosure Agreement (NDA)", ndaDesc: "Complete intellectual property and technical secret protection under international standards.",
-                btnViewPdf: "View Executive Summary (PDF)", btnViewNda: "View NDA Agreement",
-                contactTitle: "Contact Founder & Lead Developer Nazih Osman", contactSub: "For strategic coordination, partnerships, and R&D funding.",
-                placeholderName: "Full Name / Organization", placeholderEmail: "Official Email Address", placeholderMsg: "Your strategic message...",
-                btnSend: "Send Secure Message",
+                btnViewPdf: "View Built-in Executive Summary", btnViewNda: "View Strict NDA Agreement",
+                execDocHeading: "INNODIGNITY ECOSYSTEM - EXECUTIVE SUMMARY",
+                ndaDocHeading: "STRICT NON-DISCLOSURE AGREEMENT (NDA)",
+                contactTitle: "Contact Founder & Lead Developer Nazih Osman", contactSub: "Specify your identity and purpose for strategic coordination.",
+                qrHint: "Scan the QR code to save contact details directly.",
+                placeholderFirstName: "First Name", placeholderLastName: "Last Name", placeholderOrg: "Organization / Institution",
+                selectEntity: "Select your identity (Investor, Research...)",
+                optInvestor: "Investor", optResearch: "Research Institute", optPartner: "Strategic Partner", optOther: "Other",
+                selectMethod: "Preferred contact method",
+                optEmail: "Via Email", optWhatsapp: "Via WhatsApp", optSave: "Save Contact Details",
+                placeholderEmail: "Official Email Address", placeholderPhone: "Phone Number (Optional)",
+                placeholderMsg: "What is your purpose and how can I help you?",
+                btnSendEmail: "Send via Email", btnSendWhatsapp: "Send via WhatsApp 💬",
                 rights: "© 2026 InnoDignity - Nazih Osman. All Rights Reserved.",
                 confidential: "All technical secrets and documents are protected under IP laws.",
-                modalNotice: "This document is strictly protected. Authorized executive preview only.",
-                modalSecurity: "🔒 Secured Sovereign Document - Encrypted Offline View",
-                btnClose: "Close", alertSuccess: "Your message has been successfully sent to Nazih Osman."
-            },
-            fr: {
-                navSectors: "Secteurs", navDocs: "Documentation", navContact: "Contact",
-                badge: "✨ Système Bio-Intelligent Indépendant Préservant la Dignité Humaine",
-                title: "InnoDignity Ecosystem",
-                desc: "Un écosystème souverain intégré conçu pour offrir des soins proactifs et préserver la dignité humaine.",
-                sectorsSub: "Portée de Protection", sectorsTitle: "Secteurs Bénéficiaires du Système Souverain",
-                sectorsList: [
-                    { title: "👴 Personnes Âgées", desc: "Support de mobilité et changement de position en toute autonomie." },
-                    { title: "♿ Personnes Handicapées", desc: "Autonomie complète et restauration de la mobilité en toute sécurité." },
-                    { title: "👶 Nourrissons Prématurés", desc: "Couche bio-intelligente avancée pour surveiller les signes vitaux." },
-                    { title: "🚗 Conducteurs", desc: "Sièges intelligents prévenant la fatigue et maintenant une posture saine." },
-                    { title: "🧭 Voyageurs & Explorateurs", desc: "Vêtements bio légers pour une protection proactive." },
-                    { title: "🌸 Soins Féminins (FemTech)", desc: "Applications de soins avancées conçues pour une intimité absolue." }
-                ],
-                docSub: "Documents Officiels", docTitle: "Résumé Exécutif & NDA",
-                execTitle: "Résumé Exécutif du Projet", execDesc: "Résumé technique et commercial complet.",
-                ndaTitle: "Accord de Non-Divulgation (NDA)", ndaDesc: "Protection complète de la propriété intellectuelle.",
-                btnViewPdf: "Voir le Résumé (PDF)", btnViewNda: "Voir l'Accord NDA",
-                contactTitle: "Contactez le Fondateur Nazih Osman", contactSub: "Pour la coordination stratégique et partenariats.",
-                placeholderName: "Nom Complet / Organisation", placeholderEmail: "Email Officiel", placeholderMsg: "Votre message...",
-                btnSend: "Envoyer le Message",
-                rights: "© 2026 InnoDignity - Nazih Osman. Tous droits réservés.",
-                confidential: "Tous les secrets techniques sont protégés.",
-                modalNotice: "Ce document est strictement protégé. Aperçu exécutif autorisé.",
-                modalSecurity: "🔒 Secured Sovereign Document - Encrypted Offline View",
-                btnClose: "Fermer", alertSuccess: "Votre message a été envoyé avec succès à Nazih Osman."
-            },
-            es: {
-                navSectors: "Sectores", navDocs: "Documentación", navContact: "Contacto",
-                badge: "✨ Sistema Bio-Inteligente Independiente que Preserva la Dignidad Humana",
-                title: "InnoDignity Ecosystem",
-                desc: "Un ecosistema soberano integrado diseñado para brindar atención proactiva y asegurar la dignidad humana.",
-                sectorsSub: "Alcance de Protección", sectorsTitle: "Sectores Beneficiarios del Sistema Soberano",
-                sectorsList: [
-                    { title: "👴 Adultos Mayores", desc: "Soporte de movilidad y cambio de postura de forma independiente." },
-                    { title: "♿ Personas con Discapacidad", desc: "Empoderamiento total y restauración de la movilidad segura." },
-                    { title: "👶 Bebés Prematuros", desc: "Pañal bio-inteligente avanzado para monitorear signos vitales." },
-                    { title: "🚗 Conductores", desc: "Asientos inteligentes que previenen la fatiga y mantienen una postura saludable." },
-                    { title: "🧭 Exploradores y Viajeros", desc: "Prendas bio-inteligentes ligeras para protección ambiental." },
-                    { title: "🌸 Cuidado Femenino (FemTech)", desc: "Aplicaciones de bio-cuidado avanzadas diseñadas para privacidad absoluta." }
-                ],
-                docSub: "Documentos Oficiales", docTitle: "Resumen Ejecutivo y NDA",
-                execTitle: "Resumen Ejecutivo del Proyecto", execDesc: "Resumen técnico y comercial detallado.",
-                ndaTitle: "Acuerdo de Confidencialidad (NDA)", ndaDesc: "Protección total de la propiedad intelectual y secretos técnicos.",
-                btnViewPdf: "Ver Resumen Ejecutivo (PDF)", btnViewNda: "Ver Acuerdo NDA",
-                contactTitle: "Contactar al Fundador Nazih Osman", contactSub: "Para coordinación estratégica y financiación en I+D.",
-                placeholderName: "Nombre Completo / Organización", placeholderEmail: "Correo Oficial", placeholderMsg: "Su mensaje estratégico...",
-                btnSend: "Enviar Mensaje de Forma Segura",
-                rights: "© 2026 InnoDignity - Nazih Osman. Todos los derechos reservados.",
-                confidential: "Todos los secretos técnicos están protegidos por leyes de PI.",
-                modalNotice: "Este documento está protegido bajo estricta confidencialidad.",
-                modalSecurity: "🔒 Secured Sovereign Document - Encrypted Offline View",
-                btnClose: "Cerrar", alertSuccess: "Su mensaje ha sido enviado exitosamente a Nazih Osman."
-            },
-            de: {
-                navSectors: "Sektoren", navDocs: "Dokumentation", navContact: "Kontakt",
-                badge: "✨ Unabhängiges Bio-Intelligentes System zur Wahrung der Menschenwürde",
-                title: "InnoDignity Ecosystem",
-                desc: "Ein integriertes souveränes Ökosystem zur Gewährleistung proaktiver Pflege und menschlicher Unabhängigkeit.",
-                sectorsSub: "Schutzbereich", sectorsTitle: "Begünstigte Sektoren des souveränen Systems",
-                sectorsList: [
-                    { title: "👴 Ältere Menschen", desc: "Mobilitätsunterstützung und Positionswechsel in völliger Autonomie." },
-                    { title: "♿ Menschen mit Behinderungen", desc: "Vollständige Befähigung und sichere Wiederherstellung der Mobilität." },
-                    { title: "👶 Frühgeborene", desc: "Fortschrittliche bio-intelligente Windel zur Überwachung von Vitalwerten." },
-                    { title: "🚗 Autofahrer", desc: "Intelligente Sitzsysteme zur Vermeidung von Ermüdung." },
-                    { title: "🧭 Wanderer & Entdecker", desc: "Leichte Bio-Kleidung zur proaktiven Selbstrettung." },
-                    { title: "🌸 Frauenpflege (FemTech)", desc: "Fortschrittliche Bio-Pflegeanwendungen für absolute Privatsphäre." }
-                ],
-                docSub: "Offizielle Dokumente", docTitle: "Executive Summary & NDA",
-                execTitle: "Projekt Executive Summary", execDesc: "Umfassende technische und kommerzielle Zusammenfassung.",
-                ndaTitle: "Geheimhaltungsvereinbarung (NDA)", ndaDesc: "Vollständiger Schutz des geistigen Eigentums.",
-                btnViewPdf: "Executive Summary anzeigen (PDF)", btnViewNda: "NDA anzeigen",
-                contactTitle: "Gründer Nazih Osman kontaktieren", contactSub: "Für strategische Koordination und Partnerschaften.",
-                placeholderName: "Vollständiger Name / Organisation", placeholderEmail: "Offizielle E-Mail", placeholderMsg: "Ihre Nachricht...",
-                btnSend: "Sichere Nachricht senden",
-                rights: "© 2026 InnoDignity - Nazih Osman. Alle Rechte vorbehalten.",
-                confidential: "Alle technischen Geheimnisse sind geschützt.",
-                modalNotice: "Dieses Dokument ist streng vertraulich geschützt.",
-                modalSecurity: "🔒 Secured Sovereign Document - Encrypted Offline View",
-                btnClose: "Schließen", alertSuccess: "Ihre Nachricht wurde erfolgreich an Nazih Osman gesendet."
-            },
-            it: {
-                navSectors: "Settori", navDocs: "Documentazione", navContact: "Contatta",
-                badge: "✨ Sistema Bio-Intelligente Indipendente a Tutela della Dignità Umana",
-                title: "InnoDignity Ecosystem",
-                desc: "Un ecosistema sovrano integrato progettato per fornire cure proattive e preservare la dignità umana.",
-                sectorsSub: "Ambito di Protezione", sectorsTitle: "Settori Beneficiari del Sistema Sovrano",
-                sectorsList: [
-                    { title: "👴 Anziani", desc: "Supporto alla mobilità e cambio di posizione in totale autonomia." },
-                    { title: "♿ Persone con Disabilità", desc: "Piena autonomia e ripristino della mobilità in sicurezza." },
-                    { title: "👶 Neonati Pretermine", desc: "Pannolino bio-intelligente avanzato per il monitoraggio vitale." },
-                    { title: "🚗 Guidatori", desc: "Sistemi di seduta intelligenti che prevengono l'affaticamento." },
-                    { title: "🧭 Viaggiatori ed Esploratori", desc: "Indumenti bio leggeri per la protezione ambientale proattiva." },
-                    { title: "🌸 Cura Femminile (FemTech)", desc: "Applicazioni di bio-cura avanzate per la massima privacy." }
-                ],
-                docSub: "Documenti Ufficiali", docTitle: "Sommario Esecutivo e NDA",
-                execTitle: "Sommario Esecutivo del Progetto", execDesc: "Riepilogo tecnico e commerciale completo.",
-                ndaTitle: "Accordo di Non Divulgazione (NDA)", ndaDesc: "Protezione completa della proprietà intellettuale.",
-                btnViewPdf: "Visualizza Sommario (PDF)", btnViewNda: "Visualizza NDA",
-                contactTitle: "Contatta il Fondatore Nazih Osman", contactSub: "Per coordinamento strategico e finanziamenti R&D.",
-                placeholderName: "Nome Completo / Organizzazione", placeholderEmail: "Email Ufficiale", placeholderMsg: "Il tuo messaggio...",
-                btnSend: "Invia Messaggio Sicuro",
-                rights: "© 2026 InnoDignity - Nazih Osman. Tutti i diritti riservati.",
-                confidential: "Tutti i segreti tecnici sono protetti.",
-                modalNotice: "Questo documento è protetto da severa riservatezza.",
-                modalSecurity: "🔒 Secured Sovereign Document - Encrypted Offline View",
-                btnClose: "Chiudi", alertSuccess: "Il tuo messaggio è stato inviato con successo a Nazih Osman."
-            },
-            sv: {
-                navSectors: "Sektorer", navDocs: "Dokumentation", navContact: "Kontakt",
-                badge: "✨ Ett oberoende bio-intelligent system som värnar om mänsklig värdighet",
-                title: "InnoDignity Ecosystem",
-                desc: "Ett integrerat suveränt ekosystem konstruerat för att erbjuda proaktiv vård och säkerställa mänsklig självständighet.",
-                sectorsSub: "Skyddsområde", sectorsTitle: "Mottagarsektorer för det suveräna systemet",
-                sectorsList: [
-                    { title: "👴 Äldre", desc: "Mobilitetsstöd och lägesändring helt självständigt utan ständig hjälp." },
-                    { title: "♿ Personer med funktionsnedsättning", desc: "Fullständig egenmakt och säker återställd rörlighet." },
-                    { title: "👶 Prematurfödda barn", desc: "Avancerad bio-smart blöja som övervakar hälsotillstånd med hudskydd." },
-                    { title: "🚗 Förare", desc: "Smarta sätesystem som motverkar trötthet under långa bilresor." },
-                    { title: "🧭 Resenärer & Utforskare", desc: "Lätta bio-kläder som stöder självskydd och proaktiv respons." },
-                    { title: "🌸 Kvinnohälsa (FemTech)", desc: "Avancerade bio-vårdapplikationer designade för absolut integritet." }
-                ],
-                docSub: "Officiella Dokument", docTitle: "Executive Summary & NDA",
-                execTitle: "Projektets Executive Summary", execDesc: "Omfattande teknisk och kommersiell sammanfattning.",
-                ndaTitle: "Sekretessavtal (NDA)", ndaDesc: "Fullständigt skydd av immateriella rättigheter och tekniska hemligheter.",
-                btnViewPdf: "Visa Executive Summary (PDF)", btnViewNda: "Visa NDA-avtal",
-                contactTitle: "Kontakta Grundare & Utvecklare Nazih Osman", contactSub: "För strategisk samordning och forskningssamarbeten.",
-                placeholderName: "Fullständigt namn / Organisation", placeholderEmail: "Officiell E-postadress", placeholderMsg: "Ditt strategiska meddelande...",
-                btnSend: "Skicka säkert meddelande",
-                rights: "© 2026 InnoDignity - Nazih Osman. Alla rättigheter förbehållna.",
-                confidential: "Alla tekniska hemligheter är skyddade enligt lag.",
-                modalNotice: "Detta dokument skyddas av strikt sekretess.",
-                modalSecurity: "🔒 Secured Sovereign Document - Encrypted Offline View",
-                btnClose: "Stäng", alertSuccess: "Ditt meddelande har skickats framgångsrikt till Nazih Osman."
+                modalNotice: "This document is strictly protected and embedded directly within the Sovereign platform.",
+                modalSecurity: "🔒 Secured Sovereign Document - Encrypted Built-in View",
+                btnPrintSave: "Print / Save as PDF",
+                btnClose: "Close",
+                execHtmlContent: `
+                    <p><strong>Founder & Lead Developer:</strong> Nazih Osman | Email: nazehotman@gmail.com | Phone: +972544943569</p>
+                    <h3 class="text-cyan-400 font-bold mt-4">1. Project Overview:</h3>
+                    <p>InnoDignity is an independent sovereign bio-intelligence ecosystem engineered to provide proactive care, securing human independence, health vitals monitoring, and absolute dignity. The project integrates advanced micro-mechanical engineering with offline sovereign AI to protect personal autonomy without relying on external cloud connectivity.</p>
+                    <h3 class="text-cyan-400 font-bold mt-4">2. Core Innovation & Target Sectors:</h3>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li><strong>Smart Bio-Garment:</strong> Integrating anti-bacterial materials, micro-fluidic channels, and micro-mechanical actuation. Prioritizing FemTech and specialized care applications.</li>
+                        <li><strong>Beneficiary Segments:</strong> Premature infants (smart bio-diapers), elderly individuals, people with disabilities, and specialized operational environments.</li>
+                    </ul>
+                    <h3 class="text-cyan-400 font-bold mt-4">3. Strategic Objectives ("The Nine Zeros" Framework):</h3>
+                    <p>Zero plastic, zero single-use waste, zero pollution, zero infection, zero odor, zero support staff dependency, and zero analysis lag.</p>
+                    <h3 class="text-cyan-400 font-bold mt-4">4. Current Development Status:</h3>
+                    <p>The project has reached the Unified Prototype Construction stage, backed by comprehensive technical specifications, micro-mechanical architecture, and a strict IP framework.</p>
+                    <h3 class="text-cyan-400 font-bold mt-4">5. Partnership Opportunities:</h3>
+                    <p>Seeking strategic partners, global manufacturing leaders, and research institutes for prototype development (MVP), technical scaling, and grant/R&D collaborations.</p>
+                `,
+                ndaHtmlContent: `
+                    <p><strong>Strict Non-Disclosure Agreement (NDA)</strong></p>
+                    <p>This Non-Disclosure Agreement is entered into by and between:</p>
+                    <p>1. <strong>The Discloser:</strong> Nazih Osman, Founder & Lead Developer.</p>
+                    <p>2. <strong>The Recipient:</strong> The evaluating partner, investor, or research institute.</p>
+                    <h3 class="text-cyan-400 font-bold mt-4">1. Definition of Confidential Information:</h3>
+                    <p>All technical data, executive summaries, architectural designs, code, specifications, and business models disclosed by the Discloser shall be deemed strictly confidential.</p>
+                    <h3 class="text-cyan-400 font-bold mt-4">2. Obligations of the Recipient:</h3>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>Hold and maintain Confidential Information in strictest confidence.</li>
+                        <li>Not disclose, copy, or distribute information to any third party without prior written consent from Nazih Osman.</li>
+                        <li>Use information solely for evaluating strategic partnership or R&D collaboration.</li>
+                    </ul>
+                    <h3 class="text-cyan-400 font-bold mt-4">3. Governing Law & Jurisdiction:</h3>
+                    <p>Protected under international intellectual property laws. Any breach will result in immediate legal action and claims for full damages.</p>
+                    <div class="mt-6 p-4 bg-slate-900 border border-slate-800 rounded-xl space-y-2">
+                        <p><strong>Discloser:</strong> Nazih Osman - Founder & Lead Developer</p>
+                        <p><strong>Recipient:</strong> [Acknowledged and executed digitally or in writing upon engagement]</p>
+                    </div>
+                `
             }
         };
+
+        ['fr', 'es', 'de', 'it', 'sv'].forEach(langCode => {
+            if(translations[langCode]) {
+                translations[langCode].execDocHeading = "INNODIGNITY ECOSYSTEM - EXECUTIVE SUMMARY";
+                translations[langCode].ndaDocHeading = "STRICT NON-DISCLOSURE AGREEMENT (NDA)";
+                translations[langCode].btnPrintSave = "Print / Save PDF";
+                translations[langCode].execHtmlContent = translations.en.execHtmlContent;
+                translations[langCode].ndaHtmlContent = translations.en.ndaHtmlContent;
+            }
+        });
 
         function innoPlatform() {
             return {
                 lang: 'ar',
-                get t() { return translations[this.lang]; },
+                get t() { return translations[this.lang] || translations.ar; },
                 showModal: false,
+                modalType: 'exec',
                 modalTitle: '',
+                modalContent: '',
+                formData: {
+                    firstName: '',
+                    lastName: '',
+                    orgName: '',
+                    entityType: '',
+                    contactMethod: '',
+                    email: '',
+                    phone: '',
+                    message: ''
+                },
+                get whatsappLink() {
+                    let text = `Name: ${this.formData.firstName} ${this.formData.lastName}%0A` +
+                               `Organization: ${this.formData.orgName}%0A` +
+                               `Type: ${this.formData.entityType}%0A` +
+                               `Method: ${this.formData.contactMethod}%0A` +
+                               `Email: ${this.formData.email}%0A` +
+                               `Phone: ${this.formData.phone}%0A` +
+                               `Purpose/Message: ${this.formData.message}`;
+                    return `https://wa.me/972544943569?text=${text}`;
+                },
                 changeLang(newLang) { this.lang = newLang; },
-                openModal(title) {
-                    this.modalTitle = title;
+                openDocModal(type) {
+                    this.modalType = type;
+                    if(type === 'exec') {
+                        this.modalTitle = this.t.execTitle;
+                        this.modalContent = this.t.execHtmlContent;
+                    } else {
+                        this.modalTitle = this.t.ndaTitle;
+                        this.modalContent = this.t.ndaHtmlContent;
+                    }
                     this.showModal = true;
                 },
-                submitForm() {
-                    alert(this.t.alertSuccess);
+                printOrSavePDF() {
+                    window.print();
+                },
+                submitAdvancedForm() {
+                    let subject = encodeURIComponent(`InnoDignity Inquiry from ${this.formData.firstName} ${this.formData.lastName} (${this.formData.entityType})`);
+                    let body = encodeURIComponent(`Name: ${this.formData.firstName} ${this.formData.lastName}\n` +
+                                                  `Organization: ${this.formData.orgName}\n` +
+                                                  `Entity Type: ${this.formData.entityType}\n` +
+                                                  `Preferred Method: ${this.formData.contactMethod}\n` +
+                                                  `Email: ${this.formData.email}\n` +
+                                                  `Phone: ${this.formData.phone}\n\n` +
+                                                  `Message & Purpose:\n${this.formData.message}`);
+                    window.location.href = `mailto:nazehotman@gmail.com?subject=${subject}&body=${body}`;
                 }
             }
         }
